@@ -1,0 +1,12 @@
+D:\ConnectFCCHR\SmartHR.Domain\bin\Release\net8.0\SmartHR.Domain.deps.json
+D:\ConnectFCCHR\SmartHR.Domain\bin\Release\net8.0\SmartHR.Domain.dll
+D:\ConnectFCCHR\SmartHR.Domain\bin\Release\net8.0\SmartHR.Domain.pdb
+D:\ConnectFCCHR\SmartHR.Domain\obj\Release\net8.0\SmartHR.Domain.csproj.AssemblyReference.cache
+D:\ConnectFCCHR\SmartHR.Domain\obj\Release\net8.0\SmartHR.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\ConnectFCCHR\SmartHR.Domain\obj\Release\net8.0\SmartHR.Domain.AssemblyInfoInputs.cache
+D:\ConnectFCCHR\SmartHR.Domain\obj\Release\net8.0\SmartHR.Domain.AssemblyInfo.cs
+D:\ConnectFCCHR\SmartHR.Domain\obj\Release\net8.0\SmartHR.Domain.csproj.CoreCompileInputs.cache
+D:\ConnectFCCHR\SmartHR.Domain\obj\Release\net8.0\SmartHR.Domain.dll
+D:\ConnectFCCHR\SmartHR.Domain\obj\Release\net8.0\refint\SmartHR.Domain.dll
+D:\ConnectFCCHR\SmartHR.Domain\obj\Release\net8.0\SmartHR.Domain.pdb
+D:\ConnectFCCHR\SmartHR.Domain\obj\Release\net8.0\ref\SmartHR.Domain.dll
