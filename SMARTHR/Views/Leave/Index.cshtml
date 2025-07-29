@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SMARTHR.WEB.Models.LeaveRequestViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Leave Requests";
+   
+}
+
+<h2 class="my-4">Leave Requests</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var leave in Model)
+        {
+            <tr>
+                <td>@leave.EmployeeId</td>
+                <td>@leave.StartDate.ToShortDateString()</td>
+                <td>@leave.EndDate.ToShortDateString()</td>
+                <td>@leave.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>

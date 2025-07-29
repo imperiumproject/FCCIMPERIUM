@@ -1,0 +1,272 @@
+﻿	<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+	<!-- Logo -->
+	<div class="sidebar-logo">
+		<a href="index.html" class="logo logo-normal">
+			<img src="~/assets/img/logo.png" alt="Logo" width="60%">
+		</a>
+		<a href="index.html" class="logo-small">
+			<img src="~/assets/img/logo.png" alt="Logo">
+		</a>
+		<a href="index.html" class="dark-logo">
+			<img src="~/assets/img/logo-white.png" alt="Logo">
+		</a>
+	</div>
+	<!-- /Logo -->
+	<div class="modern-profile p-3 pb-0">
+		<div class="text-center rounded bg-light p-3 mb-4 user-profile">
+			<div class="avatar avatar-lg online mb-3">
+				<img src="~/assets/img/profiles/avatar-02.jpg" alt="Img" class="img-fluid rounded-circle">
+			</div>
+			<h6 class="fs-12 fw-normal mb-1">Adrian Herman</h6>
+			<p class="fs-10">System Admin</p>
+		</div>
+		<div class="sidebar-nav mb-3">
+			<ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded nav-justified bg-transparent"
+				role="tablist">
+				<li class="nav-item"><a class="nav-link active border-0" href="#">Menu</a></li>
+				<li class="nav-item"><a class="nav-link border-0" href="chat.html">Chats</a></li>
+				<li class="nav-item"><a class="nav-link border-0" href="email.html">Inbox</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="sidebar-header p-3 pb-0 pt-2">
+		<div class="text-center rounded bg-light p-2 mb-4 sidebar-profile d-flex align-items-center">
+			<div class="avatar avatar-md onlin">
+				<img src="~/assets/img/profiles/avatar-02.jpg" alt="Img" class="img-fluid rounded-circle">
+			</div>
+			<div class="text-start sidebar-profile-info ms-2">
+				<h6 class="fs-12 fw-normal mb-1">Adrian Herman</h6>
+				<p class="fs-10">System Admin</p>
+			</div>
+		</div>
+		<div class="input-group input-group-flat d-inline-flex mb-4">
+			<span class="input-icon-addon">
+				<i class="ti ti-search"></i>
+			</span>
+			<input type="text" class="form-control" placeholder="Search in HRMS">
+			<span class="input-group-text">
+				<kbd>CTRL + / </kbd>
+			</span>
+		</div>
+		<div class="d-flex align-items-center justify-content-between menu-item mb-3">
+			<div class="me-3">
+				<a href="calendar.html" class="btn btn-menubar">
+					<i class="ti ti-layout-grid-remove"></i>
+				</a>
+			</div>
+			<div class="me-3">
+				<a href="chat.html" class="btn btn-menubar position-relative">
+					<i class="ti ti-brand-hipchat"></i>
+					<span class="badge bg-info rounded-pill d-flex align-items-center justify-content-center header-badge">5</span>
+				</a>
+			</div>
+			<div class="me-3 notification-item">
+				<a href="activity.html" class="btn btn-menubar position-relative me-1">
+					<i class="ti ti-bell"></i>
+					<span class="notification-status-dot"></span>
+				</a>
+			</div>
+			<div class="me-0">
+				<a href="email.html" class="btn btn-menubar">
+					<i class="ti ti-message"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar-inner slimscroll">
+		<div id="sidebar-menu" class="sidebar-menu">
+			<ul>
+
+				<li>
+					<ul>
+						<li class="submenu">
+							<a href="javascript:void(0);">
+								<i class="ti ti-smart-home"></i><span>Dashboard</span><span class="menu-arrow"></span>
+							</a>
+							@* <ul>
+								<li><a href="index.php">Admin Dashboard</a></li>
+
+							</ul> *@
+						</li>
+
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li class="submenu">
+							<a href="javascript:void(0);">
+								<i class="ti ti-file-time"></i><span>Employees Self Service</span>
+								<span class="menu-arrow"></span>
+							</a>
+							<ul>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										Leave<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li><a asp-controller="Leave" asp-action="LeaveRequest">Leave Request</a></li>
+										<li><a asp-controller="Leave" asp-action="LeaveResumption">Leave Resumption</a></li>
+										@* <li><a asp-controller="Leave" asp-action="LeaveEncashment">Leave Encashment</a></li> *@
+									</ul>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										Business Trip<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li><a asp-controller="BusinessTrip" asp-action="BusinessTrip">Business Trip</a></li>
+										<li><a asp-controller="BusinessTrip" asp-action="BusinessTripResumption">Business Trip Resumption</a></li>
+
+										
+										@* <li><a asp-controller="PaySlips" asp-action="PaySlips">PaySlip Report</a></li> *@
+									</ul>
+								</li>
+
+								<li><a asp-controller="ITAssets" asp-action="ReadAssetRequestList">IT Assets</a></li>
+								<li><a asp-controller="LoanRequest" asp-action="ReadLoanRequestList">Loan Request</a></li>
+								<li><a asp-action="PermissionList" asp-controller="PermissionRequest">Permission Request</a></li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										Ceriticate Request<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li><a asp-controller="CertificateRequest" asp-action="CertificateRequest">Certificate request</a></li>									
+										@* <li><a asp-controller="PaySlips" asp-action="PaySlips">PaySlip Report</a></li> *@
+									</ul>
+								</li>
+
+								@* <li><a asp-controller="Circular" asp-action="Circular">Circular</a></li> *@
+								
+								<!-- <li><a href="timesheets.html">Timesheets</a></li>
+								<li><a href="schedule-timing.html">Shift & Schedule</a></li>
+								<li><a href="overtime.html">Overtime</a></li>  -->
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li class="submenu">
+							<a href="javascript:void(0);">
+								<i class="ti ti-file-time"></i><span>Manager Self Service</span>
+								<span class="menu-arrow"></span>
+							</a>
+							<ul>
+								<li><a asp-action="Alltransaction" asp-controller="Manager">All Transactions</a></li>
+								@* <li class="submenu">
+									<a href="javascript:void(0);">
+										Leave<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li><a asp-controller="Leave" asp-action="LeaveRequest">Leave Transaction</a></li>
+										<li><a href="leave_resumption.php">Leave Resumption</a></li>
+
+										<li><a href="leave_encashment.php">Leave Encashment</a></li>
+									</ul>
+								</li> *@
+								@* <li class="submenu">
+									<a href="javascript:void(0);">
+										Business Trip<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li><a href="business_trip.php">Business Trip</a></li>
+										<li><a href="business_trip_resumption.php">Business Trip Resumption</a></li>
+									</ul>
+								</li> *@
+								@* <li><a href="business_trip.php">Business Trip</a></li>
+								<li><a href="business_trip_resumption.php">Business Trip Resumption</a></li> *@
+								<!-- <li><a href="timesheets.html">Timesheets</a></li>
+								<li><a href="schedule-timing.html">Shift & Schedule</a></li>
+								<li><a href="overtime.html">Overtime</a></li>  -->
+							</ul>
+
+
+						</li>
+					</ul>
+				</li>
+				<li>
+					@* <ul>
+						<li class="submenu">
+							<a href="javascript:void(0);">
+								<i class="ti ti-file-time"></i><span>Certificate Request</span>
+								<span class="menu-arrow"></span>
+							</a>
+							<ul>
+
+								<li><a asp-controller="CertificateRequest" asp-action="CertificateRequest">Certificate request</a></li>
+								<li><a asp-controller="PaySlips" asp-action="PaySlips">PaySlip Report</a></li>
+
+
+
+							</ul>
+						</li>
+					</ul> *@
+				</li>
+			</ul>
+			
+		</div>
+	</div>
+</div>
+<!-- /Sidebar -->
+<!-- Two Col Sidebar -->
+<div class="two-col-sidebar" id="two-col-sidebar">
+	<div class="sidebar sidebar-twocol">
+		<div class="twocol-mini">
+			<a href="index.html" class="logo-small">
+				<img src="~/assets/img/logo.png" alt="Logo">
+			</a>
+			<div class="sidebar-left slimscroll">
+				<div class="nav flex-column align-items-center nav-pills" id="sidebar-tabs" role="tablist"
+					 aria-orientation="vertical">
+					<a href="#" class="nav-link " title="Dashboard" data-bs-toggle="tab" data-bs-target="#dashboard">
+						<i class="ti ti-smart-home"></i>
+					</a>
+					<a href="#" class="nav-link " title="Apps" data-bs-toggle="tab" data-bs-target="#application">
+						<i class="ti ti-layout-grid-add"></i>
+					</a>
+					<a href="#" class="nav-link " title="Super Admin" data-bs-toggle="tab" data-bs-target="#super-admin">
+						<i class="ti ti-user-star"></i>
+					</a>
+					<a href="#" class="nav-link active" title="Layout" data-bs-toggle="tab" data-bs-target="#layout">
+						<i class="ti ti-layout-board-split"></i>
+					</a>
+					<a href="#" class="nav-link" title="Projects" data-bs-toggle="tab" data-bs-target="#projects">
+						<i class="ti ti-users-group"></i>
+					</a>
+					<a href="#" class="nav-link" title="Crm" data-bs-toggle="tab" data-bs-target="#crm">
+						<i class="ti ti-user-shield"></i>
+					</a>
+					<a href="#" class="nav-link" title="Hrm" data-bs-toggle="tab" data-bs-target="#hrm">
+						<i class="ti ti-user"></i>
+					</a>
+					<a href="#" class="nav-link" title="Finance" data-bs-toggle="tab" data-bs-target="#finance">
+						<i class="ti ti-shopping-cart-dollar"></i>
+					</a>
+					<a href="#" class="nav-link" title="Administration" data-bs-toggle="tab" data-bs-target="#administration">
+						<i class="ti ti-cash"></i>
+					</a>
+					<a href="#" class="nav-link" title="Content" data-bs-toggle="tab" data-bs-target="#content">
+						<i class="ti ti-license"></i>
+					</a>
+					<a href="#" class="nav-link" title="Pages" data-bs-toggle="tab" data-bs-target="#pages">
+						<i class="ti ti-page-break"></i>
+					</a>
+					<a href="#" class="nav-link" title="Authentication" data-bs-toggle="tab"
+					   data-bs-target="#authentication">
+						<i class="ti ti-lock-check"></i>
+					</a>
+					<a href="#" class="nav-link " title="UI Elements" data-bs-toggle="tab"
+					   data-bs-target="#ui-elements">
+						<i class="ti ti-ux-circle"></i>
+					</a>
+					<a href="#" class="nav-link" title="Extras" data-bs-toggle="tab" data-bs-target="#extras">
+						<i class="ti ti-vector-triangle"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- /Two Col Sidebar -->
