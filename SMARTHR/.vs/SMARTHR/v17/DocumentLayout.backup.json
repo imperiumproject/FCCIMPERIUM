@@ -1,0 +1,246 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\connectfcchr_21_07_2025\\connectfcchr\\smarthr\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\connectfcchr_21_07_2025\\connectfcchr\\smarthr\\views\\courses\\courses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:views\\courses\\courses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\connectfcchr_21_07_2025\\connectfcchr\\smarthr\\models\\coursesvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:models\\coursesvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\connectfcchr_21_07_2025\\connectfcchr\\smarthr\\views\\jobs\\jobs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:views\\jobs\\jobs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\connectfcchr_21_07_2025\\connectfcchr\\smarthr\\controllers\\jobscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:controllers\\jobscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\connectfcchr_21_07_2025\\connectfcchr\\smarthr\\fcchrservices\\d365\\d365apiurl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:fcchrservices\\d365\\d365apiurl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\connectfcchr_21_07_2025\\connectfcchr\\smarthr\\controllers\\circularcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:controllers\\circularcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\connectfcchr_21_07_2025\\connectfcchr\\smarthr\\models\\circularviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:models\\circularviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\connectfcchr_21_07_2025\\connectfcchr\\smarthr\\views\\circular\\circular.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:views\\circular\\circular.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\connectfcchr_21_07_2025\\connectfcchr\\smarthr\\views\\shared\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:views\\shared\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\connectfcchr_21_07_2025\\connectfcchr\\smarthr\\models\\jobsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:models\\jobsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\connectfcchr_21_07_2025\\connectfcchr\\smarthr\\views\\leave\\leaverequest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:views\\leave\\leaverequest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\connectfcchr_21_07_2025\\connectfcchr\\smarthr\\models\\leaverequestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:models\\leaverequestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CoursesVM.cs",
+              "DocumentMoniker": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Models\\CoursesVM.cs",
+              "RelativeDocumentMoniker": "Models\\CoursesVM.cs",
+              "ToolTip": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Models\\CoursesVM.cs",
+              "RelativeToolTip": "Models\\CoursesVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T07:11:03.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Courses.cshtml",
+              "DocumentMoniker": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Views\\Courses\\Courses.cshtml",
+              "RelativeDocumentMoniker": "Views\\Courses\\Courses.cshtml",
+              "ToolTip": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Views\\Courses\\Courses.cshtml",
+              "RelativeToolTip": "Views\\Courses\\Courses.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKEBAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-29T06:23:40.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CoursesController.cs",
+              "DocumentMoniker": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Controllers\\CoursesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CoursesController.cs",
+              "ToolTip": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Controllers\\CoursesController.cs",
+              "RelativeToolTip": "Controllers\\CoursesController.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwCIAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T06:21:08.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_Sidebar.cshtml",
+              "DocumentMoniker": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Views\\Shared\\_Sidebar.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Sidebar.cshtml",
+              "ToolTip": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Views\\Shared\\_Sidebar.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Sidebar.cshtml",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAAAHwAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T13:48:17.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Circular.cshtml",
+              "DocumentMoniker": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Views\\Circular\\Circular.cshtml",
+              "RelativeDocumentMoniker": "Views\\Circular\\Circular.cshtml",
+              "ToolTip": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Views\\Circular\\Circular.cshtml",
+              "RelativeToolTip": "Views\\Circular\\Circular.cshtml",
+              "ViewState": "AgIAAJ8AAAAAAAAAAAAcwG8AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-22T05:30:16.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CircularController.cs",
+              "DocumentMoniker": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Controllers\\CircularController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CircularController.cs",
+              "ToolTip": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Controllers\\CircularController.cs",
+              "RelativeToolTip": "Controllers\\CircularController.cs",
+              "ViewState": "AgIAAKUAAAAAAAAAAAAowAsAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T05:26:30.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CircularViewModel.cs",
+              "DocumentMoniker": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Models\\CircularViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\CircularViewModel.cs",
+              "ToolTip": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Models\\CircularViewModel.cs",
+              "RelativeToolTip": "Models\\CircularViewModel.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAowGcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T05:23:46.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "D365ApiURL.cs",
+              "DocumentMoniker": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\FCCHRServices\\D365\\D365ApiURL.cs",
+              "RelativeDocumentMoniker": "FCCHRServices\\D365\\D365ApiURL.cs",
+              "ToolTip": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\FCCHRServices\\D365\\D365ApiURL.cs",
+              "RelativeToolTip": "FCCHRServices\\D365\\D365ApiURL.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAAAEsAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T09:37:17.299Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Jobs.cshtml",
+              "DocumentMoniker": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Views\\Jobs\\Jobs.cshtml",
+              "RelativeDocumentMoniker": "Views\\Jobs\\Jobs.cshtml",
+              "ToolTip": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Views\\Jobs\\Jobs.cshtml",
+              "RelativeToolTip": "Views\\Jobs\\Jobs.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-23T13:45:53.027Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "JobsController.cs",
+              "DocumentMoniker": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Controllers\\JobsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\JobsController.cs",
+              "ToolTip": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Controllers\\JobsController.cs",
+              "RelativeToolTip": "Controllers\\JobsController.cs",
+              "ViewState": "AgIAANIAAAAAAAAAAAAowNcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-23T13:43:16.335Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LeaveRequest.cshtml",
+              "DocumentMoniker": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Views\\Leave\\LeaveRequest.cshtml",
+              "RelativeDocumentMoniker": "Views\\Leave\\LeaveRequest.cshtml",
+              "ToolTip": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Views\\Leave\\LeaveRequest.cshtml",
+              "RelativeToolTip": "Views\\Leave\\LeaveRequest.cshtml",
+              "ViewState": "AgIAAAgFAAAAAAAAAAAowAIFAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-30T07:32:29.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "JobsViewModel.cs",
+              "DocumentMoniker": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Models\\JobsViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\JobsViewModel.cs",
+              "ToolTip": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Models\\JobsViewModel.cs",
+              "RelativeToolTip": "Models\\JobsViewModel.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAA7wHAAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T05:50:05.52Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LeaveRequestViewModel.cs",
+              "DocumentMoniker": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Models\\LeaveRequestViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\LeaveRequestViewModel.cs",
+              "ToolTip": "D:\\ConnectFCCHR_21_07_2025\\ConnectFCCHR\\SMARTHR\\Models\\LeaveRequestViewModel.cs",
+              "RelativeToolTip": "Models\\LeaveRequestViewModel.cs",
+              "ViewState": "AgIAAAgCAAAAAAAAAAAjwBQCAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-02T14:20:31.621Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

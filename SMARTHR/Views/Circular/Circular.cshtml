@@ -1,0 +1,312 @@
+﻿@model List<SMARTHR.WEB.Models.HrCircularDetail>
+@{
+	ViewData["Title"] = "Circular";
+}
+
+<div class="content">
+
+	<!-- Breadcrumb -->
+	<div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
+		<div class="my-auto mb-2">
+			<h2 class="mb-1">Request</h2>
+			<nav>
+				<ol class="breadcrumb mb-0">
+					<li class="breadcrumb-item">
+						<a href="index.html"><i class="ti ti-smart-home"></i></a>
+					</li>
+					<li class="breadcrumb-item">
+						Payroll
+					</li>
+					<li class="breadcrumb-item active" aria-current="page">Circular List</li>
+				</ol>
+			</nav>
+		</div>
+		<div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
+
+			<!-- <div class="mb-2">
+			<a href="#" data-bs-toggle="modal" data-bs-target="#add_employee" class="btn btn-primary d-flex align-items-center"><i class="ti ti-circle-plus me-2"></i>Create New</a>
+			</div> -->
+
+		</div>
+	</div>
+	<!-- /Breadcrumb -->
+
+
+
+	<div class="card">
+		<div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+			<h5>Circular List</h5>
+			<div class="d-flex my-xl-auto right-content align-items-center flex-wrap row-gap-3">
+
+				<div class="dropdown me-3">
+					<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+						Employee
+					</a>
+					<ul class="dropdown-menu  dropdown-menu-end p-3">
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Finance</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Developer</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Executive</a>
+						</li>
+					</ul>
+				</div>
+				<div class="dropdown me-3">
+					<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+						Select Status
+					</a>
+					<ul class="dropdown-menu  dropdown-menu-end p-3">
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Active</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Inactive</a>
+						</li>
+					</ul>
+				</div>
+				<button class="btn  bg-primary btn-wave waves-effect waves-light">
+					<i class="feather-search align-middle me-2 d-inline-block"></i>Search
+				</button>
+
+			</div>
+		</div>
+		<div class="card-body p-0">
+			<div class="custom-datatable-filter table-responsive">
+				<form id="viewAttachmentForm" method="post" target="_blank" asp-controller="Circular" asp-action="ViewAttachment">
+					<input type="hidden" name="base64" id="base64Input" />
+					<input type="hidden" name="fileName" id="fileNameInput" />
+				</form>
+				@* <table class="table datatable">
+					<thead class="thead-light">
+						<tr>
+
+							<th>Circular</th>
+							<th>Action</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						@if (Model != null && Model.Any())
+						{
+							foreach (var item in Model)
+							{
+								//var attachment = item.AttachRefList?.FirstOrDefault();
+								<tr>
+									<td><a href="#" class="me-2" title="Circular"><i class="ti ti-file-text"></i>@item.CircularName</a></td>
+									<td style="display: flex; gap: 20px;">
+										@* <a href="#" class="me-2" title="View"><i class="ti ti-eye"></i></a>
+										<a href="#" class="me-2" title="Download"><i class="ti ti-download"></i></a> 
+
+										@if (item.AttachRefList != null && item.AttachRefList.Any())
+										{
+											foreach (var attach in item.AttachRefList)
+											{
+												var base64 = attach.AttachRefBase64;
+												var fileName = attach.FileName;
+												
+												@* <a href="#" onclick="submitViewAttachment('@base64', '@fileName')" title="View">
+													<i class="ti ti-eye"></i>
+												</a> 
+												<a href="#" onclick="submitViewAttachment('@attach.AttachRefBase64', '@attach.FileName')" title="View">
+													
+													<i class="ti ti-eye"></i>
+												</a>
+
+												
+
+												<a href="data:application/octet-stream;base64,@attach.AttachRefBase64"
+												   download="@attach.FileName"
+												target="_blank"
+												title="Download">
+													<i class="ti ti-download"></i>
+												</a>
+											}
+										 }
+										
+										
+									</td>
+								</tr>
+
+							}
+						}
+					</tbody>
+				</table> *@
+				<table class="table datatable">
+					<thead class="thead-light">
+						<tr>
+							<th>Circular</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						@if (Model != null && Model.Any())
+						{
+							foreach (var item in Model)
+							{
+								<tr>
+									<td>
+										<a href="#" class="me-2" title="Circular">
+											<i class="ti ti-file-text"></i> @item.CircularName
+										</a>
+									</td>
+									<td>
+										@if (item.AttachRefList != null && item.AttachRefList.Any())
+										{
+											<div style="display: flex; gap: 20px;">
+												@foreach (var attach in item.AttachRefList)
+												{
+													var base64 = attach.AttachRefBase64;
+													var fileName = attach.FileName;
+
+													<a href="#" onclick="submitViewAttachment('@base64', '@fileName')" title="View">
+														<i class="ti ti-eye"></i>
+													</a>
+
+													<a href="data:application/octet-stream;base64,@base64"
+													   download="@fileName"
+													   target="_blank"
+													   title="Download">
+														<i class="ti ti-download"></i>
+													</a>
+												}
+											</div>
+										}
+									</td>
+								</tr>
+							}
+						}
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- Add Employee -->
+<div class="modal fade" id="add_employee">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2"> Circular</h4>
+				</div>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<form action="employees.html">
+				<div class="contact-grids-tab">
+					<ul class="nav nav-underline" id="myTab" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#basic-info" type="button" role="tab" aria-selected="true">Leave Encashment</button>
+						</li>
+
+					</ul>
+				</div>
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+						<div class="card-body p-0">
+							<div class="custom-datatable-filter table-responsive">
+								<table class="table datatable">
+									<thead class="thead-light">
+										<tr>
+											<th>Personnel Number</th>
+											<th>Employee Name</th>
+											<th>Leave Balance as on 31st Dec</th>
+											<th>Leaves Encashed</th>
+
+											<th>Leave Balance after Encashment </th>
+											<th>Amount</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><a href="employee-details.html">10003</a></td>
+											<td>Avinash</td>
+											<td>68</td>
+											<td>8</td>
+											<td>
+												60
+											</td>
+											<td>
+												450
+											</td>
+
+										</tr>
+
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+
+					</div>
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- /Add Employee -->
+<!-- Add Employee Success -->
+<div class="modal fade" id="success_modal" role="dialog">
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="text-center p-3">
+					<span class="avatar avatar-lg avatar-rounded bg-success mb-3"><i class="ti ti-check fs-24"></i></span>
+					<h5 class="mb-2">Employee Added Successfully</h5>
+					<p class="mb-3">
+						Stephan Peralt has been added with Client ID : <span class="text-primary">#EMP -@ViewBag.Username</span>
+					</p>
+					<div>
+						<div class="row g-2">
+							<div class="col-6">
+								<a href="employees.html" class="btn btn-dark w-100">Back to List</a>
+							</div>
+							<div class="col-6">
+								<a href="employee-details.html" class="btn btn-primary w-100">Detail Page</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Add Client Success -->
+<!-- Delete Modal -->
+<div class="modal fade" id="delete_modal">
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<span class="avatar avatar-xl bg-transparent-danger text-danger mb-3">
+					<i class="ti ti-trash-x fs-36"></i>
+				</span>
+				<h4 class="mb-1">Confirm Delete</h4>
+				<p class="mb-3">You want to delete all the marked items, this cant be undone once you delete.</p>
+				<div class="d-flex justify-content-center">
+					<a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+					<a href="employees.html" class="btn btn-danger">Yes, Delete</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Delete Modal -->
+
+
+<script>
+	function submitViewAttachment(base64, fileName) {
+		document.getElementById("base64Input").value = base64;
+		document.getElementById("fileNameInput").value = fileName;
+		document.getElementById("viewAttachmentForm").submit();
+	}
+</script>
+

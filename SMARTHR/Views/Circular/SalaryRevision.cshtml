@@ -1,0 +1,683 @@
+﻿
+@{
+    ViewData["Title"] = "SalaryRevision";
+}
+
+<div class="content">
+
+	<!-- Breadcrumb -->
+	<div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
+		<div class="my-auto mb-2">
+			<h2 class="mb-1">Request</h2>
+			<nav>
+				<ol class="breadcrumb mb-0">
+					<li class="breadcrumb-item">
+						<a href="index.html"><i class="ti ti-smart-home"></i></a>
+					</li>
+					<li class="breadcrumb-item">
+						Payroll
+					</li>
+					<li class="breadcrumb-item active" aria-current="page">Salary Revision List</li>
+				</ol>
+			</nav>
+		</div>
+		<div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
+
+			<div class="mb-2">
+				<a href="#" data-bs-toggle="modal" data-bs-target="#add_employee" class="btn btn-primary d-flex align-items-center"><i class="ti ti-circle-plus me-2"></i>Create New</a>
+			</div>
+
+		</div>
+	</div>
+	<!-- /Breadcrumb -->
+
+
+
+	<div class="card">
+		<div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+			<h5>Salary Revision List</h5>
+			<div class="d-flex my-xl-auto right-content align-items-center flex-wrap row-gap-3">
+
+				<div class="dropdown me-3">
+					<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+						Employee
+					</a>
+					<ul class="dropdown-menu  dropdown-menu-end p-3">
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Finance</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Developer</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Executive</a>
+						</li>
+					</ul>
+				</div>
+				<div class="dropdown me-3">
+					<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+						Select Status
+					</a>
+					<ul class="dropdown-menu  dropdown-menu-end p-3">
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Active</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Inactive</a>
+						</li>
+					</ul>
+				</div>
+				<button class="btn  bg-primary btn-wave waves-effect waves-light">
+					<i class="feather-search align-middle me-2 d-inline-block"></i>Search
+				</button>
+
+			</div>
+		</div>
+		<div class="card-body p-0">
+			<div class="custom-datatable-filter table-responsive">
+				<table class="table datatable">
+					<thead class="thead-light">
+						<tr>
+
+							<th>Request ID</th>
+							<th>Current Job</th>
+							<th>Employee ID</th>
+							<th>Employee Name</th>
+							<th>Revision Date</th>
+							<th>Status</th>
+							<th>Actions</th>
+							<th>Workflow History</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><a href="">EPGE-095295</a></td>
+							<td>testing</td>
+							<td><a href="">EPGE-095296</a></td>
+							<td>testing</td>
+							<td>07/07/2025</td>
+							<td>
+								<span class="badge badge-success d-inline-flex align-items-center badge-xs">
+									<i class="ti ti-point-filled me-1"></i>Submitted
+								</span>
+							</td>
+
+							<td>
+								<div class="action-icon d-inline-flex">
+									<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-eye"></i></a>
+
+
+								</div>
+							</td>
+							<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+						</tr>
+
+
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- Add Employee -->
+<div class="modal fade" id="add_employee">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2">Salary Revision</h4>
+				</div>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<form action="employees.html">
+				<div class="contact-grids-tab">
+					<ul class="nav nav-underline" id="myTab" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#basic-info" type="button" role="tab" aria-selected="true">Salary Revision</button>
+						</li>
+
+
+
+					</ul>
+				</div>
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+						<div class="modal-body pb-0 ">
+							<div class="row">
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Request ID</label>
+										<input type="text" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Employee Name</label>
+										<select class="select2 ">
+											<option selected="selected"></option>
+											<option title="Employee ID : EMP -0024  &#10;Employee Name: Avinash &#10;Employee Department : Software Developer">Employee 1</option>
+											<option>Employee 2</option>
+											<option>Employee 3</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Date of Revision </label>
+										<div class="input-icon-end position-relative">
+											<input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Transaction Date </label>
+										<div class="input-icon-end position-relative">
+											<input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<br>
+									<label class="col-lg-3 form-label p-3">Job Id</label>
+									<div class="col-lg-9">
+										<div class="row">
+											<div class="col-md-6">
+												<h5>Current</h5>
+												<div class="mb-3">
+													<select class="select2">
+														<option></option>
+														<option value="1">Job Id1</option>
+														<option value="2">Job Id2</option>
+														<option value="3">Job Id3</option>
+														<option value="4">Job Id4</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5>Revisied</h5>
+												<div class="mb-3">
+													<select class="select2">
+														<option></option>
+														<option value="1">Job Id1</option>
+														<option value="2">Job Id2</option>
+														<option value="3">Job Id3</option>
+														<option value="4">Job Id4</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<label class="col-lg-3 form-label">Department</label>
+									<div class="col-lg-9">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="mb-3">
+													<select class="select2">
+														<option></option>
+														<option value="1">Department</option>
+														<option value="2">Department2</option>
+														<option value="3">Department3</option>
+														<option value="4">Department4</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="mb-3">
+													<select class="select2">
+														<option></option>
+														<option value="1">Department1</option>
+														<option value="2">Department2</option>
+														<option value="3">Department3</option>
+														<option value="4">Department4</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<label class="col-lg-3 form-label">Location</label>
+									<div class="col-lg-9">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="mb-3">
+													<select class="select2">
+														<option></option>
+														<option value="1">Location</option>
+														<option value="2">Location</option>
+														<option value="3">Location</option>
+														<option value="4">Location</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="mb-3">
+													<select class="select2">
+														<option></option>
+														<option value="1">Location</option>
+														<option value="2">Location</option>
+														<option value="3">Location</option>
+														<option value="4">Location</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<label class="col-lg-3 form-label">Basic Salary</label>
+									<div class="col-lg-9">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="mb-3">
+													<input type="text" class="form-control">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="mb-3">
+													<input type="text" class="form-control">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<label class="col-lg-3 form-label">Leave Entitlement</label>
+									<div class="col-lg-9">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="mb-3">
+													<select class="select2">
+														<option></option>
+														<option value="1">Leave Entitlement</option>
+														<option value="2">Leave Entitlement2</option>
+														<option value="3">Leave Entitlement3</option>
+														<option value="4">Leave Entitlement4</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="mb-3">
+													<select class="select2">
+														<option></option>
+														<option value="1">Leave Entitlement</option>
+														<option value="2">Leave Entitlement2</option>
+														<option value="3">Leave Entitlement3</option>
+														<option value="4">Leave Entitlement4</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<label class="col-lg-4 form-label">Car Entitlement</label>
+									<div class="col-lg-8">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="mb-3">
+													<input class="form-check-input" type="checkbox" value="" id="checkebox-md" checked="">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="mb-3">
+													<input class="form-check-input" type="checkbox" value="" id="checkebox-md">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<label class="col-lg-4 form-label">Air Entitlement</label>
+									<div class="col-lg-8">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="mb-3">
+													<input class="form-check-input" type="checkbox" value="" id="checkebox-md" checked="">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="mb-3">
+													<input class="form-check-input" type="checkbox" value="" id="checkebox-md">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<label class="col-lg-4 form-label">Medical Insurance Entitlement</label>
+									<div class="col-lg-8">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="mb-3">
+													<input class="form-check-input" type="checkbox" value="" id="checkebox-md" checked="">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="mb-3">
+													<input class="form-check-input" type="checkbox" value="" id="checkebox-md">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<label class="col-lg-3 form-label">Report to Position</label>
+									<div class="col-lg-9">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="mb-3">
+													<select class="select2">
+														<option></option>
+														<option value="1"></option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="mb-3">
+													<select class="select2">
+														<option></option>
+														<option value="1"></option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">No. of Attachments</label>
+										<input type="text" class="form-control">
+									</div>
+								</div>
+
+
+								<div class="col-md-6">
+									<div class="input-block mb-0">
+										<label class="form-label">Attachments</label>
+										<input class="form-control" type="file">
+									</div>
+
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Remarks</label>
+										<textarea class="form-control" rows="3"></textarea>
+									</div>
+								</div>
+								<div class="col-md-6"></div>
+								<div class="col-md-6 d-flex">
+									<a href="#" data-bs-toggle="modal" data-bs-target="#add_New" class="add-earnings text-primary mb-2"><i class="ti ti-plus me-2"></i>Add New</a> &nbsp; /
+									<a href="#" class="link-danger ms-2 delete-deduction"><i class="far fa-trash-alt"></i></a>
+
+								</div>
+								<div class="col-md-12">
+									<table class="table">
+
+										<thead class="thead-light">
+											<tr>
+												<th>Allowances</th>
+
+												<th>Current Amount</th>
+
+												<th>Revised Amount</th>
+												<th>Increment Amount</th>
+												<th>Limited FromDate</th>
+												<th>Limited</th>
+												<th>Limited ToDate</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Demo text</td>
+												<td>Demo text</td>
+												<td>Demo text</td>
+												<td>Demo text</td>
+												<td>Demo text</td>
+												<td>Demo text</td>
+												<td>Demo text</td>
+
+											</tr>
+											<tr>
+												<td>Demo text</td>
+												<td>Demo text</td>
+												<td>Demo text</td>
+												<td>Demo text</td>
+												<td>Demo text</td>
+												<td>Demo text</td>
+												<td>Demo text</td>
+
+											</tr>
+
+
+										</tbody>
+									</table>
+								</div>
+
+
+
+
+
+
+							</div>
+						</div>
+
+						<div class="modal-footer">
+
+							<button type="submit" class="btn btn-primary me-2">View Attachments </button>
+							<!-- <button type="submit" class="btn btn-primary me-2">Save </button> -->
+							<button type="submit" class="btn btn-success me-2">Submit </button>
+							<button type="button" class="btn btn-outline-light border " data-bs-dismiss="modal">Cancel</button>
+
+						</div>
+					</div>
+
+
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- /Add Employee -->
+<!-- Workflow_History -->
+<div class="modal fade" id="Workflow_History">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2">Workflow History </h4><span>Employee  ID : EMP -0024</span>
+				</div>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<div class="custom-datatable-filter table-responsive">
+				<table class="table datatable">
+					<thead class="thead-light">
+						<tr>
+
+							<th>Request ID</th>
+							<th></th>
+							<th>WF Trans ID:</th>
+							<th></th>
+							<th>Raised By:</th>
+							<th></th>
+						</tr>
+					</thead>
+					<thead class="thead-light">
+						<tr>
+
+							<th>Level</th>
+
+							<th>Approver</th>
+
+							<th>Status</th>
+							<th>Remarks</th>
+							<th>Comments</th>
+							<th>Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+<!-- /Workflow_History -->
+<!-- Add New -->
+<div class="modal fade" id="add_New">
+	<div class="modal-dialog modal-dialog-centered modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Add New</h4>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<form action="expenses.html">
+				<div class="modal-body pb-0">
+					<div class="row">
+
+						<div class="col-md-12">
+							<div class="mb-3">
+								<label class="form-label">Allowance Type</label>
+								<select class="select2">
+									<option>Select</option>
+
+									<option>Employee 2</option>
+									<option>Employee 3</option>
+								</select>
+							</div>
+
+						</div>
+						<div class="col-md-12">
+							<div class="mb-3">
+								<label class="form-label">Allowance Amount</label>
+								<input type="Number" class="form-control">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="mb-3">
+								<label class="form-label">Limited</label>
+								<input class="form-check-input" type="checkbox" value="" id="checkebox-md">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="mb-3">
+								<label class="form-label">Limited ToDate</label>
+								<div class="input-icon-end position-relative">
+									<input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+									<span class="input-icon-addon">
+										<i class="ti ti-calendar text-gray-7"></i>
+									</span>
+								</div>
+							</div>
+						</div>
+
+
+
+
+
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-white border me-2" data-bs-dismiss="modal">Cancel</button>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- /Add New -->
+<!-- Add Employee Success -->
+<div class="modal fade" id="success_modal" role="dialog">
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="text-center p-3">
+					<span class="avatar avatar-lg avatar-rounded bg-success mb-3"><i class="ti ti-check fs-24"></i></span>
+					<h5 class="mb-2">Employee Added Successfully</h5>
+					<p class="mb-3">
+						Stephan Peralt has been added with Client ID : <span class="text-primary">#EMP - 0001</span>
+					</p>
+					<div>
+						<div class="row g-2">
+							<div class="col-6">
+								<a href="employees.html" class="btn btn-dark w-100">Back to List</a>
+							</div>
+							<div class="col-6">
+								<a href="employee-details.html" class="btn btn-primary w-100">Detail Page</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Add Client Success -->
+<!-- Delete Modal -->
+<div class="modal fade" id="delete_modal">
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<span class="avatar avatar-xl bg-transparent-danger text-danger mb-3">
+					<i class="ti ti-trash-x fs-36"></i>
+				</span>
+				<h4 class="mb-1">Confirm Delete</h4>
+				<p class="mb-3">You want to delete all the marked items, this cant be undone once you delete.</p>
+				<div class="d-flex justify-content-center">
+					<a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+					<a href="employees.html" class="btn btn-danger">Yes, Delete</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Delete Modal -->
+

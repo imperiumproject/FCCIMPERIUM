@@ -1,0 +1,546 @@
+﻿@model List<SMARTHR.WEB.Models.JobVacancy>
+@{
+    ViewData["Title"] = "Jobs";
+}
+
+<div class="content">
+
+	<!-- Breadcrumb -->
+	<div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
+		<div class="my-auto mb-2">
+			<h2 class="mb-1">Request</h2>
+			<nav>
+				<ol class="breadcrumb mb-0">
+					<li class="breadcrumb-item">
+						<a href="index.html"><i class="ti ti-smart-home"></i></a>
+					</li>
+					<li class="breadcrumb-item">
+						Payroll
+					</li>
+					<li class="breadcrumb-item active" aria-current="page">Jobs List</li>
+				</ol>
+			</nav>
+		</div>
+		<div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
+
+			<!-- <div class="mb-2">
+				<a href="#" data-bs-toggle="modal" data-bs-target="#add_employee" class="btn btn-primary d-flex align-items-center"><i class="ti ti-circle-plus me-2"></i>Create New</a>
+			</div> -->
+
+		</div>
+	</div>
+	<!-- /Breadcrumb -->
+
+
+
+	<div class="card">
+		<div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+			<h5>Job List</h5>
+			<div class="d-flex my-xl-auto right-content align-items-center flex-wrap row-gap-3">
+			</div>
+		</div>
+		<div class="card-body p-0">
+			<div class="custom-datatable-filter table-responsive">
+				<table class="table datatable">
+					<thead class="thead-light">
+						<tr>
+
+							<th>Open Jobs </th>
+
+							<th>Title</th>
+
+
+							<th>Department</th>
+							<th>Company</th>
+							<th>Hiring Manager</th>
+							<th>Application Deadline</th>
+
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						@if (Model != null && Model.Any())
+						{
+							foreach (var item in Model)
+							{
+						<tr>
+							<td>@item.OpenJobs</td>
+							<td>@item.Title</td>
+							<td>@item.Department</td>
+							<td>@item.DataAreaId</td>
+							<td>@item.HiringManager</td>
+							<td>@item.FinalDate</td>
+							@* <td><span href="#" class="badge bg-primary" data-bs-toggle="modal" data-bs-target="#Jobs" title="Apply" id="btnapply" data-OpenJobs="@item.OpenJobs">Apply</span></td> *@
+									<td>
+										<a class="me-2  btnapply" data-bs-toggle="modal"data-bs-target="#Jobs" title="View"data-id="@item.OpenJobs">
+                                         <i class="ti ti-eye"></i></a>
+									</td>
+
+
+						</tr>
+
+							}
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- Jobs -->
+<div class="modal fade" id="Jobs">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2">Jobs</h4>
+				</div>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<form action="employees.html">
+				<input type="hidden" id="openjobs" class="form-control">
+				<div class="contact-grids-tab">
+					<ul class="nav nav-underline" id="myTab" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#basic-info" type="button" role="tab" aria-selected="true">Application</button>
+						</li>
+
+
+
+					</ul>
+				</div>
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+						<div class="modal-body pb-0 ">
+							<div class="row">
+
+								@* <div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Open Jobs</label>
+										<input type="text" id="openjobs" class="form-control">
+									</div>
+								</div> *@
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Title</label>
+										<input type="text" id="title" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Department </label>
+										<input type="text" id="department" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Company </label>
+										<input type="text" id="company" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Hiring Manager</label>
+										<input type="text" id="hiringmanager" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Job Description </label>
+										<textarea class="form-control" rows="3" id="description"></textarea>
+									</div>
+								</div>
+								
+								
+								
+
+								@* <div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Application Deadline</label>
+										<div class="input-icon-end position-relative">
+											<input type="text" id="applicationdeadline" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div> *@
+
+								<!-- 	<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Current Job Role</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Location</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Job Id</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Job Role</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Expected Start Date</label>
+											<div class="input-icon-end position-relative">
+												<input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+												<span class="input-icon-addon">
+													<i class="ti ti-calendar text-gray-7"></i>
+												</span>
+											</div>
+										</div>
+									</div> -->
+								<!--  <div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">No of Attachments</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+									<div class="input-block mb-0">
+										<label class="form-label">Attachments</label>
+										<input class="form-control" type="file">
+									</div>
+
+								</div>-->
+								<!-- <div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Remarks</label>
+										<textarea class="form-control" rows="3"></textarea>
+									</div>
+								</div> -->
+
+
+								<div class="card-body">
+									<ul class="nav nav-tabs tab-style-1 d-sm-flex d-block" role="tablist">
+										<li class="nav-item">
+											<a class="nav-link active" data-bs-toggle="tab" data-bs-target="#Skills"
+											   aria-current="page" href="#Skills">Skills</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" data-bs-toggle="tab" data-bs-target="#Qualification"
+											   href="#Qualification">Qualification</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" data-bs-toggle="tab" data-bs-target="#Certificate"
+											   href="#Certificate">Certificate</a>
+										</li>
+									</ul>
+									<div class="tab-content">
+										<div class="tab-pane active" id="Skills" role="tabpanel">
+											<table id="SkillsTable" class="table">
+												<thead class="thead-primary">
+													<tr>
+														<th>Skill Id</th>
+														<th>Skill Name</th>
+														<th>Level</th>
+														<th>Importance</th>
+													</tr>
+												</thead>
+												<tbody>
+													@* <tr>
+														<td>Demo text</td>
+														<td>Demo text</td>
+														<td>Demo text</td>
+														<td>Demo text</td>
+													</tr> *@
+
+
+												</tbody>
+											</table>
+										</div>
+										<div class="tab-pane" id="Qualification" role="tabpanel">
+											<table id="QualificationTable" class="table">
+												<thead class="thead-primary">
+													<tr>
+														<th>Qualification Id</th>
+														<th>Qualification Name	</th>
+														<th>Importance</th>
+													</tr>
+												</thead>
+												<tbody>
+													@* <tr>
+														<td>Demo text</td>
+														<td>Demo text</td>
+														<td>Demo text</td>
+													</tr> *@
+
+												</tbody>
+											</table>
+										</div>
+										<div class="tab-pane" id="Certificate" role="tabpanel">
+											<table id="CertificateTable" class="table">
+
+												<thead class="thead-primary">
+													<tr>
+														<th>Certificate Id</th>
+														<th>Certificate Name	</th>
+														<th>Importance</th>
+													</tr>
+												</thead>
+												<tbody>
+													@* <tr>
+														<td>Demo text</td>
+														<td>Demo text</td>
+														<td>Demo text</td>
+													</tr> *@
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+
+
+
+							</div>
+						</div>
+
+						<div class="modal-footer">
+
+
+							<!-- <a  data-bs-toggle="modal" data-bs-target="#Attachments" class="btn btn-primary me-2">View  Attachments</a>  -->
+
+							<button type="submit" class="btn btn-success me-2" id="applybtn">Apply </button>
+							<!-- <button type="button" class="btn btn-outline-light border " data-bs-dismiss="modal">Cancel</button> -->
+							<div class="col-lg-5"></div>
+						</div>
+					</div>
+
+
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- /Jobs -->
+<!-- Add Employee Success -->
+<div class="modal fade" id="success_modal" role="dialog">
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="text-center p-3">
+					<span class="avatar avatar-lg avatar-rounded bg-success mb-3"><i class="ti ti-check fs-24"></i></span>
+					<h5 class="mb-2">Employee Added Successfully</h5>
+					<p class="mb-3">
+						Stephan Peralt has been added with Client ID : <span class="text-primary">#EMP - 0001</span>
+					</p>
+					<div>
+						<div class="row g-2">
+							<div class="col-6">
+								<a href="employees.html" class="btn btn-dark w-100">Back to List</a>
+							</div>
+							<div class="col-6">
+								<a href="employee-details.html" class="btn btn-primary w-100">Detail Page</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Add Client Success -->
+<!-- Delete Modal -->
+<div class="modal fade" id="delete_modal">
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<span class="avatar avatar-xl bg-transparent-danger text-danger mb-3">
+					<i class="ti ti-trash-x fs-36"></i>
+				</span>
+				<h4 class="mb-1">Confirm Delete</h4>
+				<p class="mb-3">You want to delete all the marked items, this cant be undone once you delete.</p>
+				<div class="d-flex justify-content-center">
+					<a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+					<a href="employees.html" class="btn btn-danger">Yes, Delete</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Delete Modal -->
+<!-- Benefits -->
+<div class="modal fade" id="Benefits">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2">Benefits </h4>
+				</div>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<div class="custom-datatable-filter table-responsive">
+				<table class="table datatable">
+
+					<thead class="thead-light">
+						<tr>
+
+							<th>Benefit Type</th>
+							<th>Value</th>
+							<th>Valid From</th>
+							<th>Valid To</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Voucher</td>
+							<td>10</td>
+							<td>12 Sep 2025</td>
+							<td>14 Sep 2025</td>
+
+						</tr>
+						<tr>
+							<td>Voucher 2</td>
+							<td>10</td>
+							<td>14 Sep 2025</td>
+							<td>16 Sep 2025</td>
+
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+<!-- /Benefits -->
+
+@section Scripts
+{
+<script>
+
+	//----------------ViewJob
+	            debugger;
+				$(document).on('click', '.btnapply', function () {
+			var description = $(this).data('id'); 
+
+			$.ajax({
+				url: '@Url.Action("ReadJobVacancyInfo", "Jobs")',
+				type: 'POST',
+				data: { description: description }, 
+				dataType: 'json',
+				success: function (response) {
+					if (response.jobVacancyList && response.jobVacancyList.length > 0) {
+						const jobData = response.jobVacancyList[0]; 
+
+						$('#openjobs').val(jobData.openJobs).val();
+						$('#basic-info #title').val(jobData.title).prop('readonly', true);
+						$('#basic-info #description').val(jobData.description).prop('readonly', true);
+						$('#basic-info #department').val(jobData.department).prop('readonly', true);
+						$('#basic-info #company').val(jobData.dataAreaId).prop('readonly', true);
+						$('#basic-info #hiringmanager').val(jobData.hiringManager).prop('readonly', true);
+						$('#basic-info #applicationdeadline').val(jobData.finalDate).prop('readonly', true);
+
+						// Certificate
+						var certTable = $('#CertificateTable').DataTable();
+						certTable.clear();
+						if (jobData.certificateList && jobData.certificateList.length > 0) {
+							$.each(jobData.certificateList, function (i, item) {
+								certTable.row.add([
+									item.type, 
+									item.description, 
+									item.importance]).draw(false);
+							});
+						}
+
+						// Education
+						var eduTable = $('#QualificationTable').DataTable();
+						eduTable.clear();
+						if (jobData.educationList && jobData.educationList.length > 0) {
+							$.each(jobData.educationList, function (i, item) {
+								eduTable.row.add([
+									item.education,
+									item.description, 
+									item.importance]).draw(false);
+							});
+						}
+
+						// Skills
+						var skillTable = $('#SkillsTable').DataTable();
+						skillTable.clear();
+						if (jobData.skillList && jobData.skillList.length > 0) {
+							$.each(jobData.skillList, function (i, item) {
+								skillTable.row.add([item.skill,
+									item.description, 
+									item.ratingLevel || '',
+									item.importance]).draw(false);
+							});
+						}
+
+					} else {
+						alert("No job data found.");
+					}
+				},
+				error: function (xhr, status, error) {
+					alert("Error: " + error);
+					console.error(xhr.responseText);
+				}
+			});
+		});
+
+
+
+		//------------------------ApplyJob
+
+
+				$(document).on('click', '#applybtn', function (e) {
+			e.preventDefault();
+
+			const jobDescription = $('#openjobs').val();
+			const cmpid = $('#company').val();
+
+			const payload = {
+				jobDescription: jobDescription,
+				cmpid: cmpid
+			};
+
+			$.ajax({
+				url: '@Url.Action("ApplyForJob", "Jobs")',
+				type: 'POST',
+				data:(payload),
+				
+				dataType: 'json',                  // 👈 Expecting JSON response
+				     
+				success: function (response) {
+					if (response.success) {
+						alert(response.message || response.Message);
+							window.location.href = '@Url.Action("ReadJobVacancyList ", "Jobs")';
+					} else {
+						alert("Something went wrong: " + response.message);
+					}
+				},
+				error: function (xhr, status, error) {
+					alert("Error: " + error);
+					console.error(xhr.responseText);
+				}
+			});
+		});
+
+
+
+
+</script>
+}
+

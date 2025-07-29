@@ -1,0 +1,369 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="Smarthr - Bootstrap Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, html5, responsive, Projects">
+    <meta name="author" content="Dreams technologies - Bootstrap Admin Template">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Smarthr Admin Template</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/img/Fevicon.png">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/assets/img/apple-touch-icon.png">
+
+    <!-- Theme Script js -->
+    <!-- <script src="~/assets/js/theme-script.js"></script> -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+
+    <!-- Feather CSS -->
+    <link rel="stylesheet" href="~/assets/plugins/icons/feather/feather.css">
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="~/assets/css/feather.css">
+
+    <!-- Tabler Icon CSS -->
+    <link rel="stylesheet" href="~/assets/plugins/tabler-icons/tabler-icons.min.css">
+
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="~/assets/plugins/select2/css/select2.min.css">
+
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="~/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="~/assets/plugins/fontawesome/css/all.min.css">
+
+    <!-- Datetimepicker CSS -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap-datetimepicker.min.css">
+
+    <!-- Color Picker Css -->
+    <link rel="stylesheet" href="~/assets/plugins/flatpickr/flatpickr.min.css">
+    <link rel="stylesheet" href="~/assets/plugins/simonwep/pickr/themes/nano.min.css">
+
+    <!-- Daterangepikcer CSS -->
+    <link rel="stylesheet" href="~/assets/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="~/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.css" />
+
+    <!-- Datatable CSS -->
+    <link rel="stylesheet" href="~/assets/css/dataTables.bootstrap5.min.css">
+
+    @* <!-- Select2 CSS -->
+    <link rel="stylesheet" href="~/assets/plugins/select2/css/select2.min.css"> *@
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <!-- animation CSS -->
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+   
+    <script src="~/assets/plugins/select2/js/select2.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Flatpickr CSS and JS -->
+    <link href="@Url.Content("~/assets/plugins/flatpickr/flatpickr.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/assets/plugins/flatpickr/flatpickr.min.js")"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <style>
+        .select2-container .select2-selection--single {
+            height: 38px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-color: #000000;
+            border-style: solid;
+            border-width: 0 1px 1px 0;
+            padding: 3px;
+            height: 0;
+            margin-left: -6px;
+            margin-top: -3px;
+            width: 0;
+            transform: rotate(;
+            45deg ) translateY(-50%) -webkit-transform: rotate(;
+            45deg ) translateY(-50%) -ms-transform: rotate(45deg) translateY(-50%);
+        }
+
+        .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+            border-color: #000;
+            border-width: 1px 0 0 1px;
+            margin-top: 3px;
+            padding: 3px;
+        }
+
+        .select2-container--classic .select2-selection--single, .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--single .select2-selection__rendered, .select2-container--default .select2-selection--single .select2-selection__arrow, .select2-container--default .select2-selection--multiple, .select2-container--classic .select2-selection--single .select2-selection__arrow, .select2-container--classic .select2-selection--single .select2-selection__rendered {
+            border-color: #000000;
+            color: #6B7280;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="global-loader" style="display: none;">
+        <div class="page-loader"></div>
+    </div>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        @await Html.PartialAsync("_TopMenu")
+        @await Html.PartialAsync("_Sidebar")
+
+        @*   <div class="container content" id="content">
+        <main role="main" class="pb-3">
+        @RenderBody()
+        </main>
+        </div> *@
+
+        <!-- Page Wrapper -->
+        <div class="page-wrapper">
+            @RenderBody()
+
+            @await Html.PartialAsync("_FooterLable")
+        </div>
+        <!-- /Page Wrapper -->
+    </div>
+    <!-- /Main Wrapper -->
+    <!-- jQuery -->
+    <script src="~/assets/js/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Feather Icon JS -->
+    <script src="~/assets/js/feather.min.js"></script>
+
+    <!-- Slimscroll JS -->
+    <script src="~/assets/js/jquery.slimscroll.min.js"></script>
+
+    <!-- Color Picker JS -->
+    <script src="~/assets/plugins/simonwep/pickr/pickr.es5.min.js"></script>
+
+    <!-- Datatable JS -->
+    <script src="~/assets/js/jquery.dataTables.min.js"></script>
+    <script src="~/assets/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- Daterangepikcer JS -->
+    <script src="~/assets/js/moment.min.js"></script>
+    <script src="~/assets/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="~/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!-- Select2 JS -->
+    <script src="~/assets/plugins/select2/js/select2.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="~/assets/plugins/apexchart/apexcharts.min.js"></script>
+    <script src="~/assets/plugins/apexchart/chart-data.js"></script>
+
+    <!-- Custom JS -->
+    <script src="~/assets/js/theme-colorpicker.js"></script>
+    <script src="~/assets/js/script.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $(".chosen-select").chosen({
+
+                allow_single_deselect: true,
+                width: "100%"
+            })
+        })
+        // $('#add_employee').on('.ti ti - x', function () {
+        //     location.reload(); // This will reload the entire page
+        // });
+        $('.btn-close').on('click', function () {
+            location.reload(); // This will reload the entire page
+        });
+        $('#cancelLeaveButton').on('click', function () {
+            location.reload(); // This will reload the entire page
+        });
+        flatpickr(".datepicker", {
+            dateFormat: "d/m/Y", // Flatpickr uses lowercase m/d/Y for MM/dd/yyyy
+            allowInput: true
+        });
+
+        $(document).on('click', '.btnWFView', function (e) {
+            e.preventDefault(); // Prevent default link behavior
+
+           //  // Parse data-id (e.g., "123,456,789" into [LeaveID, LeaveRecId, WorkflowTableId])
+           //  var idData = $(this).data('id').split(',');
+           //  if (idData.length < 3) {
+           //      alert('Invalid data-id format');
+           //      return;
+           //  }
+           //  var leaveId = idData[0] || '';
+           //  var leaveRecId = idData[1] || ''; // Not used in AJAX, but kept for potential future use
+           //  var workflowTableId = idData[2] || '';
+           // // var TransType = 'Leave Request';
+           // var TransType =idData[3] || '' ;
+           var leaveId = $(this).data('leaveid') || '';
+            var leaveRecId = $(this).data('rec') || ''; // Not used in AJAX, but kept for potential future use
+            var workflowTableId = $(this).data('tableid')|| '';
+           // var TransType = 'Leave Request';
+           var TransType =$(this).data('transtype') || '' ;
+            $.ajax({
+                url: '@Url.Action("TrackRequestWorkFlow", "Leave")',
+                type: 'GET',
+                data: {
+                    RecordId: leaveRecId,
+                    TableId: workflowTableId,
+                    TransType: TransType
+                },
+                dataType: 'json',
+                success: function (response) {
+                    if (response.wfTrackingList && response.wfTrackingList.length > 0) {
+                        var firstEntry = response.wfTrackingList[0];
+
+                        // Clear previous content
+                        $('#workflowContainer').empty();
+
+                        // Create table element
+                        var $table = $('<table class="table table-bordered table-striped datatable"></table>');
+
+                        // Create thead
+                        var $thead = $('<thead class="thead-light"></thead>');
+                        var $headerRow = $('<tr></tr>');
+                        $headerRow.append('<th>Level</th>');
+                        $headerRow.append('<th>Approver</th>');
+                        $headerRow.append('<th>Status</th>');
+                        $headerRow.append('<th>Remarks</th>');
+                        $headerRow.append('<th>Comments</th>');
+                        $headerRow.append('<th>Date</th>');
+                        $thead.append($headerRow);
+
+                        // Create tbody
+                        var $tbody = $('<tbody></tbody>');
+                        $.each(response.wfTrackingList, function (index, entry) {
+                            var $row = $('<tr></tr>');
+                            $row.append('<td>' + (entry.levelName || '') + '</td>');
+                            $row.append('<td>' + (entry.employeeName || '') + '</td>');
+                            $row.append('<td>' + (entry.status || '') + '</td>');
+                            $row.append('<td>' + (entry.remarks || '') + '</td>');
+                            $row.append('<td>' + (entry.comments || '') + '</td>');
+                            $row.append('<td>' + (entry.transDate || '') + '</td>');
+                            $tbody.append($row);
+                        });
+
+                        // Append thead and tbody to table
+                        $table.append($thead).append($tbody);
+
+                        // Optional title block
+                        var $titleBlock = $('<div class="mb-2 fw-bold">WF Trans ID: ' + (firstEntry.wFTransID || '') +
+                            ' | Employee ID: ' + (firstEntry.raisedBy || '') + '</div>');
+
+                        // Append everything to container div
+                        $('#workflowContainer').append($titleBlock).append($table);
+
+                        // Initialize DataTable (if needed)
+                        if ($.fn.DataTable) {
+                            $table.DataTable({
+                                // paging: false,
+                                // searching: false,
+                                // info: false
+                                order: []
+                            });
+                        }
+                    } else {
+                        $('#workflowContainer').html('<div class="alert alert-warning">No workflow details found.</div>');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    $('#workflowContainer').html('<div class="alert alert-danger">Error loading workflow data: ' + error + '</div>');
+                    console.error('AJAX Error:', xhr.responseText);
+                }
+            });
+
+        });
+
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+
+
+</html>
+@*
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const isActive = sidebar.classList.contains('active');
+            sidebar.classList.toggle('active', !isActive);
+            content.classList.toggle('active', !isActive);
+            localStorage.setItem('sidebarState', isActive ? 'closed' : 'open');
+        }
+
+        function toggleSubmenu(event, element) {
+            event.preventDefault();
+            const submenu = element.nextElementSibling;
+            const menuId = element.getAttribute('data-id');
+            if (!submenu || !submenu.classList.contains('submenu')) return;
+            submenu.classList.toggle('active');
+            element.classList.toggle('expanded');
+            const openedSubmenus = JSON.parse(localStorage.getItem('openedSubmenus') || '[]');
+            const index = openedSubmenus.indexOf(menuId);
+            if (submenu.classList.contains('active')) {
+                if (index === -1) openedSubmenus.push(menuId);
+            } else {
+                if (index > -1) openedSubmenus.splice(index, 1);
+            }
+            localStorage.setItem('openedSubmenus', JSON.stringify(openedSubmenus));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarState = localStorage.getItem('sidebarState');
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            if (sidebarState === 'open') {
+                sidebar.classList.add('active');
+                content.classList.add('active');
+            }
+
+            const openedSubmenus = JSON.parse(localStorage.getItem('openedSubmenus') || '[]');
+            openedSubmenus.forEach(id => {
+                const menuItem = document.querySelector(`.menu-item[data-id="${id}"]`);
+                if (menuItem) {
+                    const submenu = menuItem.nextElementSibling;
+                    if (submenu) {
+                        submenu.classList.add('active');
+                        menuItem.classList.add('expanded');
+                    }
+                }
+            });
+
+            const currentUrl = window.location.pathname.toLowerCase();
+            document.querySelectorAll('.submenu .menu-item').forEach(link => {
+                if (link.getAttribute('href').toLowerCase() === currentUrl) {
+                    link.classList.add('active');
+                    const parent = link.closest('.submenu');
+                    if (parent) {
+                        parent.classList.add('active');
+                        const toggleLink = parent.previousElementSibling;
+                        if (toggleLink && toggleLink.classList.contains('menu-item')) {
+                            toggleLink.classList.add('expanded');
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+ *@
+
+
+
+
+
+
+
