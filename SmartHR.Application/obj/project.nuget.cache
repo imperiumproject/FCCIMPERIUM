@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X8nzzDN5fOd9tErzRFoeOxHejtYmCUxKT79PlcxSO+gRHalt0c30h3YEtd0z9ipVQ9N7vdSLmGx94ZafrJzfQg==",
+  "dgSpecHash": "1efrTBms5D7q1uAMuDiiPpDJ1eXUb+HiuxwTqeoDR6F7pVDYB4ltPEotX1LSWU8O0Hk/MjV3YrCN5b1i6skMXA==",
   "success": true,
-  "projectFilePath": "D:\\ConnectFCCHR\\SmartHR.Application\\SmartHR.Application.csproj",
+  "projectFilePath": "E:\\ASIFESSHR17072025\\ConnectFCCHR_07_17_2025\\ConnectFCCHR\\SmartHR.Application\\SmartHR.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Home\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.6\\microsoft.extensions.configuration.9.0.6.nupkg.sha512",
     "C:\\Users\\Home\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.6\\microsoft.extensions.configuration.abstractions.9.0.6.nupkg.sha512",

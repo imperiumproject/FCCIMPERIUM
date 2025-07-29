@@ -1,0 +1,540 @@
+﻿@{
+	ViewData["Title"] = "BusinessTripResumption";
+}
+
+
+<div class="content">
+
+	<!-- Breadcrumb -->
+	<div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
+		<div class="my-auto mb-2">
+			<h2 class="mb-1">Request</h2>
+			<nav>
+				<ol class="breadcrumb mb-0">
+					<li class="breadcrumb-item">
+						<a href="index.html"><i class="ti ti-smart-home"></i></a>
+					</li>
+					<li class="breadcrumb-item">
+						Payroll
+					</li>
+					<li class="breadcrumb-item active" aria-current="page">Business Trip Resumption  List</li>
+				</ol>
+			</nav>
+		</div>
+		<div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
+
+			<!-- <div class="mb-2">
+				<a href="#" data-bs-toggle="modal" data-bs-target="#add_employee" class="btn btn-primary d-flex align-items-center"><i class="ti ti-circle-plus me-2"></i>Create New</a>
+			</div> -->
+
+		</div>
+	</div>
+	<!-- /Breadcrumb -->
+
+
+
+	<div class="card">
+		<div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+			<h5>Business Trip Resumption  List</h5>
+			<div class="d-flex my-xl-auto right-content align-items-center flex-wrap row-gap-3">
+
+				<div class="dropdown me-3">
+					<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+						Employee
+					</a>
+					<ul class="dropdown-menu  dropdown-menu-end p-3">
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Finance</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Developer</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Executive</a>
+						</li>
+					</ul>
+				</div>
+				<div class="dropdown me-3">
+					<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+						Select Status
+					</a>
+					<ul class="dropdown-menu  dropdown-menu-end p-3">
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Active</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Inactive</a>
+						</li>
+					</ul>
+				</div>
+				<button class="btn  bg-primary btn-wave waves-effect waves-light">
+					<i class="feather-download align-middle me-2 d-inline-block"></i>Search
+				</button>
+
+			</div>
+		</div>
+		<div class="card-body p-0">
+			<div class="custom-datatable-filter table-responsive">
+				<table class="table datatable">
+					<thead class="thead-light">
+						<tr>
+
+							<th>Request ID</th>
+							<th>Employee ID</th>
+							<th>Employee Name</th>
+							<th>Request Type</th>
+							<th>Event Start Date</th>
+							<th>Event End Date</th>
+							<th>Status</th>
+							<th>Actions</th>
+							<th>Workflow History</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<a href="">EPGE-095295</a>
+							</td>
+							<td><a href="employee-details.html">Emp-001</a></td>
+							<td>
+								kuwait
+							</td>
+							<td>Bereavement leave</td>
+							<td>12 Sep 2024</td>
+							<td>12 Sep 2024</td>
+
+
+
+
+							<td>
+								<span class="badge badge-success d-inline-flex align-items-center badge-xs">
+									<i class="ti ti-point-filled me-1"></i>Submitted
+								</span>
+							</td>
+
+							<td>
+								<div class="action-icon d-inline-flex">
+									<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee">View</a>
+								</div>
+							</td>
+							<td><a href="">View</a></td>
+						</tr>
+
+						<tr>
+							<td>
+								<a href="">EPGE-095296</a>
+							</td>
+							<td><a href="employee-details.html">Emp-002</a></td>
+							<td>
+								kuwait
+							</td>
+							<td>Bereavement leave</td>
+							<td>12 Sep 2024</td>
+							<td>12 Sep 2024</td>
+
+
+
+
+							<td>
+								<span class="badge badge-danger d-inline-flex align-items-center badge-sm">
+									<i class="ti ti-point-filled me-1"></i>Draft
+								</span>
+							</td>
+
+							<td>
+								<div class="action-icon d-inline-flex">
+									<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-history" title="Recall"></i></a>
+								</div>
+							</td>
+							<td><a href="">View</a></td>
+						</tr>
+						<tr>
+							<td>
+								<a href="">EPGE-095297</a>
+							</td>
+							<td><a href="employee-details.html">Emp-003</a></td>
+							<td>
+								kuwait
+							</td>
+							<td>Bereavement leave</td>
+							<td>12 Sep 2024</td>
+							<td>12 Sep 2024</td>
+
+
+
+
+							<td>
+								<span class="badge badge-success d-inline-flex align-items-center badge-xs">
+									<i class="ti ti-point-filled me-1"></i>Submitted
+								</span>
+							</td>
+
+							<td>
+								<div class="action-icon d-inline-flex">
+									<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee">View</a>
+								</div>
+							</td>
+							<td><a href="">View</a></td>
+						</tr>
+						<tr>
+							<td>
+								<a href="">EPGE-095298</a>
+							</td>
+							<td><a href="employee-details.html">Emp-004</a></td>
+							<td>
+								kuwait
+							</td>
+							<td>Bereavement leave</td>
+							<td>12 Sep 2024</td>
+							<td>12 Sep 2024</td>
+
+
+
+
+							<td>
+
+								<span class="badge badge-success d-inline-flex align-items-center badge-xs">
+									<i class="ti ti-point-filled me-1"></i>Submitted
+								</span>
+							</td>
+
+							<td>
+								<div class="action-icon d-inline-flex">
+									<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee">View</a>
+								</div>
+							</td>
+							<td><a href="">View</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- Add Employee -->
+<div class="modal fade" id="add_employee">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2"> Business Trip</h4><span>Employee  ID : EMP -0024</span>
+				</div>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<form action="">
+				<div class="contact-grids-tab">
+					<ul class="nav nav-underline" id="myTab" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#basic-info" type="button" role="tab" aria-selected="true">Business Trip</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="nav-link" id="address-tab2" data-bs-toggle="tab" data-bs-target="#address2" type="button" role="tab" aria-selected="false">Travel Arrangements Type</button>
+						</li>
+
+					</ul>
+				</div>
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+						<div class="modal-body pb-0 ">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Request Id</label>
+										<input type="text" class="form-control">
+									</div>
+								</div>
+
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Employee Name</label>
+										<input type="text" class="form-control" title="Employee ID : EMP -0024  &#10;Employee Name: Avinash &#10;Employee Department : Software Developer">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Department</label>
+										<input type="text" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Source Country</label>
+										<input type="text" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Destination Country</label>
+										<input type="text" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Event Start Date </label>
+										<div class="input-icon-end position-relative">
+											<input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Event End Date </label>
+										<div class="input-icon-end position-relative">
+											<input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Return Date </label>
+										<div class="input-icon-end position-relative">
+											<input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Business Trip Expense type </label>
+										<input type="text" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">No. of Attachments</label>
+										<input type="text" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Comments</label>
+										<textarea class="form-control" rows="3"></textarea>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="d-flex align-items-center flex-wrap row-gap-3 bg-light w-100 rounded p-3 mb-4">
+										<div class="d-flex align-items-center justify-content-center avatar avatar-xxl rounded-circle border border-dashed me-2 flex-shrink-0 text-dark frames">
+											<i class="ti ti-photo text-gray-2 fs-16"></i>
+										</div>
+										<div class="profile-upload">
+											<div class="mb-2">
+												<h6 class="mb-1">Attachment</h6>
+												<!-- <p class="fs-12">Image should be below 4 mb</p> -->
+											</div>
+											<div class="profile-uploader d-flex align-items-center">
+												<div class="drag-upload-btn btn btn-sm btn-primary me-2">
+													Upload
+													<input type="file" class="form-control image-sign" multiple="">
+												</div>
+												<a href="javascript:void(0);" class="btn btn-light btn-sm">Cancel</a>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="modal-footer">
+
+							<button type="submit" class="btn btn-primary me-2">View Attachments </button>
+							<button type="submit" class="btn btn-primary me-2">Save </button>
+							<button type="button" class="btn btn-outline-light border " data-bs-dismiss="modal">Cancel</button>
+
+						</div>
+					</div>
+
+					<div class="tab-pane fade" id="address2" role="tabpanel" aria-labelledby="address-tab2" tabindex="0">
+						<div class="modal-body">
+							<div class="card-body p-0">
+								<div class="custom-datatable-filter table-responsive">
+									<button type="button" class="btn btn-primary" onclick="addEditableRow()">Add New </button>
+
+									<table class="table datatable">
+										<thead class="thead-light">
+											<tr>
+
+												<th>Type</th>
+
+
+												<th>Description</th>
+
+												<th>Amount</th>
+												<th>Approved Amount</th>
+												<th>Comments</th>
+												<th>Action</th>
+
+											</tr>
+										</thead>
+										<tbody id="dataTableBody">
+											<tr>
+												<td><a href="">ASS-095295</a></td>
+												<td>Laptop</td>
+												<td>
+													Laptop
+												</td>
+												<td>Laptop</td>
+												<td>Laptop</td>
+												<td></td>
+											</tr>
+
+
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-light border me-2" data-bs-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#success_modal">Save </button>
+						</div>
+					</div>
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- /Add Employee -->
+<!-- Add Employee Success -->
+<div class="modal fade" id="success_modal" role="dialog">
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="text-center p-3">
+					<span class="avatar avatar-lg avatar-rounded bg-success mb-3"><i class="ti ti-check fs-24"></i></span>
+					<h5 class="mb-2">Employee Added Successfully</h5>
+					<p class="mb-3">
+						Stephan Peralt has been added with Client ID : <span class="text-primary">#EMP - 0001</span>
+					</p>
+					<div>
+						<div class="row g-2">
+							<div class="col-6">
+								<a href="employees.html" class="btn btn-dark w-100">Back to List</a>
+							</div>
+							<div class="col-6">
+								<a href="employee-details.html" class="btn btn-primary w-100">Detail Page</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Add Client Success -->
+<!-- Delete Modal -->
+<div class="modal fade" id="delete_modal">
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<span class="avatar avatar-xl bg-transparent-danger text-danger mb-3">
+					<i class="ti ti-trash-x fs-36"></i>
+				</span>
+				<h4 class="mb-1">Confirm Delete</h4>
+				<p class="mb-3">You want to delete all the marked items, this cant be undone once you delete.</p>
+				<div class="d-flex justify-content-center">
+					<a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+					<a href="employees.html" class="btn btn-danger">Yes, Delete</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Delete Modal -->
+<script>
+	function addEditableRow() {
+		const tbody = document.getElementById('dataTableBody');
+		const row = document.createElement('tr');
+
+		row.innerHTML = `
+		<td>
+		<select class="form-control">
+		<option value="">Select Type</option>
+		<option value="Travel">Travel</option>
+		<option value="Food">Food</option>
+		<option value="Accommodation">Accommodation</option>
+		<option value="Other">Other</option>
+		</select>
+		</td>
+		<td><input type="text" class="form-control" placeholder="Description"></td>
+		<td><input type="number" class="form-control" placeholder="Amount"></td>
+		<td><input type="number" class="form-control" placeholder="Approved Amount"></td>
+		<td><input type="text" class="form-control" placeholder="Comments"></td>
+		<td>
+		<button class="btn btn-primary btn-sm me-1" onclick="saveRow(this)">Save</button>
+		<button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button>
+		</td>
+			  `;
+
+		tbody.appendChild(row);
+	}
+
+	function saveRow(button) {
+		const row = button.closest('tr');
+		const inputs = row.querySelectorAll('input, select');
+		const values = [];
+
+		inputs.forEach(input => {
+			values.push(input.value || "-");
+		});
+
+		row.innerHTML = `
+		<td>${values[0]}</td>
+		<td>${values[1]}</td>
+		<td>${values[2]}</td>
+		<td>${values[3]}</td>
+		<td>${values[4]}</td>
+		<td>
+		<button class="btn btn-warning btn-sm me-1" onclick="editRow(this)">Edit</button>
+		<button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button>
+		</td>
+			  `;
+	}
+
+	function editRow(button) {
+		const row = button.closest('tr');
+		const tds = row.querySelectorAll('td');
+		const currentValues = Array.from(tds).slice(0, 5).map(td => td.textContent.trim());
+
+		row.innerHTML = `
+		<td>
+		<select class="form-control">
+		<option value="Travel" ${currentValues[0] === 'Travel' ? 'selected' : ''}>Travel</option>
+		<option value="Food" ${currentValues[0] === 'Food' ? 'selected' : ''}>Food</option>
+		<option value="Accommodation" ${currentValues[0] === 'Accommodation' ? 'selected' : ''}>Accommodation</option>
+		<option value="Other" ${currentValues[0] === 'Other' ? 'selected' : ''}>Other</option>
+		</select>
+		</td>
+		<td><input type="text" class="form-control" value="${currentValues[1]}"></td>
+		<td><input type="number" class="form-control" value="${currentValues[2]}"></td>
+		<td><input type="number" class="form-control" value="${currentValues[3]}"></td>
+		<td><input type="text" class="form-control" value="${currentValues[4]}"></td>
+		<td>
+		<button class="btn btn-primary btn-sm me-1" onclick="saveRow(this)">Save</button>
+		<button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button>
+		</td>
+			  `;
+	}
+
+	function deleteRow(button) {
+		const row = button.closest('tr');
+		row.remove();
+	}
+</script>

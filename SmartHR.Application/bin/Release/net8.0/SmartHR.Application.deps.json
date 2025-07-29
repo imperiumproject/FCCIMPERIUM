@@ -389,10 +389,7 @@
           "Serilog.Sinks.File": "7.0.0"
         },
         "runtime": {
-          "SmartHR.Domain.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "SmartHR.Domain.dll": {}
         }
       }
     }

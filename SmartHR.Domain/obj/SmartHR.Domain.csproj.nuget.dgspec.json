@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ConnectFCCHR\\SmartHR.Domain\\SmartHR.Domain.csproj": {}
+    "E:\\ASIFESSHR17072025\\ConnectFCCHR_07_17_2025\\ConnectFCCHR\\SmartHR.Domain\\SmartHR.Domain.csproj": {}
   },
   "projects": {
-    "D:\\ConnectFCCHR\\SmartHR.Domain\\SmartHR.Domain.csproj": {
+    "E:\\ASIFESSHR17072025\\ConnectFCCHR_07_17_2025\\ConnectFCCHR\\SmartHR.Domain\\SmartHR.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ConnectFCCHR\\SmartHR.Domain\\SmartHR.Domain.csproj",
+        "projectUniqueName": "E:\\ASIFESSHR17072025\\ConnectFCCHR_07_17_2025\\ConnectFCCHR\\SmartHR.Domain\\SmartHR.Domain.csproj",
         "projectName": "SmartHR.Domain",
-        "projectPath": "D:\\ConnectFCCHR\\SmartHR.Domain\\SmartHR.Domain.csproj",
+        "projectPath": "E:\\ASIFESSHR17072025\\ConnectFCCHR_07_17_2025\\ConnectFCCHR\\SmartHR.Domain\\SmartHR.Domain.csproj",
         "packagesPath": "C:\\Users\\Home\\.nuget\\packages\\",
-        "outputPath": "D:\\ConnectFCCHR\\SmartHR.Domain\\obj\\",
+        "outputPath": "E:\\ASIFESSHR17072025\\ConnectFCCHR_07_17_2025\\ConnectFCCHR\\SmartHR.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -69,7 +69,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.411/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.412/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

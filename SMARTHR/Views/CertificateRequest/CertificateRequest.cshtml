@@ -1,0 +1,1445 @@
+﻿@model List<SMARTHR.WEB.Models.CertificateDetails>
+@{
+	ViewData["Title"] = "CertificateRequest";
+}
+
+
+<!-- Breadcrumb -->
+<div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
+	<div class="my-auto mb-2">
+		<h2 class="mb-1">Request test</h2>
+		<nav>
+			<ol class="breadcrumb mb-0">
+				<li class="breadcrumb-item">
+					<a href="index.html"><i class="ti ti-smart-home"></i></a>
+				</li>
+				<li class="breadcrumb-item">
+					Payroll test
+				</li>
+				<li class="breadcrumb-item active" aria-current="page">Certificate Trip List test</li>
+			</ol>
+		</nav>
+	</div>
+	<div class="d-flex my-xl-auto right-content align-items-center flex-wrap">
+
+		<div class="mb-2">
+			@* <a href="#" data-bs-toggle="modal" id="btncreateCRrequest" data-bs-target="#add_employeess" class="btn btn-primary d-flex align-items-center"><i class="ti ti-circle-plus me-2"></i>Create New</a> *@
+			<a href="#" data-bs-toggle="modal" id="btncreateCRrequest" data-bs-target="#add_certificate" class="btn btn-primary d-flex align-items-center"><i class="ti ti-circle-plus me-2"></i>Create New</a>
+		</div>
+
+	</div>
+</div>
+<!-- /Breadcrumb -->
+
+<div class="content">
+	<div class="card">
+		<div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+			<h5>Certificate Request List</h5>
+			<div class="d-flex my-xl-auto right-content align-items-center flex-wrap row-gap-3">
+
+				<div class="dropdown me-3">
+					<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+						Employee
+					</a>
+					<ul class="dropdown-menu  dropdown-menu-end p-3">
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Finance</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Developer</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Executive</a>
+						</li>
+					</ul>
+				</div>
+				<div class="dropdown me-3">
+					<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+						Select Status
+					</a>
+					<ul class="dropdown-menu  dropdown-menu-end p-3">
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Active</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="dropdown-item rounded-1">Inactive</a>
+						</li>
+					</ul>
+				</div>
+				<button class="btn  bg-primary btn-wave waves-effect waves-light">
+					<i class="feather-search align-middle me-2 d-inline-block"></i>Search
+				</button>
+
+			</div>
+		</div>
+		<div class="card-body p-0">
+			<div class="custom-datatable-filter table-responsive">
+				<table class="table datatable">
+					<thead class="thead-light">
+						<tr>
+
+							<th>Request ID</th>
+							<th>Employee Name </th>
+							<th>Certificate Request Type</th>
+							<th>Date</th>
+							<th>Reason</th>
+							<th>Status</th>
+
+							<th>Actions</th>
+							<th>Workflow History</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						@if (Model != null && Model.Any())
+						{
+							foreach (var item in Model)
+							{
+								<tr>
+									<td>@item.CertificateId</td>
+									<td>@item.EmplName</td>
+									<td>@item.Type</td>
+									<td>@item.transDate</td>
+									<td>@item.Description</td>
+							@* 		<td>@item.Status</td> *@
+
+									<td>
+										<span class="badge @(item.Status == "Draft" ? "badge-danger" : "badge-success") d-inline-flex align-items-center badge-xs">
+											<i class="ti ti-point-filled me-1"></i>@item.Status
+										</span>
+									</td>
+									<td>
+										<a href="#" class="me-2 btnRecall" id="btnRecall" name="btnRecall" data-bs-toggle="modal" data-id="@item.CertificateId" data-bs-target="#add_certificate"><i class="ti ti-history" title="Recall"></i></a>
+										<a class="me-2 btnView" id="btnView" name="btnView" data-id="@item.CertificateId" data-bs-toggle="modal" data-bs-target="#add_certificate"><i class="ti ti-eye"></i></a>
+									</td>
+		
+
+							
+
+										@* 		<td>	</td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a> *@
+										@* 								<td><a href="#" class="me-2 btnWFView" id="btnWFView" name="btnWFView" data-bs-toggle="modal" data-bs-target="#Workflow_History" data-id="@item.CertificateId,@item.CertificateRecId,@item.WorkflowTableId" data-transtype="Certificate Request" title="View"><i class="ti ti-eye"></i></a></td> *@
+									<td>
+										<a href="#" class="me-2 btnWFView" id="btnWFView" name="btnWFView" data-bs-toggle="modal" data-bs-target="#Workflow_History" data-leaveid="@item.CertificateId" data-rec="@item.CertificateRecId" data-tableid="@item.requestTableId" data-transtype="Certificate Request" title="View"><i class="ti ti-eye"></i></a>
+									</td>
+
+
+
+
+
+								</tr>
+
+							}
+
+						}
+
+					</tbody>
+
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- Add Employee -->
+@* <div class="modal " id="add_employee"> *@
+<div class="modal " id="add_certificate">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2">Create Certificate Request</h4><span>Employee  ID : EMP -@ViewBag.Username</span>
+				</div>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<form action="employees.html">
+				<div class="contact-grids-tab">
+					<ul class="nav nav-underline" id="myTab" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#basic-info" type="button" role="tab" aria-selected="true">Certificate Request</button>
+						</li>
+
+						
+					</ul>
+				</div>
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+						<div class="modal-body pb-0 ">
+							<div class="row">
+								<input type="hidden" id="leaveRecId" name="leaveRecId" />
+								<input type="hidden" id="requestTableId" name="requestTableId" />
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Request ID</label>
+										<input type="text" class="form-control" id="RequestId" name="RequestId">
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Employee Name</label>
+										<select class="select2" id="ddlEmployee">
+										</select>
+									</div>
+								</div>
+
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Certificate type</label>
+										<select class="select2" id="ddlCertificateType">
+										</select>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Date</label>
+										<div class="input-icon-end position-relative">
+											<input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy" id="transDate">
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Reason</label>
+										<input type="text" class="form-control" id="txtDesc">
+									</div>
+								</div>
+
+								
+
+
+								<div class="col-md-6">
+									<div class="input-block mb-0">
+										<label class="form-label">Attachments </label>
+										<input class="form-control" type="file">
+
+
+									</div>
+                                 </div>
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Remarks</label>
+										<textarea class="form-control" rows="3" id="wfComments"></textarea>
+									</div>
+								</div>
+
+
+
+							</div>
+						</div>
+
+						<div class="modal-footer">
+
+							<a data-bs-toggle="modal" data-bs-target="#Attachments" class="btn btn-primary me-2"><i class="ti ti-paperclip"></i> View  Attachments <span class="badge bg-success ms-1 rounded-pill">32</span></a>
+
+							<button type="button" class="btn btn-primary me-2" id="btnUpdate">Update</button>
+							<button type="button" class="btn btn-success me-2" id="btnSave">Submit </button>
+							<button type="button" class="btn btn-outline-light border " data-bs-dismiss="modal">Cancel</button>
+
+						</div>
+					</div>
+
+
+
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Attachments -->
+	<div class="modal fade" id="Attachments">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="d-flex align-items-center">
+						<h4 class="modal-title me-2">Attachments</h4>
+					</div>
+					<!-- <button type="button" class="btn-close custom-btn-close trigger-add-employee" data-bs-dismiss="modal" data-open-modal="#add_employee"aria-label="Close">
+						<i class="ti ti-x"></i>
+					</button> -->
+
+					<button type="button" class="btn-close universal-modal-trigger" data-bs-dismiss="modal" data-open-modal="#add_employee" aria-label="Close">
+						<i class="ti ti-x"></i>
+					</button>
+
+				</div>
+
+				<div class="custom-datatable-filter table-responsive">
+					<table class="table datatable">
+						<thead class="thead-light">
+							<tr>
+
+								<th>File Name</th>
+
+
+								<th>Attached By</th>
+
+								<th>Date of Upload</th>
+								<th>Action</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="">
+									<div class="d-flex align-items-center file-name-icon">
+										<a href="#" class="avatar avatar-md bg-light" data-bs-toggle="offcanvas" data-bs-target="#preview">
+											<img src="assets/img/icons/file-04.svg" class="img-fluid" alt="img">
+										</a>
+										<div class="ms-2">
+											<p class="text-title fw-medium  mb-0"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#preview">Doris Crowley</a></p>
+										</div>
+									</div>
+								</td>
+								<td>Demo text</td>
+								<td>Demo text</td>
+								<td><a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a></td>
+							</tr>
+
+							<tr>
+								<td class="">
+									<div class="d-flex align-items-center file-name-icon">
+										<a href="#" class="avatar avatar-md bg-light" data-bs-toggle="offcanvas" data-bs-target="#preview">
+											<img src="assets/img/icons/file-03.svg" class="img-fluid" alt="img">
+										</a>
+										<div class="ms-2">
+											<p class="text-title fw-medium  mb-0"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#preview">Gallery</a></p>
+										</div>
+									</div>
+								</td>
+								<td>Demo text</td>
+								<td>Demo text</td>
+								<td><a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a></td>
+							</tr>
+							<tr>
+								<td class="">
+									<div class="d-flex align-items-center file-name-icon">
+										<a href="#" class="avatar avatar-md bg-light" data-bs-toggle="offcanvas" data-bs-target="#preview">
+											<img src="assets/img/icons/file-02.svg" class="img-fluid" alt="img">
+										</a>
+										<div class="ms-2">
+											<p class="text-title fw-medium  mb-0"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#preview">Sophie Headrick</a></p>
+										</div>
+									</div>
+								</td>
+								<td>Demo text</td>
+								<td>Demo text</td>
+								<td><a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a></td>
+							</tr>
+							<tr>
+								<td class="">
+									<div class="d-flex align-items-center file-name-icon">
+										<a href="#" class="avatar avatar-md bg-light" data-bs-toggle="offcanvas" data-bs-target="#preview">
+											<img src="assets/img/icons/file-01.svg" class="img-fluid" alt="img">
+										</a>
+										<div class="ms-2">
+											<p class="text-title fw-medium  mb-0"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#preview">Secret</a></p>
+										</div>
+									</div>
+								</td>
+								<td>Demo text</td>
+								<td>Demo text</td>
+								<td><a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- /Attachments -->
+
+	<!-- Loaned Items Tab -->
+	@* 	<div class="tab-pane fade" id="address2" role="tabpanel" aria-labelledby="address-tab2" tabindex="0">
+		<form id="loanedItemsForm">
+			<div class="modal-body">
+				<div class="card-body p-0">
+					<div class="custom-datatable-filter table-responsive">
+						<table class="table datatable">
+							<thead class="thead-light">
+								<tr>
+									<th>Asset Id</th>
+									<th>Asset Type</th>
+									<th>Return Asset</th>
+									<th>Assigned on</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><a href="">ASS-095295</a></td>
+									<td>Laptop</td>
+									<td>
+										<div class="form-check me-2">
+											<input class="form-check-input" type="checkbox" name="returnAssets" value="ASS-095295" id="asset1">
+											<label class="form-check-label" for="asset1">Return</label>
+										</div>
+									</td>
+									<td>2025-01-01</td>
+								</tr>
+								<tr>
+									<td><a href="">ASS-095265</a></td>
+									<td>Phone</td>
+									<td>
+										<div class="form-check me-2">
+											<input class="form-check-input" type="checkbox" name="returnAssets" value="ASS-095265" id="asset2">
+											<label class="form-check-label" for="asset2">Return</label>
+										</div>
+									</td>
+									<td>2025-02-01</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-light border me-2" id="cancelLoanedItemsButton">Cancel</button>
+				<button type="button" class="btn btn-primary" id="saveLoanedItemsButton">Save</button>
+			</div>
+		</form>
+	</div> *@
+	
+</div>
+<!-- /Add Employee -->
+<!-- Workflow_History -->
+<div class="modal fade" id="Workflow_History">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content" style="width:1050px;">
+			<div class="modal-header">
+				<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2">Workflow History</h4>
+					<span>Employee  ID : EMP-@ViewBag.Username</span>
+				</div>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<div class="custom-datatable-filter table-responsive" id="workflowContainer">
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Workflow_History -->
+<!-- Add Employee Success -->
+<div class="modal fade" id="success_modal" role="dialog">
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="text-center p-3">
+					<span class="avatar avatar-lg avatar-rounded bg-success mb-3"><i class="ti ti-check fs-24"></i></span>
+					<h5 class="mb-2">Employee Added Successfully</h5>
+					<p class="mb-3">
+						Stephan Peralt has been added with Client ID : <span class="text-primary">#EMP - @ViewBag.Username</span>
+					</p>
+					<div>
+						<div class="row g-2">
+							@* <div class="col-6">
+								<a href="CertificateRequest.html" class="btn btn-dark w-100">Back to List</a>
+							</div> *@
+							<div class="col-12">
+								<a asp-controller="CertificateRequest" asp-action="CertificateRequest" class="btn btn-primary w-100">Ok</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Add Client Success -->
+<!-- Delete Modal -->
+<div class="modal fade" id="delete_modal">
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<span class="avatar avatar-xl bg-transparent-danger text-danger mb-3">
+					<i class="ti ti-trash-x fs-36"></i>
+				</span>
+				<h4 class="mb-1">Confirm Delete</h4>
+				<p class="mb-3">You want to delete all the marked items, this cant be undone once you delete.</p>
+				<div class="d-flex justify-content-center">
+					<a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+					<a href="CertificateRequest" class="btn btn-danger">Yes, Delete</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Flatpickr CSS and JS -->
+<link href="@Url.Content("~/assets/plugins/flatpickr/flatpickr.min.css")" rel="stylesheet" />
+@section Scripts
+{
+	<script type="text/javascript">
+
+
+
+
+
+					//--------------recallview
+
+					$(document).on('click', '.btnRecall', function () {
+
+					 var certificateid = $(this).data('id');
+
+				// BindAttach();
+				  var $modal = $('#add_certificate');
+				   $('#btnUpdate').show()
+				   $('#btnSave').hide()
+
+				  // Step 1: Reset all form fields and clear Chosen dropdowns
+		$modal.find('form')[0].reset();
+		$modal.find('.chosen-select').val('').trigger('chosen:updated');
+				   var certificateid = $(this).data('id'); // Get LeaveID from data-id attribute
+				   //------------------
+					// BindLeaveType();
+				 //   BindBackupEmployee();
+
+				   // Make AJAX call to ReadLeaveRequest
+				   $.ajax({
+					   url: '@Url.Action("ReadCertificateRequest", "CertificateRequest")',
+					   type: 'GET',
+					   data: { certificateid: certificateid }, // Use 'id' to match controller parameter
+					   dataType: 'json',
+					   success: function (response) {
+						   // Check if leaveDetails exists and has items
+						   if (response.certificateDetails && response.certificateDetails.length > 0) {
+							   var leaveData = response.certificateDetails[0];
+
+								 BindAllEmployee(leaveData.emplId);
+								 BindAllCertificate(leaveData.type);
+							   // Function to convert DD/MM/YYYY to YYYY-MM-DD
+							   // function formatDate(inputDate) {
+								  //  if (!inputDate) return '';
+								  //  var parts = inputDate.split('/');
+								  //  return `${parts[2]}-${parts[1]}-${parts[0]}`;
+							   // }
+
+							   // Populate modal fields with response data
+							   $('#add_certificate #RequestId').val(leaveData.certificateId);
+
+							   // $('#add_employee #transDate').val(leaveData.emplId).trigger("chosen:updated");
+
+
+							   $('#add_certificate #transDate').val(leaveData.transDate);
+							   // $('#add_employee #ddlEmployee').val(leaveData.);
+							   $('#add_certificate #txtDesc').val(leaveData.description);
+							   $('#add_certificate #wfComments').text(leaveData.wfComments);
+							   // $('#add_employee #txttype').val(leaveData.leaveType).trigger("chosen:updated");
+							   $('#add_certificate #txttype').val(leaveData.type);
+
+								$('#add_certificate #leaveRecId').val(leaveData.certificateRecId);
+							$('#add_certificate #requestTableId').val(leaveData.workflowTableId);
+						var table = $('#attachmentsTable').DataTable();
+							$('#countattach').text(leaveData.attachRefList.length);
+							$.each(leaveData.attachRefList, function (i, item) {
+								// Determine the MIME type (default to octet-stream if unknown)
+								let mimeType = item.fileType || 'application/octet-stream';
+
+								// Construct download link using base64
+								let downloadLink = `<a href="data:${mimeType};base64,${item.attachRef}"
+							download="${item.fileName}"
+							target="_blank">${item.fileName}</a>`;
+
+								table.row.add([
+									downloadLink,
+									item.attachedBy,
+									formatDate(item.attachedDate),
+									`<a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
+			<i class="ti ti-trash"></i>
+		</a>`
+								]).draw(false);
+							});
+									function formatDate(dateStr) {
+			const d = new Date(dateStr);
+			return d.toLocaleDateString("en-GB"); // dd/MM/yyyy
+		}
+
+						   } else {
+							   alert('Error: No certificate details found in response');
+						   }
+					   },
+					   error: function (xhr, status, error) {
+						   alert('An error occurred while fetching the data: ' + error);
+						   console.error('AJAX Error:', xhr.responseText); // Log response for debugging
+					   }
+				   });
+					})
+
+
+		//-------------------------Recall
+
+
+
+
+
+			if (btncreateCRrequest) {
+			btncreateCRrequest.addEventListener('click', function () {
+			
+				  $('#btnUpdate').hide();
+				$('#btnSave').show();
+
+				$('#transDate').val('');
+				$('#txtDesc').val('');
+				$('#wfComments').val('');
+				// $('#leaveend').val('');
+				fetchCertificateId();
+				BindAllEmployee('');
+				BindAllCertificate('');
+
+			});
+		} else {
+			console.error('Create button (#btncreateCRrequest) not found');
+		}
+
+
+
+
+			//Generate Certificate Id
+			async function fetchCertificateId() {
+				const companyId = 'USMF';
+				$.ajax({
+					url: '/CertificateRequest/GetCertificateId',
+					type: 'POST',
+					contentType: 'application/json',
+					data: JSON.stringify(companyId),
+					success: function (data) {
+						if (data !== "Error") {
+							$('#RequestId').val(data);
+						} else {
+							alert("Failed to get Leave Id.");
+						}
+					},
+					error: function (xhr, status, error) {
+						console.error("Error fetching leave ID:", error);
+						alert("Something went wrong while fetching the Leave ID.");
+					}
+				});
+			}
+
+				function BindAllEmployee(employeeIdToSelect)
+		{
+			// Get the anti-forgery token
+			var token = $('input[name="__RequestVerificationToken"]').val();
+
+			// Make AJAX call to GetAllEmployees
+			$.ajax({
+				url: '@Url.Action("GetAllEmployees", "CertificateRequest")',
+				type: 'POST',
+				data: {
+					__RequestVerificationToken: token
+				},
+				dataType: 'json',
+				beforeSend: function () {
+					$('.container').prepend('<div class="loading">Loading...</div>');
+				},
+				success: function (response) {
+					$('.loading').remove();
+					console.log('AJAX response:', JSON.stringify(response, null, 2)); // Detailed debug output
+
+					let employeeList = null;
+					if (Array.isArray(response)) {
+						employeeList = response; // Direct array from List<EmployeeList>
+					} else if (response && response.EmployeeList && Array.isArray(response.EmployeeList)) {
+						employeeList = response.EmployeeList; // Wrapped in { "EmployeeList": [...] }
+					} else if (response && response.data && Array.isArray(response.data)) {
+						employeeList = response.data; // Wrapped in { "data": [...] }
+					}
+
+
+						if (employeeList && employeeList.length > 0) {
+			var $select = $('#ddlEmployee');
+			$select.empty().append('<option value="">Select</option>');
+						$.each(employeeList, function (index, item) {
+							$select.append($('<option>', {
+								value: item.employeeId,
+								text:  item.employeeName
+							}));
+						});
+						$select.select2({
+							dropdownParent: $('#myTabContent'),  // Replace with actual modal ID
+							minimumResultsForSearch: 0
+						});
+						//$('#employeename').val(leaveData.emplId).trigger("change");
+						$select.val(employeeIdToSelect).trigger('change');
+		}
+		// else {
+		// 	console.log('No employees found in response:', JSON.stringify(response, null, 2));
+		// 	$('#employeename').empty().append('<option value="" disabled>No employees available</option>');
+		// }
+
+
+						},
+				error: function (xhr, status, error) {
+					$('.loading').remove();
+					console.error('AJAX error:', status, error, xhr.responseText);
+					var errorDiv = $('<div class="alert alert-danger mt-3"></div>').text('An error occurred while loading employee data: ' + (xhr.responseText || error));
+					$('.container').prepend(errorDiv);
+				}
+			});
+		}
+
+		//GetCertificate dropdown
+
+				function BindAllCertificate(certificateToSelect)
+		{
+			// Get the anti-forgery token
+			var token = $('input[name="__RequestVerificationToken"]').val();
+
+			// Make AJAX call to GetAllEmployees
+			$.ajax({
+				url: '@Url.Action("GetAllCertificate", "CertificateRequest")',
+				type: 'POST',
+				data: {
+					__RequestVerificationToken: token
+				},
+				dataType: 'json',
+				beforeSend: function () {
+					$('.container').prepend('<div class="loading">Loading...</div>');
+				},
+				success: function (response) {
+					$('.loading').remove();
+					console.log('AJAX response:', JSON.stringify(response, null, 2)); // Detailed debug output
+
+					let employeeList = null;
+					if (Array.isArray(response)) {
+						employeeList = response; // Direct array from List<EmployeeList>
+					} else if (response && response.certificateTypes && Array.isArray(response.certificateTypes)) {
+						employeeList = response.certificateTypes; // Wrapped in { "EmployeeList": [...] }
+					} else if (response && response.data && Array.isArray(response.data)) {
+						employeeList = response.data; // Wrapped in { "data": [...] }
+					}
+
+
+						if (employeeList && employeeList.length > 0) {
+			var $select = $('#ddlCertificateType');
+			$select.empty().append('<option value="">Select</option>');
+						$.each(employeeList, function (index, item) {
+							$select.append($('<option>', {
+								value: item,
+								text:  item
+							}));
+						});
+						$select.select2({
+							dropdownParent: $('#myTabContent'),  // Replace with actual modal ID
+							minimumResultsForSearch: 0
+						});
+						//$('#employeename').val(leaveData.emplId).trigger("change");
+						$select.val(certificateToSelect).trigger('change');
+		}
+		// else {
+		// 	console.log('No employees found in response:', JSON.stringify(response, null, 2));
+		// 	$('#employeename').empty().append('<option value="" disabled>No employees available</option>');
+		// }
+
+
+						},
+				error: function (xhr, status, error) {
+					$('.loading').remove();
+					console.error('AJAX error:', status, error, xhr.responseText);
+					var errorDiv = $('<div class="alert alert-danger mt-3"></div>').text('An error occurred while loading employee data: ' + (xhr.responseText || error));
+					$('.container').prepend(errorDiv);
+				}
+			});
+		}
+
+
+		///End Certificate
+
+				// View Work Flow History
+
+			$(document).on('click', '.btnWFView', function (e) {
+			e.preventDefault(); // Prevent default link behavior
+
+			// Parse data-id (e.g., "123,456,789" into [LeaveID, LeaveRecId, WorkflowTableId])
+			var idData = $(this).data('id').split(',');
+			if (idData.length < 3) {
+				alert('Invalid data-id format');
+				return;
+			}
+			var certificateId = idData[0] || '';
+			var certificateRecId = idData[1] || ''; // Not used in AJAX, but kept for potential future use
+			var workflowTableId = idData[2] || '';
+				var TransType = 'Leave Request';
+			// Make AJAX call to fetch workflow data
+			$.ajax({
+				url: '@Url.Action("TrackRequestWorkFlow", "Leave")',
+				type: 'GET',
+				data: {
+					RecordId: certificateRecId,
+					TableId: workflowTableId ,
+					TransType:TransType
+				},
+				dataType: 'json',
+				success: function (response) {
+					// Check if wfTrackingList exists and has items
+					if (response.wfTrackingList && response.wfTrackingList.length > 0) {
+						// Clean up any previous dynamic header content
+						$('#Workflow_History .modal-header .d-flex div.me-2').remove();
+
+						// Update modal header with wFTransID and raisedBy
+						var firstEntry = response.wfTrackingList[0];
+						$('#Workflow_History .modal-title + span').text('Employee ID: ' + (firstEntry.raisedBy || ''));
+						$('#Workflow_History .modal-header .d-flex').prepend(
+							'<div class="me-2">WF Trans ID: ' + (firstEntry.wFTransID || '') + '</div>'
+						);
+
+						// Update Request ID in the first thead
+						$('#Workflow_History .datatable thead:first-child tr th').text('Request ID: ' + (certificateId || ''));
+						$('#Workflow_History .datatable tbody').empty();
+
+						// Populate table with workflow data
+						$.each(response.wfTrackingList, function (index, entry) {
+							var row = $('<tr></tr>');
+							row.append('<td>' + (entry.levelName || '') + '</td>');
+							row.append('<td>' + (entry.employeeName || '') + '</td>');
+							row.append('<td>' + (entry.status || '') + '</td>');
+							row.append('<td>' + (entry.remarks || '') + '</td>');
+							row.append('<td>' + (entry.comments || '') + '</td>');
+							row.append('<td>' + (entry.transDate || '') + '</td>');
+							$('#Workflow_History .datatable tbody').append(row);
+						});
+
+						// Initialize DataTables if used
+						if ($.fn.DataTable) {
+							$('#Workflow_History .datatable').DataTable().destroy();
+							$('#Workflow_History .datatable').DataTable({
+								paging: false,
+								searching: false,
+								info: false
+							});
+						}
+
+						// Show the modal
+						$('#Workflow_History').modal('show');
+					} else {
+						alert('Error: No workflow details found in response');
+					}
+				},
+				error: function (xhr, status, error) {
+					alert('An error occurred while fetching the data: ' + error);
+					console.error('AJAX Error:', xhr.responseText);
+				}
+			});
+		});
+
+
+		//Create
+			 //  $('#btnSave').on('click', function (e) {
+				// 	e.preventDefault(); // Prevent default form submission
+				// 	BindAttachForCreate();
+				// 	// Collect form data
+				// 	var requestid = $('#RequestId').val() || '';
+
+				// 	var userid = $('#ddlEmployee').find('option:selected').text() || '';
+
+				// 	var transDate = $('#transDate').val() || '';
+
+				// 	var desc = $('#txtDesc').val() || '';
+
+				// 	//Nvar type = $('#txttype').val() || '';
+				// var wfComments = $('#wfComments').val() || '';
+
+				// 	// var payLeaveWithSalary = $('input[name="payLeaveWithSalary"]:checked').val() === 'Yes';
+				// 	// var comments = $('#comments').val() || '';
+				// 	// var userId = null; // Set server-side from session
+				// 	var companyCode = null; // Set server-side from session
+				// 	var type = $('#ddlCertificateType').find('option:selected').text() || '';
+
+				// 	//Get Anti-Forgery Token from form
+				// 	var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
+
+				// 	// Debug: Log form data
+				// 	console.log('Form Data:', {
+				// 		Requestid: requestid,
+				// 		userID: userid,
+				// 		TransDate: transDate,
+				// 		Desc: desc,
+				// 		Type: type,
+				// 		wfComments: wfComments,
+				// 		__RequestVerificationToken: antiForgeryToken
+				// 	});
+
+				// 	// Basic client-side validation
+				// 	// if (!leaveTypeText || leaveTypeText === 'Select') {
+				// 	// 	$('#errorMessage').html('<p style="color: red;">Please select a valid leave type.</p>');
+				// 	// 	return;
+				// 	// }
+				// 	// if (!leaveStart || !leaveEnd) {
+				// 	// 	$('#errorMessage').html('<p style="color: red;">Please provide valid start and end dates.</p>');
+				// 	// 	return;
+				// 	// }
+				// 	// //Validate date range (leaveStart must be before leaveEnd)
+				// 	// if (new Date(leaveStart) >= new Date(leaveEnd)) {
+				// 	// 	$('#errorMessage').html('<p style="color: red;">From date should be less than to date.</p>');
+				// 	// 	return;
+				// 	// }
+				// 	// if (!noOfDays || noOfDays <= 0) {
+				// 	// 	$('#errorMessage').html('<p style="color: red;">Please provide a valid number of days.</p>');
+				// 	// 	return;
+				// 	// }
+				// 	// if (payLeaveWithSalary === undefined) {
+				// 	// 	$('#errorMessage').html('<p style="color: red;">Please select whether to pay leave with salary.</p>');
+				// 	// 	return;
+				// 	// }
+
+				// 	// Prepare JSON payload
+				// 	var payload = {
+				// 	CertificateRequestId: requestid,
+				// 		userID: userid,
+				// 		TransDate: transDate,
+				// 		description: desc,
+				// 		Type: type,
+				// 		CompanyCode: companyCode,
+				// 		wfComments: wfComments
+				// 	};
+
+				// 	// Make AJAX request
+				// 	$.ajax({
+				// 		url: '/CertificateRequest/CreateCertificateRequest',
+				// 		type: 'POST',
+				// 		data: JSON.stringify(payload),
+				// 		contentType: 'application/json',
+				// 		headers: {
+				// 			'RequestVerificationToken': antiForgeryToken // Add Anti-Forgery Token
+				// 		},
+				// 		beforeSend: function () {
+				// 			$('#btnSave').prop('disabled', true).text('Saving...');
+				// 		},
+				// 		success: function (response) {
+				// 			// Handle success response (assuming response has Message or message)
+				// 			if (response.messageFlag != 'Failed') {
+				// 				var successMessage = (response.Message || response.message || 'Leave request saved successfully!');
+				// 				window.location.reload();
+				// 				$('#errorMessage').html('<p style="color: green;">' + successMessage + '</p>');
+				// 				$('#leaveRequestForm')[0].reset();
+				// 			}
+				// 			else {
+				// 				var successMessage = (response.Message || response.message);
+				// 				$('#errorMessage').html('<p style="color: red;">' + successMessage + '</p>');
+				// 				//$('#leaveRequestForm')[0].reset();
+				// 				//$('#errorMessage').html(''); // Clear error message after success
+				// 			}
+				// 		},
+				// 		error: function (xhr) {
+				// 			var errorMessage = 'An error occurred while saving the request.';
+				// 			// Handle response with message or Message property
+				// 			if (xhr.responseJSON) {
+				// 				errorMessage = xhr.responseJSON.message || xhr.responseJSON.Message || errorMessage;
+				// 			} else if (xhr.statusText) {
+				// 				errorMessage = xhr.statusText;
+				// 			}
+				// 			$('#errorMessage').html('<p style="color: red;">' + errorMessage + '</p>');
+				// 		},
+				// 		complete: function () {
+				// 			$('#btnSave').prop('disabled', false).text('Save');
+				// 		}
+				// 	});
+				// });
+		//create End
+
+		//Create new
+
+
+				$('#btnSave').on('click', function (e) {
+			e.preventDefault();
+
+			BindAttachCreate().then(() => {
+				 var EmployeeName = $('#ddlEmployee').val() || '';
+				var requestid = $('#RequestId').val() || '';
+				var userid = $('#ddlEmployee').find('option:selected').text() || '';
+				var transDate = $('#transDate').val() || '';
+				var desc = $('#txtDesc').val() || '';
+				var wfComments = $('#wfComments').val() || '';
+				var type = $('#ddlCertificateType').find('option:selected').text() || '';
+				var companyCode = null;
+
+				var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
+
+				console.log('Form Data:', {
+					Requestid: requestid,
+					userID: userid,
+					TransDate: transDate,
+					Desc: desc,
+					Type: type,
+					wfComments: wfComments,
+					AttachRefList: attachRefList,
+					__RequestVerificationToken: antiForgeryToken
+				});
+
+				var payload = {
+					CertificateRequestId: requestid,
+					userID: userid,
+					TransDate: transDate,
+					description: desc,
+					Type: type,
+					CompanyCode: companyCode,
+					wfComments: wfComments,
+					AttachRefList: attachRefList,
+				};
+
+				  if (!type || type === 'Select') {
+			$('#errorMessage').html('<p style="color: red;">Please select a valid Certificate type..</p>');
+			$('#ddlCertificateType').focus();
+			return false;
+		}
+		if (!transDate) {
+			$('#errorMessage').html('<p style="color: red;">Please provide  Date.</p>');
+			$('#transDate').focus();
+			return false;
+		}
+		if (!desc) {
+			$('#errorMessage').html('<p style="color: red;">Please provide  Reasone.</p>');
+			$('#txtDesc').focus();
+			return false;
+		}
+		if (!wfComments) {
+			$('#errorMessage').html('<p style="color: red;">Please provide  Remarks.</p>');
+			$('#wfComments').focus();
+			return false;
+		}
+				// Make AJAX request
+				$.ajax({
+					url: '/CertificateRequest/CreateCertificateRequest',
+					type: 'POST',
+					data: JSON.stringify(payload),
+					contentType: 'application/json',
+					headers: {
+						'RequestVerificationToken': antiForgeryToken
+					},
+					beforeSend: function () {
+						$('#btnSave').prop('disabled', true).text('Saving...');
+					},
+					success: function (response) {
+						// if (response.messageFlag != 'Failed') {
+						// 	var successMessage = response.Message || response.message || 'Leave request saved successfully!';
+						// 	$('#errorMessage').html('<p style="color: green;">' + successMessage + '</p>');
+						// 	$('#leaveRequestForm')[0].reset();
+						// 	window.location.reload();
+						// } else {
+						// 	var errorMessage = response.Message || response.message;
+						// 	$('#errorMessage').html('<p style="color: red;">' + errorMessage + '</p>');
+						// }
+
+						if (response.messageFlag !== 'Failed') {
+					$('#success_modal .modal-body h5').text('Certificate Request Created Successfully');
+					$('#success_modal .modal-body p').html(
+						`${EmployeeName} has been scheduled for a Leave Request with Request ID: <span class="text-primary">${requestid || '#TRIP-0001'}</span>`
+					);
+					$('#success_modal').modal('show');
+					 $('#btnSave').prop('disabled', false).text('Submit');
+					var successMessage = (response.Message || response.message || 'Leave request saved successfully!');
+					$('#errorMessage').html('<p style="color: green;">' + successMessage + '</p>');
+					$('#leaveRequestForm')[0].reset();
+					attachRefList = []; // Clear attachments after successful submission
+					$('#fileList').html('No files selected.'); // Clear file list display
+				} else {
+					var successMessage = (response.Message || response.message);
+					$('#errorMessage').html('<p style="color: red;">' + successMessage + '</p>');
+					 $('#btnSave').prop('disabled', false).text('Submit');
+				}
+
+					},
+					error: function (xhr, status, error) {
+						$('#errorMessage').html('<p style="color: red;">' + error + '</p>');
+						$('#btnSave').prop('disabled', false).text('Submit');
+					}
+				});
+			}).catch(error => {
+				$('#errorMessage').html('<p style="color: red;">' + error + '</p>');
+				$('#btnSave').prop('disabled', false).text('Submit');
+			});
+		});
+
+
+						function BindAttachCreate() {
+			return new Promise((resolve, reject) => {
+				attachRefList = []; // Clear previous attachments
+				const fileInput = $('#attachments')[0];
+				const files = fileInput?.files;
+
+				if (!fileInput || !files || files.length === 0) {
+					resolve(); // No file input or no files selected, proceed with empty attachRefList
+					return;
+				}
+
+				let processedFiles = 0;
+				for (let i = 0; i < files.length; i++) {
+					const file = files[i];
+					// Optional: Validate file size and type (uncomment if needed)
+					/*
+					if (file.size > 5 * 1024 * 1024) { // Limit to 5MB
+						reject('File ' + file.name + ' is too large. Maximum size is 5MB.');
+						return;
+					}
+					if (!['application/pdf', 'image/jpeg', 'image/png'].includes(file.type)) {
+						reject('File ' + file.name + ' is not a supported type (PDF, JPG, PNG).');
+						return;
+					}
+					*/
+
+					const reader = new FileReader();
+					reader.onload = function (e) {
+						const base64String = e.target.result.split(',')[1]; // Extract Base64 string (remove data URI prefix)
+						attachRefList.push({
+							fileName: file.name,
+							attachRef: base64String
+						});
+
+						processedFiles++;
+						if (processedFiles === files.length) {
+							resolve(); // All files processed
+						}
+					};
+
+					reader.onerror = function () {
+						reject('Error reading file: ' + file.name);
+					};
+
+					reader.readAsDataURL(file); // Read file as Data URL to get Base64
+				}
+			});
+		}
+
+
+		//create end
+
+
+		//GetById Start
+
+
+				   $(document).on('click', '.btnView', function () {
+				 var certificateid = $(this).data('id');
+
+				// BindAttach();
+				  var $modal = $('#add_certificate');
+				   $('#btnUpdate').show()
+				   $('#btnSave').hide()
+
+				  // Step 1: Reset all form fields and clear Chosen dropdowns
+		$modal.find('form')[0].reset();
+		$modal.find('.chosen-select').val('').trigger('chosen:updated');
+				   var certificateid = $(this).data('id'); // Get LeaveID from data-id attribute
+				   //------------------
+					// BindLeaveType();
+				 //   BindBackupEmployee();
+
+				   // Make AJAX call to ReadLeaveRequest
+				   $.ajax({
+					   url: '@Url.Action("ReadCertificateRequest", "CertificateRequest")',
+					   type: 'GET',
+					   data: { certificateid: certificateid }, // Use 'id' to match controller parameter
+					   dataType: 'json',
+					   success: function (response) {
+						   // Check if leaveDetails exists and has items
+						   if (response.certificateDetails && response.certificateDetails.length > 0) {
+							   var leaveData = response.certificateDetails[0];
+
+								 BindAllEmployee(leaveData.emplId);
+								 BindAllCertificate(leaveData.type);
+							   // Function to convert DD/MM/YYYY to YYYY-MM-DD
+							   // function formatDate(inputDate) {
+								  //  if (!inputDate) return '';
+								  //  var parts = inputDate.split('/');
+								  //  return `${parts[2]}-${parts[1]}-${parts[0]}`;
+							   // }
+
+							   // Populate modal fields with response data
+							   $('#add_certificate #RequestId').val(leaveData.certificateId);
+
+							   // $('#add_employee #transDate').val(leaveData.emplId).trigger("chosen:updated");
+
+
+							   $('#add_certificate #transDate').val(leaveData.transDate);
+							   // $('#add_employee #ddlEmployee').val(leaveData.);
+							   $('#add_certificate #txtDesc').val(leaveData.description);
+							   $('#add_certificate #wfComments').text(leaveData.wfComments);
+							   // $('#add_employee #txttype').val(leaveData.leaveType).trigger("chosen:updated");
+							   $('#add_certificate #txttype').val(leaveData.type);
+
+								$('#add_certificate #leaveRecId').val(leaveData.certificateRecId);
+							$('#add_certificate #requestTableId').val(leaveData.workflowTableId);
+						var table = $('#attachmentsTable').DataTable();
+							$('#countattach').text(leaveData.attachRefList.length);
+							$.each(leaveData.attachRefList, function (i, item) {
+								// Determine the MIME type (default to octet-stream if unknown)
+								let mimeType = item.fileType || 'application/octet-stream';
+
+								// Construct download link using base64
+								let downloadLink = `<a href="data:${mimeType};base64,${item.attachRef}"
+							download="${item.fileName}"
+							target="_blank">${item.fileName}</a>`;
+
+								table.row.add([
+									downloadLink,
+									item.attachedBy,
+									formatDate(item.attachedDate),
+									`<a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
+			<i class="ti ti-trash"></i>
+		</a>`
+								]).draw(false);
+							});
+									function formatDate(dateStr) {
+			const d = new Date(dateStr);
+			return d.toLocaleDateString("en-GB"); // dd/MM/yyyy
+		}
+
+						   } else {
+							   alert('Error: No certificate details found in response');
+						   }
+					   },
+					   error: function (xhr, status, error) {
+						   alert('An error occurred while fetching the data: ' + error);
+						   console.error('AJAX Error:', xhr.responseText); // Log response for debugging
+					   }
+				   });
+			   });
+
+		//GetById End
+
+
+			//------------------update
+			 debugger;
+			 $('#btnUpdate').on('click', function (e) {
+					e.preventDefault(); // Prevent default form submission
+					//alert("Are you sour to Update")
+					// Collect form data
+					BindAttach();
+					var requestid = $('#RequestId').val() || '';
+					var emplid = $('#ddlEmployee').find('option:selected').text() || '';
+					var transdate = $('#transDate').val() || '';
+					var Des = $('#txtDesc').val() || '';
+					var type=$('#ddlCertificateType').val() || '';
+					var companyCode = null; // Set server-side from session
+					var wfComments = $('#wfComments').val() || '';
+
+					// Get Anti-Forgery Token from form
+					var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
+
+
+
+
+							var payload = {
+					CertificateRequestId: requestid,
+						userID: emplid,
+						TransDate: transdate,
+						description: Des,
+						Type: type,
+						CompanyCode: companyCode,
+						wfComments:wfComments
+							};
+
+					// Make AJAX request
+					$.ajax({
+						url: '/CertificateRequest/UpdateCertificateRequest',
+						type: 'POST',
+						data: JSON.stringify(payload),
+						contentType: 'application/json',
+						headers: {
+							'RequestVerificationToken': antiForgeryToken // Add Anti-Forgery Token
+						},
+						beforeSend: function () {
+							$('#btnUpdate').prop('disabled', true).text('Saving...');
+						},
+						success: function (response) {
+							// Handle success response (assuming response has Message or message)
+							if (response.messageFlag != 'Failed') {
+								var successMessage = (response.Message || response.message || 'Leave Update successfully!');
+								window.location.reload();
+								$('#errorMessage').html('<p style="color: green;">' + successMessage + '</p>');
+								$('#leaveRequestForm')[0].reset();
+							}
+							else {
+								var successMessage = (response.Message || response.message);
+								$('#errorMessage').html('<p style="color: red;">' + successMessage + '</p>');
+								//$('#leaveRequestForm')[0].reset();
+								//$('#errorMessage').html(''); // Clear error message after success
+							}
+						},
+						error: function (xhr) {
+							var errorMessage = 'An error occurred while saving the request.';
+							// Handle response with message or Message property
+							if (xhr.responseJSON) {
+								errorMessage = xhr.responseJSON.message || xhr.responseJSON.Message || errorMessage;
+							} else if (xhr.statusText) {
+								errorMessage = xhr.statusText;
+							}
+							$('#errorMessage').html('<p style="color: red;">' + errorMessage + '</p>');
+						},
+						complete: function () {
+							$('#btnUpdate').prop('disabled', false).text('Save');
+						}
+					});
+				});
+				//Update
+
+
+
+		//---------------------------------Click Delete for
+
+
+
+
+			 // Show modal when delete button is clicked
+		$('.btnDelete').on('click', function () {
+			CertificateId = $(this).data('id'); // Store the ID from data-id attribute
+			$('#delete_modal').modal('show'); // Show the modal
+		});
+
+					$('#delete_modal .btn-danger').on('click', function () {
+						//var CertificateId = $(this).data('id'); // Get LeaveID from data-id attribute
+						//------------------
+						// Make AJAX call to ReadLeaveRequest
+						$.ajax({
+							url: '@Url.Action("DeleteCertificateRequest", "CertificateRequest")',
+							type: 'POST',
+							data: { CertificateId: CertificateId }, // Use 'id' to match controller parameter
+							dataType: 'json',
+							success: function (response) {
+								// Check if leaveDetails exists and has items
+								if (response.messageFlag) { // Assuming the response has a 'success' property
+					$('#delete_modal').modal('hide');
+					$('#success_modal .modal-body h5').text('Record deleted successfully');
+					$('#success_modal .modal-body p').html(
+						`Request ID: <span class="text-primary">${CertificateId || '#TRIP-0001'}</span>`
+					);
+					// Show the modal
+					$('#success_modal').modal('show');
+				} else {
+					alert(response.message || 'Error: Unable to delete the record');
+				}
+			},
+							error: function (xhr, status, error) {
+								alert('An error occurred while fetching the data: ' + error);
+								console.error('AJAX Error:', xhr.responseText); // Log response for debugging
+							}
+						});
+					});
+						 // Optional: Handle the "Cancel" button (already handled by data-bs-dismiss, but you can add custom logic if needed)
+		$('#delete_modal .btn-light').on('click', function () {
+			$('#delete_modal').modal('hide'); // Ensure modal closes
+		});
+
+
+				//---------------Attachfile
+
+		function BindAttach() {
+			var files = $("#attachments")[0].files;
+
+			if (files.length === 0) {
+				alert("Please select at least one file.");
+				return;
+			}
+
+			var formData = new FormData();
+
+			for (var i = 0; i < files.length; i++) {
+				formData.append("Files", files[i]);
+			}
+
+			var uniqueRecID = $('#leaveRecId').val();
+			var requestTableId = $('#requestTableId').val();
+
+			formData.append("uniqueRecID", uniqueRecID);
+			formData.append("RequestTableId", requestTableId);
+
+			debugger;
+
+			$.ajax({
+				url: '/CertificateRequest/CreateAttachFile',
+				type: 'POST',
+				data: formData,
+				processData: false,
+				contentType: false,
+				success: function (response) {
+			if (response.success) {
+				alert(response.message || "File uploaded successfully!");
+			} else {
+				alert("Upload failed. Please try again.");
+			}
+		}
+			});
+		}
+
+		function BindAttachForCreate() {
+			var files = $("#attachments")[0].files;
+
+			if (files.length === 0) {
+				alert("Please select at least one file.");
+				return;
+			}
+
+			var formData = new FormData();
+
+			for (var i = 0; i < files.length; i++) {
+				formData.append("Files", files[i]);
+			}
+
+			var uniqueRecID = $('#leaveRecId').val();
+			var requestTableId = $('#requestTableId').val();
+
+			formData.append("uniqueRecID", uniqueRecID);
+			formData.append("RequestTableId", requestTableId);
+
+			debugger;
+
+			$.ajax({
+				url: '/CertificateRequest/CreateBase64AttachFile',
+				type: 'POST',
+				data: formData,
+				processData: false,
+				contentType: false,
+				success: function (response) {
+			if (response.success) {
+				alert(response.message || "File uploaded successfully!");
+			} else {
+				alert("Upload failed. Please try again.");
+			}
+		}
+			});
+		}
+
+
+
+		document.addEventListener('DOMContentLoaded', function () {
+			let nextModalId = null;
+
+			// Step 1: When a button is clicked, store the target modal ID
+			document.querySelectorAll('.universal-modal-trigger').forEach(button => {
+				button.addEventListener('click', function () {
+					nextModalId = button.getAttribute('data-open-modal');
+				});
+			});
+
+			// Step 2: On any modal hidden, check if we need to open another
+			const allModals = document.querySelectorAll('.modal');
+			allModals.forEach(modal => {
+				modal.addEventListener('hidden.bs.modal', function () {
+					if (nextModalId) {
+						const nextModalEl = document.querySelector(nextModalId);
+						if (nextModalEl) {
+							const nextModal = new bootstrap.Modal(nextModalEl);
+							nextModal.show();
+						}
+						nextModalId = null; // reset
+					}
+				});
+			});
+		});
+
+	</script>
+
+}
+
+

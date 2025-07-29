@@ -1,0 +1,207 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+
+	<div class="content">
+
+		<!-- Breadcrumb -->
+		<div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
+			<div class="my-auto mb-2">
+				<h2 class="mb-1">Payslip</h2>
+				<nav>
+					<ol class="breadcrumb mb-0">
+						<li class="breadcrumb-item">
+							<a href="index.html"><i class="ti ti-smart-home"></i></a>
+						</li>
+						<li class="breadcrumb-item">
+							HR
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">Payslip</li>
+					</ol>
+				</nav>
+			</div>
+			<div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
+				<div class="mb-2">
+					<a href="#" id="btndownload" class="btn btn-dark d-flex align-items-center"><i class="ti ti-download me-2"></i>Download</a>
+				</div>
+				<div class="head-icons ms-2">
+					<a href="javascript:void(0);" class="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Collapse" id="collapse-header">
+						<i class="ti ti-chevrons-up"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- /Breadcrumb -->
+		<!-- Invoices -->
+		<div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card">
+						<div class="card-body">
+							<div class="row justify-content-between align-items-center border-bottom mb-3">
+								<div class="col-md-6">
+									<div class="mb-3">
+										<div class="mb-2">
+											@*        <img src="assets/img/logo.png" width="40%" class="img-fluid" alt="logo"> *@
+										</div>
+
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class=" text-end mb-3">
+										<h5 class="text-gray mb-1">Payslip No <span class="text-primary"> #PS4283</span></h5>
+										<p class="fw-medium">Salary Month : <span class="text-dark">October 2024</span> </p>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Month</label>
+										<select class="select" id="month">
+											<option>Select</option>
+											<option>Jan</option>
+											<option>Feb</option>
+											<option>Mar</option>
+											<option>Apr</option>
+											<option>May</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Year</label>
+										<select class="select" id="year">
+											<option>Select</option>
+											<option>2025</option>
+											<option>2024</option>
+											<option>2023</option>
+											<option>2022</option>
+											<option>2021</option>
+										</select>
+									</div>
+								</div>
+
+
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Invoices -->
+	</div>
+
+
+</div>
+<!-- /Page Wrapper -->
+@section Scripts
+{
+	<script type="text/javascript">
+
+		$('#btndownloadd').on('click', function (e) {
+				   e.preventDefault(); // Prevent default form submission
+					   var month=$('#month').val();
+			 var year=$('#year').val();
+			 alert(year);
+			 var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
+			 console.log('Form Data:', {
+						CompanyCode: "11",
+						UserID: "11",
+						Month: "12",
+						Year: "desc"
+
+					});
+				   var payload = {
+						CompanyCode: "123",
+						UserID: "123",
+						Month:"55" ,
+						Year: "55"
+
+
+					};
+					console.log(payload);
+		 $.ajax({
+						url: '/PaySlips/Payslips',
+						type: 'POST',
+						data: JSON.stringify(payload),
+						contentType: 'application/json',
+						headers: {
+							'RequestVerificationToken': antiForgeryToken // Add Anti-Forgery Token
+						},
+
+						success: function (response) {
+							// Handle success response (assuming response has Message or message)
+							// if (response.messageFlag != 'Failed') {
+							//     var successMessage = (response.Message || response.message || 'Leave request saved successfully!');
+							//     window.location.reload();
+							//     $('#errorMessage').html('<p style="color: green;">' + successMessage + '</p>');
+							//     $('#leaveRequestForm')[0].reset();
+							// }
+							// else {
+							//     var successMessage = (response.Message || response.message);
+							//     $('#errorMessage').html('<p style="color: red;">' + successMessage + '</p>');
+							//     //$('#leaveRequestForm')[0].reset();
+							//     //$('#errorMessage').html(''); // Clear error message after success
+							// }
+						},
+						error: function (xhr) {
+							var errorMessage = 'An error occurred while saving the request.';
+							// Handle response with message or Message property
+							if (xhr.responseJSON) {
+								errorMessage = xhr.responseJSON.message || xhr.responseJSON.Message || errorMessage;
+							} else if (xhr.statusText) {
+								errorMessage = xhr.statusText;
+							}
+							$('#errorMessage').html('<p style="color: red;">' + errorMessage + '</p>');
+						},
+						complete: function () {
+						   // $('#btnSave').prop('disabled', false).text('Save');
+						}
+					});
+			   });
+
+			   $('#btndownload').on('click', function (e) {
+				   e.preventDefault(); // Prevent default form submission
+
+
+				   alert(1);
+					 var data = {
+			CompanyCode: "test",
+			Month: "test",
+			UserID: $('#UserID').val(),
+			Year: $('#year').val()
+		};
+
+		var token = $('input[name="__RequestVerificationToken"]').val();
+
+		$.ajax({
+			  url: '/PaySlips/Payslips', // change to your actual controller/action
+			 type: 'POST',
+			 headers: {
+				 "RequestVerificationToken": token
+			 },
+			 contentType: 'application/json',
+			 data: JSON.stringify(data),
+			 success: function (response) {
+				 alert('Success');
+			 },
+			 error: function (xhr, status, error) {
+				 console.error(error);
+			 }
+		 });
+			});
+
+
+	</script>
+}

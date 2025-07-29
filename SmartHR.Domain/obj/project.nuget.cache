@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oqLalARxU5O8ak+GSNS2SN21mK3OkQpTMie4Lk4zS8L9ZGhOrg+SUG8dB9CkjOXXGfjI4MgEmu5Y18mk1GhOyQ==",
+  "dgSpecHash": "5fy0MsWiHQY2QdExPPeiy98weT+UZLkdqXgaAotJ1ZAs19wHet+GCVo1OhZNJZyjpNZuse3xd3XC9GdntTxZkw==",
   "success": true,
-  "projectFilePath": "D:\\ConnectFCCHR\\SmartHR.Domain\\SmartHR.Domain.csproj",
+  "projectFilePath": "E:\\ASIFESSHR17072025\\ConnectFCCHR_07_17_2025\\ConnectFCCHR\\SmartHR.Domain\\SmartHR.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Home\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\Home\\.nuget\\packages\\microsoft.extensions.configuration.binder\\8.0.0\\microsoft.extensions.configuration.binder.8.0.0.nupkg.sha512",

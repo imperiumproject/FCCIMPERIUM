@@ -1,10 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Serilog;
-using SmartHR.Application.D365ApiClient;
-using SmartHR.Application.Interfaces;
-using SmartHR.Application.Services;
-using SmartHR.Domain.Interfaces;
-
+using SMARTHR.WEB.FCCHRServices.FCCHRBusinessInterface;
+using SMARTHR.WEB.FCCHRServices.FCCHRBusinessService;
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((context, services, configuration) =>
 {
@@ -36,11 +33,6 @@ builder.Services.AddControllersWithViews()
 // ?? Services and DI
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 builder.Services.AddHttpClient();
-builder.Services.AddTransient<IEmployeeService, EmployeeService>();
-builder.Services.AddTransient<ILeaveService, LeaveService>();
-builder.Services.AddTransient<ID365ApiClient, MockD365ApiClient>();
-builder.Services.AddTransient<IMenuItemService, MenuItemService>();
-builder.Services.AddTransient<ID365AccountClientApi, D365AccountClientApi>();
 builder.Services.AddTransient<IAuthentications, AuthenticationsServices>();
 
 // ?? Logging

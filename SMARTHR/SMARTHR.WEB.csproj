@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\PaySlipsController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
 	<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	<PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.3.0" />
 	<PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.17" />
@@ -25,11 +29,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
     <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\SmartHR.Application\SmartHR.Application.csproj" />
-    <ProjectReference Include="..\SmartHR.Domain\SmartHR.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,698 @@
+﻿
+@{
+    ViewData["Title"] = "PermissionList";
+}
+
+<!-- Page Wrapper -->
+@* <div class="page-wrapper"> *@
+	<div class="content">
+
+		<!-- Breadcrumb -->
+		<div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
+			<div class="my-auto mb-2">
+				<h2 class="mb-1">Request</h2>
+				<nav>
+					<ol class="breadcrumb mb-0">
+						<li class="breadcrumb-item">
+							<a href="index.html"><i class="ti ti-smart-home"></i></a>
+						</li>
+						<li class="breadcrumb-item">
+							Payroll
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">Permission Request List</li>
+					</ol>
+				</nav>
+			</div>
+			<div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
+
+				<div class="mb-2">
+					<a href="#" data-bs-toggle="modal" data-bs-target="#add_employee" class="btn btn-primary d-flex align-items-center"><i class="ti ti-circle-plus me-2"></i>Create New</a>
+				</div>
+
+			</div>
+		</div>
+		<!-- /Breadcrumb -->
+
+
+
+		<div class="card">
+			<div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+				<h5>Permission Request List</h5>
+				<div class="d-flex my-xl-auto right-content align-items-center flex-wrap row-gap-3">
+
+					<div class="dropdown me-3">
+						<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+							Employee
+						</a>
+						<ul class="dropdown-menu  dropdown-menu-end p-3">
+							<li>
+								<a href="javascript:void(0);" class="dropdown-item rounded-1">Finance</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" class="dropdown-item rounded-1">Developer</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" class="dropdown-item rounded-1">Executive</a>
+							</li>
+						</ul>
+					</div>
+					<div class="dropdown me-3">
+						<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+							Select Status
+						</a>
+						<ul class="dropdown-menu  dropdown-menu-end p-3">
+							<li>
+								<a href="javascript:void(0);" class="dropdown-item rounded-1">Active</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" class="dropdown-item rounded-1">Inactive</a>
+							</li>
+						</ul>
+					</div>
+					<button class="btn  bg-primary btn-wave waves-effect waves-light">
+						<i class="feather-search align-middle me-2 d-inline-block"></i>Search
+					</button>
+
+				</div>
+			</div>
+			<div class="card-body p-0">
+				<div class="custom-datatable-filter table-responsive">
+					<table class="table datatable">
+						<thead class="thead-light">
+							<tr>
+
+								<th>Request ID</th>
+
+
+								<th>Worker Name </th>
+								<th>Trans Date</th>
+								<th>Type</th>
+								<th>Number of Hours</th>
+								<th>Status</th>
+
+								<th>Actions</th>
+								<th>Workflow History</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><a href="">EPGE-095295</a></td>
+								<td>Avinash</td>
+								<td>12 Sep 2024</td>
+								<td>Late Login</td>
+								<td>2hrs</td>
+								<td>
+									<span class="badge badge-success d-inline-flex align-items-center badge-xs">
+										<i class="ti ti-point-filled me-1"></i>Submitted
+									</span>
+								</td>
+
+								<td>
+									<div class="action-icon d-inline-flex">
+										<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-eye"></i></a>
+
+
+									</div>
+								</td>
+								<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+							</tr>
+
+							<tr>
+								<td>
+									<a href="">EPGE-095296</a>
+								</td>
+
+
+								<td>Avi</td>
+								<td>12 Sep 2024</td>
+								<td>Late Login</td>
+
+								<td>2hrs</td>
+
+
+								<td>
+									<span class="badge badge-danger d-inline-flex align-items-center badge-sm">
+										<i class="ti ti-point-filled me-1"></i>Draft
+									</span>
+								</td>
+
+								<td>
+									<div class="action-icon d-inline-flex">
+										<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit-employee-salary"><i class="ti ti-edit"></i></a>
+										<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-history" title="Recall"></i></a>
+
+
+									</div>
+								</td>
+								<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="">EPGE-095297</a>
+								</td>
+
+
+								<td>Avinash-2</td>
+								<td>12 Sep 2024</td>
+								<td>Late Login</td>
+
+
+
+								<td>2hrs</td>
+								<td>
+									<span class="badge badge-success d-inline-flex align-items-center badge-xs">
+										<i class="ti ti-point-filled me-1"></i>Submitted
+									</span>
+								</td>
+
+								<td>
+									<div class="action-icon d-inline-flex">
+										<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit-employee-salary"><i class="ti ti-edit"></i></a>
+										<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-eye"></i></a>
+
+
+									</div>
+								</td>
+								<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="">EPGE-095298</a>
+								</td>
+
+
+								<td>Avinash-3</td>
+								<td>12 Sep 2024</td>
+								<td>Late Login</td>
+
+
+								<td>2hrs</td>
+
+								<td>
+
+									<span class="badge badge-success d-inline-flex align-items-center badge-xs">
+										<i class="ti ti-point-filled me-1"></i>Submitted
+									</span>
+								</td>
+
+								<td>
+									<div class="action-icon d-inline-flex">
+										<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit-employee-salary"><i class="ti ti-edit"></i></a>
+										<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-eye"></i></a>
+
+
+									</div>
+								</td>
+								<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- Add Employee -->
+	<div class="modal fade" id="add_employee">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="d-flex align-items-center">
+						<h4 class="modal-title me-2">Permission Request</h4>
+					</div>
+					<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+						<i class="ti ti-x"></i>
+					</button>
+				</div>
+				<form action="employees.html">
+					<div class="contact-grids-tab">
+						<ul class="nav nav-underline" id="myTab" role="tablist">
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#basic-info" type="button" role="tab" aria-selected="true">Permission Request</button>
+							</li>
+
+
+						</ul>
+					</div>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+							<div class="modal-body pb-0 ">
+								<div class="row">
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Request ID</label>
+										<input type="text" id="prequestid" name="prequestid" class="form-control">
+										</div>
+									</div>
+
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Worker Name</label>
+										<select class="form-control select2" id="pworkername" name="pworkername">
+										</select>
+										@* 	<select class="select2 ">
+												<option selected="selected"></option>
+												<option title="Employee ID : EMP -0024  &#10;Employee Name: Avinash &#10;Employee Department : Software Developer">Employee 1</option>
+												<option>Employee 2</option>
+												<option>Employee 3</option>
+											</select> *@
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Type</label>
+										<select class="form-control select2" id="ptype" name="ptype">
+										</select>
+											@* <select class="select2 ">
+												<option selected="selected"></option>
+												<option>Late login </option>
+												<option>Early logout</option>
+												<option>Text</option>
+											</select> *@
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Trans Date</label>
+											<div class="input-icon-end position-relative">
+											<input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy" id="ptransdate" name="ptransdate">
+												<span class="input-icon-addon">
+													<i class="ti ti-calendar text-gray-7"></i>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Estimated no of Hours</label>
+										<input type="text" class="form-control" id="pestimatednoofhours" name="pestimatednoofhours">
+										</div>
+									</div>
+
+
+
+
+									<div class="col-md-6">
+										<div class="input-block mb-0">
+											<label class="form-label">Attachments</label>
+										<input class="form-control" type="file" id="attachmentslist" name="pattachmentslist" multiple>
+										</div>
+
+									</div>
+
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Description</label>
+										<textarea class="form-control" rows="3" id="pescription" name="pescription"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="modal-footer">
+
+
+								<a data-bs-toggle="modal" data-bs-target="#Attachments" class="btn btn-primary me-2"><i class="ti ti-paperclip"></i> View  Attachments <span class="badge bg-success ms-1 rounded-pill">32</span></a>
+								<button type="submit" class="btn btn-success me-2">Submit </button>
+								<button type="button" class="btn btn-outline-light border " data-bs-dismiss="modal">Cancel</button>
+
+							</div>
+						</div>
+
+
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- /Add Employee -->
+	<!-- Attachments -->
+	<div class="modal fade" id="Attachments">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="d-flex align-items-center">
+						<h4 class="modal-title me-2">Attachments</h4>
+					</div>
+					<!-- <button type="button" class="btn-close custom-btn-close trigger-add-employee" data-bs-dismiss="modal" data-open-modal="#add_employee"aria-label="Close">
+						<i class="ti ti-x"></i>
+					</button> -->
+
+					<button type="button" class="btn-close universal-modal-trigger" data-bs-dismiss="modal" data-open-modal="#add_employee" aria-label="Close">
+						<i class="ti ti-x"></i>
+					</button>
+
+				</div>
+
+				<div class="custom-datatable-filter table-responsive">
+					<table class="table datatable">
+						<thead class="thead-light">
+							<tr>
+
+								<th>File Name</th>
+
+
+								<th>Attached By</th>
+
+								<th>Date of Upload</th>
+								<th>Action</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="">
+									<div class="d-flex align-items-center file-name-icon">
+										<a href="#" class="avatar avatar-md bg-light" data-bs-toggle="offcanvas" data-bs-target="#preview">
+											<img src="assets/img/icons/file-04.svg" class="img-fluid" alt="img">
+										</a>
+										<div class="ms-2">
+											<p class="text-title fw-medium  mb-0"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#preview">Doris Crowley</a></p>
+										</div>
+									</div>
+								</td>
+								<td>Demo text</td>
+								<td>Demo text</td>
+								<td><a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a></td>
+							</tr>
+
+							<tr>
+								<td class="">
+									<div class="d-flex align-items-center file-name-icon">
+										<a href="#" class="avatar avatar-md bg-light" data-bs-toggle="offcanvas" data-bs-target="#preview">
+											<img src="assets/img/icons/file-03.svg" class="img-fluid" alt="img">
+										</a>
+										<div class="ms-2">
+											<p class="text-title fw-medium  mb-0"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#preview">Gallery</a></p>
+										</div>
+									</div>
+								</td>
+								<td>Demo text</td>
+								<td>Demo text</td>
+								<td><a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a></td>
+							</tr>
+							<tr>
+								<td class="">
+									<div class="d-flex align-items-center file-name-icon">
+										<a href="#" class="avatar avatar-md bg-light" data-bs-toggle="offcanvas" data-bs-target="#preview">
+											<img src="assets/img/icons/file-02.svg" class="img-fluid" alt="img">
+										</a>
+										<div class="ms-2">
+											<p class="text-title fw-medium  mb-0"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#preview">Sophie Headrick</a></p>
+										</div>
+									</div>
+								</td>
+								<td>Demo text</td>
+								<td>Demo text</td>
+								<td><a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a></td>
+							</tr>
+							<tr>
+								<td class="">
+									<div class="d-flex align-items-center file-name-icon">
+										<a href="#" class="avatar avatar-md bg-light" data-bs-toggle="offcanvas" data-bs-target="#preview">
+											<img src="assets/img/icons/file-01.svg" class="img-fluid" alt="img">
+										</a>
+										<div class="ms-2">
+											<p class="text-title fw-medium  mb-0"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#preview">Secret</a></p>
+										</div>
+									</div>
+								</td>
+								<td>Demo text</td>
+								<td>Demo text</td>
+								<td><a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- /Attachments -->
+	<!-- Workflow_History -->
+	<div class="modal fade" id="Workflow_History">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="d-flex align-items-center">
+						<h4 class="modal-title me-2">Workflow History </h4><span>Employee  ID : EMP -0024</span>
+					</div>
+					<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+						<i class="ti ti-x"></i>
+					</button>
+				</div>
+				<div class="custom-datatable-filter table-responsive">
+					<table class="table datatable">
+						<thead class="thead-light">
+							<tr>
+
+								<th>Request ID</th>
+								<th></th>
+								<th>WF Trans ID:</th>
+								<th></th>
+								<th>Raised By:</th>
+								<th></th>
+							</tr>
+						</thead>
+						<thead class="thead-light">
+							<tr>
+
+								<th>Level</th>
+
+								<th>Approver</th>
+
+								<th>Status</th>
+								<th>Remarks</th>
+								<th>Comments</th>
+								<th>Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	<!-- /Workflow_History -->
+	<!-- Add Employee Success -->
+	<div class="modal fade" id="success_modal" role="dialog">
+		<div class="modal-dialog modal-dialog-centered modal-sm">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="text-center p-3">
+						<span class="avatar avatar-lg avatar-rounded bg-success mb-3"><i class="ti ti-check fs-24"></i></span>
+						<h5 class="mb-2">Permission Request Added Successfully</h5>
+						<p class="mb-3">
+							Stephan Peralt has been added with Client ID : <span class="text-primary">#EMP - 0001</span>
+						</p>
+						<div>
+							<div class="row g-2">
+								<div class="col-6">
+									<a href="employees.html" class="btn btn-dark w-100">Back to List</a>
+								</div>
+								<div class="col-6">
+									<a href="employee-details.html" class="btn btn-primary w-100">Detail Page</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Add Client Success -->
+	<!-- Delete Modal -->
+	<div class="modal fade" id="delete_modal">
+		<div class="modal-dialog modal-dialog-centered modal-sm">
+			<div class="modal-content">
+				<div class="modal-body text-center">
+					<span class="avatar avatar-xl bg-transparent-danger text-danger mb-3">
+						<i class="ti ti-trash-x fs-36"></i>
+					</span>
+					<h4 class="mb-1">Confirm Delete</h4>
+					<p class="mb-3">You want to delete all the marked items, this cant be undone once you delete.</p>
+					<div class="d-flex justify-content-center">
+						<a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+						<a href="employees.html" class="btn btn-danger">Yes, Delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Delete Modal -->
+
+
+@* </div> *@
+<!-- /Page Wrapper -->
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		let nextModalId = null;
+
+		// Step 1: When a button is clicked, store the target modal ID
+		document.querySelectorAll('.universal-modal-trigger').forEach(button => {
+			button.addEventListener('click', function () {
+				nextModalId = button.getAttribute('data-open-modal');
+			});
+		});
+
+		// Step 2: On any modal hidden, check if we need to open another
+		const allModals = document.querySelectorAll('.modal');
+		allModals.forEach(modal => {
+			modal.addEventListener('hidden.bs.modal', function () {
+				if (nextModalId) {
+					const nextModalEl = document.querySelector(nextModalId);
+					if (nextModalEl) {
+						const nextModal = new bootstrap.Modal(nextModalEl);
+						nextModal.show();
+					}
+					nextModalId = null; // reset
+				}
+			});
+		});
+	});
+
+	//--------------------------------JQeury Start from here
+	$(document).ready(function () {
+		BindAllEmployee("");
+		BindPermissionType();
+	});
+	///------------------------------------------Bind All Employee
+	//Bind All Employee
+	function BindAllEmployee(employeeIdToSelect) {
+		// Get the anti-forgery token
+		var token = $('input[name="__RequestVerificationToken"]').val();
+
+		// Make AJAX call to GetAllEmployees
+		$.ajax({
+			url: '@Url.Action("GetAllEmployees", "Leave")',
+			type: 'POST',
+			data: {
+				__RequestVerificationToken: token
+			},
+			dataType: 'json',
+			beforeSend: function () {
+				$('.container').prepend('<div class="loading">Loading...</div>');
+			},
+			success: function (response) {
+				$('.loading').remove();
+				console.log('AJAX response:', JSON.stringify(response, null, 2)); // Detailed debug output
+
+				let employeeList = null;
+				if (Array.isArray(response)) {
+					employeeList = response; // Direct array from List<EmployeeList>
+				} else if (response && response.EmployeeList && Array.isArray(response.EmployeeList)) {
+					employeeList = response.EmployeeList; // Wrapped in { "EmployeeList": [...] }
+				} else if (response && response.data && Array.isArray(response.data)) {
+					employeeList = response.data; // Wrapped in { "data": [...] }
+				}
+
+				if (employeeList && employeeList.length > 0) {
+					var $select = $('#pworkername');
+					$select.empty().append('<option value="">Select</option>');
+					$.each(employeeList, function (index, item) {
+						$select.append($('<option>', {
+							value: item.employeeId,
+							text: item.employeeName
+						}));
+					});
+					$select.select2({
+						dropdownParent: $('#myTabContent'),  // Replace with actual modal ID
+						minimumResultsForSearch: 0
+					});
+					$select.val(employeeIdToSelect).trigger('change');
+				}
+			},
+			error: function (xhr, status, error) {
+				$('.loading').remove();
+				console.error('AJAX error:', status, error, xhr.responseText);
+				var errorDiv = $('<div class="alert alert-danger mt-3"></div>').text('An error occurred while loading employee data: ' + (xhr.responseText || error));
+				$('.container').prepend(errorDiv);
+			}
+		});
+	}
+
+
+	function BindPermissionType() {
+		debugger;
+		// Get the anti-forgery token
+		var token = $('input[name="__RequestVerificationToken"]').val();
+		var EmpId = null;
+		// Make AJAX call to GetLeaveType
+		$.ajax({
+			url: '@Url.Action("GetPermissionTypes", "PermissionRequest")',
+			type: 'POST',
+			data: { EmpId: EmpId, __RequestVerificationToken: token },
+			dataType: 'json',
+			beforeSend: function () {
+				$('.container').prepend('<div class="loading">Loading...</div>');
+			},
+			success: function (response) {
+				$('.loading').remove();
+				console.log('AJAX response:', response); // Debug response
+				if (response) {
+					debugger;
+					// Populate Leave Type dropdown
+					var leavTypeSelect = $('#ptype');
+					leavTypeSelect.empty().append('<option value="">Select</option>');
+					var leavTypes = response;
+					if (leavTypes && leavTypes.length > 0) {
+
+						var $select = $('#ptype');
+						$select.empty().append('<option value="">Select</option>');
+						$.each(leavTypes, function (index, item) {
+							$select.append($('<option>', {
+								value: item.$id,
+								text: item.leaveType
+							}));
+						});
+						$select.select2({
+							dropdownParent: $('#myTabContent'),  // Replace with actual modal ID
+							minimumResultsForSearch: 0
+						});
+						//$select.val(EmpId).trigger('change');
+					} else {
+						console.log('No loan type found in response:', response.data);
+						leavTypeSelect.append('<option value="" disabled>No loan types available</option>');
+					}
+				} else {
+					var errorDiv = $('<div class="alert alert-danger mt-3"></div>').text(response.message || 'Failed to load dropdown data.');
+					$('.container').prepend(errorDiv);
+				}
+			},
+			error: function (xhr, status, error) {
+				$('.loading').remove();
+				console.error('AJAX error:', status, error, xhr.responseText);
+				var errorDiv = $('<div class="alert alert-danger mt-3"></div>').text('An error occurred while loading dropdown data.');
+				$('.container').prepend(errorDiv);
+			}
+		});
+	}
+</script>
+
