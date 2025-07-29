@@ -1,0 +1,188 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\netgear\\latesthr\\connectfcchr_24072024evening\\connectfcchr\\smarthr\\controllers\\certificaterequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:controllers\\certificaterequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\netgear\\latesthr\\connectfcchr_24072024evening\\connectfcchr\\smarthr\\models\\certificaterequestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:models\\certificaterequestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\netgear\\latesthr\\connectfcchr_24072024evening\\connectfcchr\\smarthr\\views\\certificaterequest\\certificaterequest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:views\\certificaterequest\\certificaterequest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\netgear\\latesthr\\connectfcchr_24072024evening\\connectfcchr\\smarthr\\controllers\\businesstripcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:controllers\\businesstripcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\netgear\\latesthr\\connectfcchr_24072024evening\\connectfcchr\\smarthr\\views\\manager\\alltransaction.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:views\\manager\\alltransaction.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\netgear\\latesthr\\connectfcchr_24072024evening\\connectfcchr\\smarthr\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\netgear\\latesthr\\connectfcchr_24072024evening\\connectfcchr\\smarthr\\views\\leave\\leaverequest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:views\\leave\\leaverequest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\netgear\\latesthr\\connectfcchr_24072024evening\\connectfcchr\\smarthr\\views\\itassets\\readassetrequestlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:views\\itassets\\readassetrequestlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\netgear\\latesthr\\connectfcchr_24072024evening\\connectfcchr\\smarthr\\controllers\\managercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:controllers\\managercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|d:\\netgear\\latesthr\\connectfcchr_24072024evening\\connectfcchr\\smarthr\\controllers\\leavecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2342872-EDBF-4254-9E60-4E1476267C12}|SMARTHR.WEB.csproj|solutionrelative:controllers\\leavecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CertificateRequest.cshtml",
+              "DocumentMoniker": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Views\\CertificateRequest\\CertificateRequest.cshtml",
+              "RelativeDocumentMoniker": "Views\\CertificateRequest\\CertificateRequest.cshtml",
+              "ToolTip": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Views\\CertificateRequest\\CertificateRequest.cshtml",
+              "RelativeToolTip": "Views\\CertificateRequest\\CertificateRequest.cshtml",
+              "ViewState": "AgIAAOkAAAAAAAAAAAAuwPgAAABqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-26T14:36:09.833Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Alltransaction.cshtml",
+              "DocumentMoniker": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Views\\Manager\\Alltransaction.cshtml",
+              "RelativeDocumentMoniker": "Views\\Manager\\Alltransaction.cshtml",
+              "ToolTip": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Views\\Manager\\Alltransaction.cshtml",
+              "RelativeToolTip": "Views\\Manager\\Alltransaction.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-27T14:09:21.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CertificateRequestController.cs",
+              "DocumentMoniker": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Controllers\\CertificateRequestController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CertificateRequestController.cs",
+              "ToolTip": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Controllers\\CertificateRequestController.cs",
+              "RelativeToolTip": "Controllers\\CertificateRequestController.cs",
+              "ViewState": "AgIAAKQBAAAAAAAAAAAqwLABAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T14:17:11.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BusinessTripController.cs",
+              "DocumentMoniker": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Controllers\\BusinessTripController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BusinessTripController.cs",
+              "ToolTip": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Controllers\\BusinessTripController.cs",
+              "RelativeToolTip": "Controllers\\BusinessTripController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAB8AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T06:51:18.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CertificateRequestViewModel.cs",
+              "DocumentMoniker": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Models\\CertificateRequestViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\CertificateRequestViewModel.cs",
+              "ToolTip": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Models\\CertificateRequestViewModel.cs",
+              "RelativeToolTip": "Models\\CertificateRequestViewModel.cs",
+              "ViewState": "AgIAAKoAAAAAAAAAAAAxwKwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T19:54:43.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAUwKEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-26T14:21:03.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LeaveRequest.cshtml",
+              "DocumentMoniker": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Views\\Leave\\LeaveRequest.cshtml",
+              "RelativeDocumentMoniker": "Views\\Leave\\LeaveRequest.cshtml",
+              "ToolTip": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Views\\Leave\\LeaveRequest.cshtml",
+              "RelativeToolTip": "Views\\Leave\\LeaveRequest.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIsAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-26T14:39:51.077Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LeaveController.cs",
+              "DocumentMoniker": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Controllers\\LeaveController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LeaveController.cs",
+              "ToolTip": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Controllers\\LeaveController.cs",
+              "RelativeToolTip": "Controllers\\LeaveController.cs",
+              "ViewState": "AgIAAIsEAAAAAAAAAAD4v4AEAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T14:22:05.936Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ReadAssetRequestList.cshtml",
+              "DocumentMoniker": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Views\\ITAssets\\ReadAssetRequestList.cshtml",
+              "RelativeDocumentMoniker": "Views\\ITAssets\\ReadAssetRequestList.cshtml",
+              "ToolTip": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Views\\ITAssets\\ReadAssetRequestList.cshtml",
+              "RelativeToolTip": "Views\\ITAssets\\ReadAssetRequestList.cshtml",
+              "ViewState": "AgIAAFcDAAAAAAAAAAAAAFEDAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T07:18:39.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ManagerController.cs",
+              "DocumentMoniker": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Controllers\\ManagerController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ManagerController.cs",
+              "ToolTip": "D:\\NETGEAR\\LatestHr\\ConnectFCCHR_24072024Evening\\ConnectFCCHR\\SMARTHR\\Controllers\\ManagerController.cs",
+              "RelativeToolTip": "Controllers\\ManagerController.cs",
+              "ViewState": "AgIAABMDAAAAAAAAAAD4vx4DAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T06:51:19.031Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

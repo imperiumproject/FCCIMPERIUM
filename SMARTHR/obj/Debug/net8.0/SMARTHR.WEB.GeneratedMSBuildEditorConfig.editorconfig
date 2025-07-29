@@ -1,0 +1,133 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = SMARTHR.WEB
+build_property.RootNamespace = SMARTHR.WEB
+build_property.ProjectDir = D:\NETGEAR\LatestHr\ConnectFCCHR_24072024Evening\ConnectFCCHR\SMARTHR\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = D:\NETGEAR\LatestHr\ConnectFCCHR_24072024Evening\ConnectFCCHR\SMARTHR
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Authentication/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cQ2hhbmdlUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Authentication/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cRm9yZ290UGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Authentication/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/BusinessTrip/BusinessTrip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzaW5lc3NUcmlwXEJ1c2luZXNzVHJpcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/BusinessTrip/BusinessTripResumption.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzaW5lc3NUcmlwXEJ1c2luZXNzVHJpcFJlc3VtcHRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/CertificateRequest/CertificateRequest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2VydGlmaWNhdGVSZXF1ZXN0XENlcnRpZmljYXRlUmVxdWVzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Circular/Circular.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2lyY3VsYXJcQ2lyY3VsYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/ITAssets/ReadAssetRequestList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSVRBc3NldHNcUmVhZEFzc2V0UmVxdWVzdExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Leave/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhdmVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Leave/LeaveEncashment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhdmVcTGVhdmVFbmNhc2htZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Leave/LeaveRequest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhdmVcTGVhdmVSZXF1ZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Leave/LeaveResumption.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhdmVcTGVhdmVSZXN1bXB0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/LoanRequest/ReadLoanRequestList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9hblJlcXVlc3RcUmVhZExvYW5SZXF1ZXN0TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Manager/Alltransaction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxBbGx0cmFuc2FjdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/PaySlips/PaySlips.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5U2xpcHNcUGF5U2xpcHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Profile/MyProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxNeVByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Shared/_FooterLable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXJMYWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Shared/_Sidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaWRlYmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Shared/_TopMenu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ub3BNZW51LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/NETGEAR/LatestHr/ConnectFCCHR_24072024Evening/ConnectFCCHR/SMARTHR/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-q6m20sol99

@@ -1,0 +1,113 @@
+﻿@model SMARTHR.WEB.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>HR-Connect</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/img/Fevicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/assets/img/apple-touch-icon.png">
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/plugins/icons/feather/feather.css">
+    <link rel="stylesheet" href="~/assets/plugins/tabler-icons/tabler-icons.min.css">
+    <link rel="stylesheet" href="~/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="~/assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+</head>
+<body class="bg-white">
+    <div id="global-loader" style="display: none;">
+        <div class="page-loader"></div>
+    </div>
+    <div class="main-wrapper">
+        <div class="container-fluid">
+            <div class="w-100 overflow-hidden position-relative flex-wrap d-block vh-100">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="d-lg-flex align-items-center justify-content-center d-none flex-wrap vh-100 bg-primary-transparent">
+                            <div>
+                                <img src="~/assets/img/bg/authentication-bg-03.svg" alt="Img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-12 col-sm-12">
+                        <div class="row justify-content-center align-items-center vh-100 overflow-auto flex-wrap">
+                            <div class="col-md-7 mx-auto vh-100">
+                                <form asp-action="Login" asp-controller="Authentication" method="post" class="vh-100">
+                                    @Html.AntiForgeryToken()
+                                    <div class="vh-100 d-flex flex-column justify-content-between p-4 pb-0">
+                                        <div class="mx-auto mb-5 text-center">
+                                            <img src="~/assets/img/logo.png" class="img-fluid" width="40%" alt="Logo">
+                                        </div>
+                                        <div>
+                                            <div class="text-center mb-3">
+                                                <h2 class="mb-2">Sign In</h2>
+                                                <p class="mb-0">Please enter your details to sign in</p>
+                                            </div>
+                                          
+                                            @if (!ViewData.ModelState.IsValid)
+                                            {
+                                                <div class="alert alert-danger">
+                                                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                                                    {
+                                                        <p>@error.ErrorMessage</p>
+                                                    }
+                                                </div>
+                                            }
+                                            <div class="mb-3">
+                                                <label asp-for="Username" class="form-label"></label>
+                                                <div class="input-group">
+                                                    <input asp-for="Username" class="form-control border-end-0" />
+                                                    <span class="input-group-text border-start-0">
+                                                        <i class="ti ti-mail"></i>
+                                                    </span>
+                                                    <span asp-validation-for="Username" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label asp-for="Password" class="form-label"></label>
+                                                <div class="pass-group">
+                                                    <input asp-for="Password" class="pass-input form-control" />
+                                                    <span class="ti toggle-password ti-eye-off"></span>
+                                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="form-check form-check-md mb-0">
+                                                        <input asp-for="RememberMe" class="form-check-input" id="remember_me" />
+                                                        <label for="remember_me" class="form-check-label mt-0">Remember Me</label>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <a asp-action="ForgotPassword" asp-controller="Authentication" class="link-danger">Forgot Password?</a>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                                            </div>
+                                        </div>
+                                        <div class="mt-5 pb-4 text-center">
+                                            <p class="mb-0 text-gray-9">Copyright © 2025 - FCC- HR Connect</p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/assets/js/jquery-3.7.1.min.js"></script>
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/feather.min.js"></script>
+    <script src="~/assets/js/script.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

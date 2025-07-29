@@ -1,0 +1,3377 @@
+﻿@model List<SMARTHR.WEB.Models.WorkflowProcess>
+@{
+	
+	ViewData["Title"] = "Alltransaction";
+	int PendingCount = 0;
+}
+
+<!-- Page Wrapper -->
+
+	<div class="content">
+
+		<!-- Breadcrumb -->
+		<div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
+			<div class="my-auto mb-2">
+				<h2 class="mb-1">Manager Self Service</h2>
+				<nav>
+					<ol class="breadcrumb mb-0">
+						<li class="breadcrumb-item">
+							<a href="index.html"><i class="ti ti-smart-home"></i></a>
+						</li>
+						<!-- <li class="breadcrumb-item">
+						Payroll
+						</li> -->
+						<li class="breadcrumb-item active" aria-current="page">All Transactions List</li>
+					</ol>
+				</nav>
+			</div>
+			<div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
+
+				<!-- <div class="mb-2">
+				<a href="#" data-bs-toggle="modal" data-bs-target="#add_employee" class="btn btn-primary d-flex align-items-center"><i class="ti ti-circle-plus me-2"></i>Create New</a>
+				</div> -->
+
+			</div>
+		</div>
+		<!-- /Breadcrumb -->
+
+
+
+		<div class="card">
+			<div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+				<h5>All Transactions List</h5>
+				<div class="d-flex my-xl-auto right-content align-items-center flex-wrap row-gap-3">
+
+					<div class="dropdown me-3">
+						<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+							Employee
+						</a>
+						<ul class="dropdown-menu  dropdown-menu-end p-3">
+							<li>
+								<a href="javascript:void(0);" class="dropdown-item rounded-1">Finance</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" class="dropdown-item rounded-1">Developer</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" class="dropdown-item rounded-1">Executive</a>
+							</li>
+						</ul>
+					</div>
+					<div class="dropdown me-3">
+						<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+							Select Status
+						</a>
+						<ul class="dropdown-menu  dropdown-menu-end p-3">
+							<li>
+								<a href="javascript:void(0);" class="dropdown-item rounded-1">Active</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" class="dropdown-item rounded-1">Inactive</a>
+							</li>
+						</ul>
+					</div>
+					<button class="btn  bg-primary btn-wave waves-effect waves-light">
+						<i class="feather-search align-middle me-1 d-inline-block"></i>Search
+					</button>
+
+				</div>
+			</div>
+			<div class="card-body">
+				<ul class="nav nav-tabs mb-3 tab-style-6" id="myTab-3" role="tablist">
+					<li class="nav-item" role="presentation">
+						<button class="nav-link active" id="products-tab" data-bs-toggle="tab"
+						data-bs-target="#products-tab-pane" type="button" role="tab"
+						aria-controls="products-tab-pane" aria-selected="true">
+							<i class="fa fa-exclamation-circle me-1"></i>
+							Pending <span class="badge bg-secondary ms-1 rounded-pill">@PendingCount</span>
+						</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="sales-tab" data-bs-toggle="tab"
+						data-bs-target="#sales-tab-pane" type="button" role="tab"
+						aria-controls="sales-tab-pane" aria-selected="false">
+							<i class="feather-check-circle me-1 align-middle d-inline-block"></i>Approved <span class="badge bg-success ms-1 rounded-pill">4</span>
+						</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="profit-tab" data-bs-toggle="tab"
+						data-bs-target="#profit-tab-pane" type="button" role="tab"
+						aria-controls="profit-tab-pane" aria-selected="false">
+							<i class="fa fa-times  me-1"></i> Rejected <span class="badge bg-warning ms-1">7</span>
+						</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="expenses-tab" data-bs-toggle="tab"
+						data-bs-target="#expenses-tab-pane" type="button" role="tab"
+						aria-controls="expenses-tab-pane" aria-selected="false">
+							<i class="feather-file-minus me-1 align-middle d-inline-block"></i>Action Taken
+						</button>
+					</li>
+				</ul>
+				<div class="tab-content" id="myTabContent2">
+					<div class="tab-pane fade show active p-0 border-bottom-0" id="products-tab-pane"
+					role="tabpanel" aria-labelledby="products-tab" tabindex="0">
+						<div class="card-body p-0">
+							<div class="custom-datatable-filter table-responsive">
+								<table class="table datatable">
+									<thead class="thead-light">
+										<tr>
+
+											<th>Request ID</th>
+											<th>Employee Name</th>
+											<th>Leave Type</th>
+											<th>Transaction Date</th>										
+											<th>Status</th>
+											<th>Actions</th>
+											<th>Workflow History</th>
+										</tr>
+									</thead>
+									<tbody>
+										@if (Model != null && Model.Any())
+										{
+											
+											foreach (var item in Model)
+											{
+												@if (item.Status == "Pending")
+												{
+													PendingCount ++;
+													<tr>
+														<td><a href="@Url.Action("Details", "Leave", new { id = item.TransactionId })">@item.TransactionId</a></td>
+														<td>@item.EmployeeName</td>
+														<td>@item.Value</td>
+														<td>@item.TransDate</td>
+														<td>
+														<span class="badge @(item.Status == "Pending" ? "badge-danger" : "badge-success") d-inline-flex align-items-center badge-xs">
+																<i class="ti ti-point-filled me-1"></i>@item.Status
+															</span>
+														</td>
+														<td>
+															<div class="action-icon d-inline-flex">
+																@* @if (item.Status == "Pending")
+																{
+																	<a href="#" class="me-2 btnRecall" data-bs-toggle="modal" data-id="@item.TransactionId" data-bs-target="#add_employee"><i class="ti ti-history" title="Recall"></i></a>
+																} *@
+
+															@if (@item.Value == "Leave Resumption")
+															{
+																<a class="me-2 btnViewLr" id="btnView" name="btnView" data-id="@item.TransactionId,@item.RaisedBy,@item.Value" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-edit"></i></a>
+
+																}
+																else{
+																<a class="me-2 btnView" id="btnView" name="btnView" data-id="@item.TransactionId,@item.RaisedBy,@item.Value" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-edit"></i></a>
+
+																}
+																@* <a class="me-2 btnDelete" data-bs-target="#delete_modal" id="btnDelete" name="btnDelete" data-id="@item.TransactionId"><i class="ti ti-trash"></i></a> *@
+															</div>
+														</td>
+														@* <td><a href="@Url.Action("WorkflowHistory", "Leave", new { id = item.TransactionId })">View</a></td> *@
+														<td>
+															<a href="#" class="me-2 btnWFView" id="btnWFView" name="btnWFView" data-bs-toggle="modal" data-bs-target="#Workflow_History" data-leaveid="@item.TransactionId"
+														   data-rec="@item.TransRecId" data-tableid="@item.TransTableId" data-transtype="@item.Value" title="View"><i class="ti ti-eye"></i></a></td>
+													</tr>
+												}												
+											}
+											
+										}
+										else
+										{
+											<tr>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+											</tr>
+
+										}
+
+
+
+										@* <tr>
+											<td>
+												<a href="">EPGE-095295</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+												<span class="badge bg-secondary d-inline-flex align-items-center badge-xs">
+													<i class="fa fa-exclamation-circle me-1"></i>
+													Pending
+												</span>
+											</td>
+
+											<td>
+												<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr>
+										<tr>
+											<td>
+												<a href="">EPGE-095296</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+												<span class="badge bg-secondary d-inline-flex align-items-center badge-xs">
+													<i class="fa fa-exclamation-circle me-1"></i> Pending
+												</span>
+											</td>
+
+											<td>
+												<div class="action-icon d-inline-flex">
+
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-history" title="Recall"></i></a>
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+
+													<a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+												</div>
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr>
+										<tr>
+											<td>
+												<a href="">EPGE-095297</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+												<span class="badge bg-secondary d-inline-flex align-items-center badge-xs">
+													<i class="fa fa-exclamation-circle me-1"></i> Pending
+												</span>
+											</td>
+
+											<td>
+												<div class="action-icon d-inline-flex">
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+												</div>
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr>
+										<tr>
+											<td>
+												<a href="">EPGE-095298</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+
+												<span class="badge bg-secondary d-inline-flex align-items-center badge-xs">
+													<i class="fa fa-exclamation-circle me-1"></i> Pending
+												</span>
+											</td>
+
+											<td>
+												<div class="action-icon d-inline-flex">
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+
+												</div>
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr> *@
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="sales-tab-pane" role="tabpanel"
+						 aria-labelledby="sales-tab" tabindex="0">
+						<div class="card-body p-0">
+							<div class="custom-datatable-filter table-responsive">
+								<table class="table datatable">
+									<thead class="thead-light">
+										<tr>
+
+											<th>Request ID</th>
+											<th>Employee Name</th>
+											<th>Leave Type</th>
+											<th>Transaction Date</th>
+											<th>Status</th>
+											<th>Actions</th>
+											<th>Workflow History</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										@if (Model != null && Model.Any())
+										{
+											foreach (var item in Model)
+											{
+												@if (item.Status == "Approved")
+												{
+													<tr>
+														<td><a href="@Url.Action("Details", "Leave", new { id = item.TransactionId })">@item.TransactionId</a></td>
+														<td>@item.EmployeeName</td>
+														<td>@item.Value</td>
+														<td>@item.TransDate</td>
+														<td>
+															<span class="badge @(item.Status == "Pending" ? "badge-danger" : "badge-success") d-inline-flex align-items-center badge-xs">
+																<i class="ti ti-point-filled me-1"></i>@item.Status
+															</span>
+														</td>
+														<td>
+															<div class="action-icon d-inline-flex">
+																@* @if (item.Status == "Pending")
+																{
+																	<a href="#" class="me-2 btnRecall" data-bs-toggle="modal" data-id="@item.TransactionId" data-bs-target="#add_employee"><i class="ti ti-history" title="Recall"></i></a>
+																} *@
+															<div class="action-icon d-inline-flex">
+																@* @if (item.Status == "Pending")
+													{
+													<a href="#" class="me-2 btnRecall" data-bs-toggle="modal" data-id="@item.TransactionId" data-bs-target="#add_employee"><i class="ti ti-history" title="Recall"></i></a>
+													} *@
+
+																
+																	<a class="me-2 btnView" id="btnView" name="btnView" data-id="@item.TransactionId,@item.RaisedBy,@item.Value" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-edit"></i></a>
+
+														
+																@* <a class="me-2 btnDelete" data-bs-target="#delete_modal" id="btnDelete" name="btnDelete" data-id="@item.TransactionId"><i class="ti ti-trash"></i></a> *@
+															</div>
+																@* <a class="me-2 btnDelete" data-bs-target="#delete_modal" id="btnDelete" name="btnDelete" data-id="@item.TransactionId"><i class="ti ti-trash"></i></a> *@
+															</div>
+														</td>
+														@* <td><a href="@Url.Action("WorkflowHistory", "Leave", new { id = item.TransactionId })">View</a></td> *@
+													<td>
+														<a href="#" class="me-2 btnWFView" id="btnWFView" name="btnWFView" data-bs-toggle="modal" data-bs-target="#Workflow_History" data-leaveid="@item.TransactionId"
+														   data-rec="@item.TransRecId" data-tableid="@item.TransTableId" data-transtype="@item.Value" title="View"><i class="ti ti-eye"></i></a>
+													</td>
+
+													
+													</tr>
+												}
+											}
+										}
+										else
+										{
+											<tr>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+											</tr>
+
+										}
+									@* 	<tr>
+											<td>
+												<a href="">EPGE-095295</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+												<span class="badge badge-success d-inline-flex align-items-center badge-xs">
+													<i class="feather-check-circle me-1 align-middle d-inline-block"></i>Approved
+												</span>
+											</td>
+
+											<td>
+												<div class="action-icon d-inline-flex">
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+
+												</div>
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr>
+
+										<tr>
+											<td>
+												<a href="">EPGE-095296</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+												<span class="badge badge-success d-inline-flex align-items-center badge-xs">
+													<i class="feather-check-circle me-1 align-middle d-inline-block"></i>Approved
+												</span>
+											</td>
+
+											<td>
+												<div class="action-icon d-inline-flex">
+
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-history" title="Recall"></i></a>
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+
+													<a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+												</div>
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr>
+										<tr>
+											<td>
+												<a href="">EPGE-095297</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+												<span class="badge badge-success d-inline-flex align-items-center badge-xs">
+													<i class="feather-check-circle me-1 align-middle d-inline-block"></i>Approved
+												</span>
+											</td>
+
+											<td>
+												<div class="action-icon d-inline-flex">
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+
+												</div>
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr>
+										<tr>
+											<td>
+												<a href="">EPGE-095298</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+
+												<span class="badge badge-success d-inline-flex align-items-center badge-xs">
+													<i class="feather-check-circle me-1 align-middle d-inline-block"></i>Approved
+												</span>
+											</td>
+
+											<td>
+												<div class="action-icon d-inline-flex">
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+
+												</div>
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr> *@
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="profit-tab-pane" role="tabpanel"
+						 aria-labelledby="profit-tab" tabindex="0">
+						<div class="card-body p-0">
+							<div class="custom-datatable-filter table-responsive">
+								<table class="table datatable">
+									<thead class="thead-light">
+										<tr>
+
+											<th>Request ID</th>
+											<th>Employee Name</th>
+											<th>Leave Type</th>
+											<th>Transaction Date</th>
+											<th>Status</th>
+											<th>Actions</th>
+											<th>Workflow History</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										@if (Model != null && Model.Any())
+										{
+											foreach (var item in Model)
+											{
+												@if (item.Status == "Rejected")
+												{
+													<tr>
+														<td><a href="@Url.Action("Details", "Leave", new { id = item.TransactionId })">@item.TransactionId</a></td>
+														<td>@item.EmployeeName</td>
+														<td>@item.Value</td>
+														<td>@item.TransDate</td>
+														<td>
+															<span class="badge @(item.Status == "Pending" ? "badge-danger" : "badge-success") d-inline-flex align-items-center badge-xs">
+																<i class="ti ti-point-filled me-1"></i>@item.Status
+															</span>
+														</td>
+														<td>
+															<div class="action-icon d-inline-flex">
+
+															<div class="action-icon d-inline-flex">
+																
+
+																	<a class="me-2 btnView" id="btnView" name="btnView" data-id="@item.TransactionId,@item.RaisedBy,@item.Value" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-edit"></i></a>
+
+													
+																@* <a class="me-2 btnDelete" data-bs-target="#delete_modal" id="btnDelete" name="btnDelete" data-id="@item.TransactionId"><i class="ti ti-trash"></i></a> *@
+															</div>
+
+																@* @if (item.Status == "Pending")
+																{
+																	<a href="#" class="me-2 btnRecall" data-bs-toggle="modal" data-id="@item.TransactionId" data-bs-target="#add_employee"><i class="ti ti-history" title="Recall"></i></a>
+																} *@
+																@* <a class="me-2 btnView" id="btnView" name="btnView" data-id="@item.TransactionId,@item.RaisedBy,@item.Value" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-eye"></i></a> *@
+																@* <a class="me-2 btnDelete" data-bs-target="#delete_modal" id="btnDelete" name="btnDelete" data-id="@item.TransactionId"><i class="ti ti-trash"></i></a> *@
+															</div>
+														</td>
+														@* <td><a href="@Url.Action("WorkflowHistory", "Leave", new { id = item.TransactionId })">View</a></td> *@
+													<td>
+														<a href="#" class="me-2 btnWFView" id="btnWFView" name="btnWFView" data-bs-toggle="modal" data-bs-target="#Workflow_History" data-leaveid="@item.TransactionId"
+														   data-rec="@item.TransRecId" data-tableid="@item.TransTableId" data-transtype="@item.Value" title="View"><i class="ti ti-eye"></i></a>
+													</td>
+													
+
+													</tr>
+												}
+											}
+										}
+										else
+										{
+											<tr>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+											</tr>
+
+										}
+									@* 	<tr>
+											<td>
+												<a href="">EPGE-095295</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+												<span class="badge badge-danger d-inline-flex align-items-center badge-xs">
+													<i class="fa fa-times  me-1"></i> Rejected
+												</span>
+											</td>
+
+											<td>
+												<div class="action-icon d-inline-flex">
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+
+												</div>
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr>
+
+										<tr>
+											<td>
+												<a href="">EPGE-095296</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+												<span class="badge badge-danger d-inline-flex align-items-center badge-xs">
+													<i class="fa fa-times  me-1"></i> Rejected
+												</span>
+											</td>
+
+											<td>
+												<div class="action-icon d-inline-flex">
+
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-history" title="Recall"></i></a>
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+													<a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+												</div>
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr>
+										<tr>
+											<td>
+												<a href="">EPGE-095297</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+												<span class="badge badge-danger d-inline-flex align-items-center badge-xs">
+													<i class="fa fa-times  me-1"></i> Rejected
+												</span>
+											</td>
+
+											<td>
+												<div class="action-icon d-inline-flex">
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+
+												</div>
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr>
+										<tr>
+											<td>
+												<a href="">EPGE-095298</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+
+												<span class="badge badge-danger d-inline-flex align-items-center badge-xs">
+													<i class="fa fa-times  me-1"></i> Rejected
+												</span>
+											</td>
+
+											<td>
+												<div class="action-icon d-inline-flex">
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+
+												</div>
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr> *@
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="expenses-tab-pane" role="tabpanel"
+						 aria-labelledby="expenses-tab" tabindex="0">
+						<div class="card-body p-0">
+							<div class="custom-datatable-filter table-responsive">
+								<table class="table datatable">
+									<thead class="thead-light">
+										<tr>
+
+											<th>Request ID</th>
+											<th>Employee Name</th>
+											<th>Leave Type</th>
+											<th>Transaction Date</th>
+											<th>Status</th>
+											<th>Actions</th>
+											<th>Workflow History</th>
+										</tr>
+									</thead>
+									<tbody>
+										@if (Model != null && Model.Any())
+										{
+											foreach (var item in Model)
+											{
+												
+													<tr>
+														<td><a href="@Url.Action("Details", "Leave", new { id = item.TransactionId })">@item.TransactionId</a></td>
+														<td>@item.EmployeeName</td>
+														<td>@item.Value</td>
+														<td>@item.TransDate</td>
+														<td>
+														<span class="badge @(item.Status == "Pending" ? "badge-danger" : "badge-success") d-inline-flex align-items-center badge-xs">
+																<i class="ti ti-point-filled me-1"></i>@item.Status
+															</span>
+														</td>
+														<td>
+															<div class="action-icon d-inline-flex">
+																@if (item.Status == "Pending")
+																{
+																	<a class="me-2 btnView" id="btnView" name="btnView" data-id="@item.TransactionId,@item.RaisedBy,@item.Value" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-edit"></i></a>
+																@*<a href="#" class="me-2 btnRecall" data-bs-toggle="modal" data-id="@item.TransactionId" data-bs-target="#add_employee"><i class="ti ti-history" title="Recall"></i></a>
+															   <a class="me-2 btnDelete" data-bs-target="#delete_modal" id="btnDelete" name="btnDelete" data-id="@item.TransactionId"><i class="ti ti-trash"></i></a> *@
+																}
+																else
+																{
+																	<a class="me-2 btnView" id="btnView" name="btnView" data-id="@item.TransactionId,@item.RaisedBy,@item.Value" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-eye"></i></a>
+																}
+
+																
+															</div>
+														</td>
+														@* <td><a href="@Url.Action("WorkflowHistory", "Leave", new { id = item.TransactionId })">View</a></td> *@
+												<td>
+													<a href="#" class="me-2 btnWFView" id="btnWFView" name="btnWFView" data-bs-toggle="modal" data-bs-target="#Workflow_History" data-leaveid="@item.TransactionId"
+													   data-rec="@item.TransRecId" data-tableid="@item.TransTableId" data-transtype="@item.Value" title="View"><i class="ti ti-eye"></i></a>
+												</td>
+													</tr>												
+											}
+										}
+										else
+										{
+											<tr>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+											</tr>
+
+										}
+										@* <tr>
+											<td>
+												<a href="">EPGE-095295</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+												<span class="badge badge-success d-inline-flex align-items-center badge-xs">
+													<i class="ti ti-point-filled me-1"></i>Approved
+												</span>
+											</td>
+
+											<td>
+												<div class="action-icon d-inline-flex">
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+
+												</div>
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr>
+
+										<tr>
+											<td>
+												<a href="">EPGE-095296</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+												<span class="badge badge-danger d-inline-flex align-items-center badge-sm">
+													<i class="ti ti-point-filled me-1"></i>Rejected
+												</span>
+											</td>
+
+											<td>
+												<div class="action-icon d-inline-flex">
+
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee"><i class="ti ti-history" title="Recall"></i></a>
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+													<a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+												</div>
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr>
+										<tr>
+											<td>
+												<a href="">EPGE-095297</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+												<span class="badge badge-success d-inline-flex align-items-center badge-xs">
+													<i class="ti ti-point-filled me-1"></i>Approved
+												</span>
+											</td>
+
+											<td>
+												<div class="action-icon d-inline-flex">
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+
+												</div>
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr>
+										<tr>
+											<td>
+												<a href="">EPGE-095298</a>
+											</td>
+
+											<td>Bereavement leave</td>
+											<td>12 Sep 2024</td>
+											<td>12 Sep 2024</td>
+
+
+
+											<td>
+
+												<span class="badge badge-success d-inline-flex align-items-center badge-xs">
+													<i class="ti ti-point-filled me-1"></i>Approved
+												</span>
+											</td>
+
+											<td>
+												<div class="action-icon d-inline-flex">
+													<a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#add_employee" title="View"><i class="ti ti-eye"></i></a>
+
+												</div>
+											</td>
+											<td><a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a></td>
+										</tr> *@
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- Add Employee -->
+	<div class="modal fade" id="add_employee">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="d-flex align-items-center">
+						<h4 class="modal-title me-2"><b id="multipleIds"></b></h4><span>Employee  ID : EMP -@ViewBag.Username</span>
+					</div>
+					<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+						<i class="ti ti-x"></i>
+					</button>
+				</div>
+				<form action="employees.html">
+					<input type="hidden" id="leaveRecId" name="leaveRecId" />
+					<input type="hidden" id="requestTableId" name="requestTableId" />
+					<input type="hidden" id="BusinessTripRecId" name="BusinessTripRecId" />
+					<input type="hidden" id="TableId" name="TableId" />
+					<div class="contact-grids-tab">
+						<ul class="nav nav-underline" id="myTab" role="tablist">
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#basic-info" type="button" role="tab" aria-selected="true">Leave request</button>
+							</li>
+							<li class="nav-item " role="presentation">
+								<button class="nav-link" id="address-tab2" data-bs-toggle="tab" data-bs-target="#address2" type="button" role="tab" aria-selected="false">Loaned Items </button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link" id="address-tab2" data-bs-toggle="tab" data-bs-target="#Attachments" type="button" role="tab" aria-selected="false">Attachments<span class="badge bg-primary ms-1 rounded-pill" id="countattach"></span></button>
+							</li>
+							@* <div class="col-md-6 mb-1">
+							</div> *@
+							<div class="col-md-2 mb-1">
+
+								<select class="select2" id="workflow" name="workflow">
+									<option value="">Workflow</option>
+									<option value="Approve">Approve</option>
+									<option value="Reject">Reject</option>
+									<option value="delegation">Delegation</option>
+								</select>
+
+							</div>
+						</ul>
+					</div>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+							<div class="modal-body pb-0 ">
+								<div class="row">
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Leave Id</label>
+											<input type="text" class="form-control" id="leaveid" name="leaveid" disabled>
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Employee Name </label>
+											<input type="text" id="employeename" name="employeename" class="form-control" title="Employee ID : EMP -0024  &#10;Employee Name: Avinash &#10;Employee Department : Software Developer" disabled>
+										</div>
+									</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">From Date </label>
+										<div class="input-icon-end position-relative">
+											<input type="text" id="fromdate" name="fromdate" class="form-control datetimepicker" placeholder="dd/mm/yyyy" disabled>
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">To Date </label>
+										<div class="input-icon-end position-relative">
+											<input type="text" id="todate" name="todate" class="form-control datetimepicker" placeholder="dd/mm/yyyy" disabled>
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+							
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Leave Type</label>
+											<input type="text" id="leavetype" name="leavetype" class="form-control" disabled>											
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Leave Balance </label>
+											<input type="text" id="leavebalance" name="leavebalance" class="form-control" disabled>
+										</div>
+									</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">No of Days </label>
+										<input type="text" id="noofdays" name="noofdays" class="form-control" disabled>
+									</div>
+								</div>
+								<div class="col-md-6" id="divpayleavewithsalary">
+										<label class="form-label">Pay leave with Salary</label>
+										<div class="d-flex align-items-center">
+											<div class="form-check me-2">
+												<input class="form-check-input" type="radio" name="Annualleave1" value="option4" id="Annualleave6">
+												<label class="form-check-label" for="Annualleave6">
+													Yes
+												</label>
+											</div>
+											<div class="form-check me-2">
+												<input class="form-check-input" type="radio" name="Annualleave1" value="option5" id="Annualleave5">
+												<label class="form-check-label" for="Annualleave5">
+													No
+												</label>
+											</div>
+
+										</div>
+									</div>
+								<div class="col-md-6">
+									<label class="form-label">Backup Employee</label>
+									<input type="text" id="backupemployee" name="backupemployee" class="form-control" disabled>
+								</div>
+								<div class="col-md-6" id="divexpecteddeliverydate">
+									<div class="mb-3">
+										<label class="form-label" id="lblexpecteddeliverydate">Expected Delivery Date</label>
+										<div class="input-icon-end position-relative">
+											<input type="text" class="form-control datetimepicker" id="expecteddeliverydate" name="expecteddeliverydate" placeholder="dd/mm/yyyy" disabled>
+											<span class="input-icon-addon" id="spanexpecteddeliverydate">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+									@* <div class="col-md-6" hidden>
+										<div class="mb-3">
+											<label class="form-label">Return Date</label>
+											<div class="input-icon-end position-relative">
+												<input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy" id="returndate" name="returndate">
+												<span class="input-icon-addon">
+													<i class="ti ti-calendar text-gray-7"></i>
+												</span>
+											</div>
+										</div>
+									</div> *@
+
+
+
+
+								<div class="col-md-6" id="divmaternityleave">
+										<div class="mb-3">
+											<label class="form-label">Maternity leave</label>
+											<input type="text" id="maternityleave" name="maternityleave" class="form-control" disabled>
+										</div>
+									</div>
+									
+
+
+
+									@* <div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">No. of Attachments</label>
+											<input type="text" class="form-control" id="noofattachments" name="noofattachments">
+										</div>
+									</div> *@
+									<div class="col-md-6">
+										<div class="mb-3">
+											<input type="hidden" id="workflowPermissionId1" name="workflowPermissionId1" />
+											<input type="hidden" id="workflowTableId1" name="workflowTableId1" />
+											<input type="hidden" id="businessTripRecId" name="businessTripRecId" />
+											<input type="hidden" id="tableId" name="tableId" />
+											<label class="form-label">Comments</label>
+											<textarea class="form-control" rows="3" id="comments" name="comments"></textarea>
+										</div>
+									</div>
+									@* <div class="col-md-6">
+										<div class="d-flex align-items-center flex-wrap row-gap-3 bg-light w-100 rounded p-3 mb-4">
+											<div class="d-flex align-items-center justify-content-center avatar avatar-xxl rounded-circle border border-dashed me-2 flex-shrink-0 text-dark frames">
+												<i class="ti ti-photo text-gray-2 fs-16"></i>
+											</div>
+											<div class="profile-upload">
+												<div class="mb-2">
+													<h6 class="mb-1">Attachment</h6>
+													<!-- <p class="fs-12">Image should be below 4 mb</p> -->
+												</div>
+												<div class="profile-uploader d-flex align-items-center">
+													<div class="drag-upload-btn btn btn-sm btn-primary me-2">
+														Upload
+														<input type="file" class="form-control image-sign" multiple="">
+													</div>
+													<a href="javascript:void(0);" class="btn btn-light btn-sm">Cancel</a>
+												</div>
+											</div>
+										</div>
+									</div> *@
+								</div>
+							</div>
+
+							<div class="modal-footer">								
+							@* 	<button type="submit" class="btn btn-primary me-2">View Attachments </button> *@
+
+								<button type="submit" class="btn btn-success me-2">OK</button>
+								<button type="button" class="btn btn-outline-light border " data-bs-dismiss="modal">Cancel</button>
+
+							</div>
+						</div>
+
+					@* 	<div class="tab-pane fade" id="address2" role="tabpanel" aria-labelledby="address-tab2" tabindex="0">
+							<div class="modal-body">
+								<div class="card-body p-0">
+									<div class="custom-datatable-filter table-responsive">
+										<table class="table datatable" id="loanitems">
+											<thead class="thead-light">
+												<tr>
+													<th>Asset Id</th>
+													<th>Asset Type</th>
+													<th>Asset Return Status</th>
+												</tr>
+											</thead>
+											<tbody>
+											@if (ViewBag.LoanUser != null && ViewBag.LoanUser.Count > 0)
+											{
+												foreach (var items in ViewBag.LoanUser)
+												{
+													<tr>
+														<td>
+															@items.Id
+														</td>
+														<td>
+															@items.loantype
+														</td>
+														<td>
+															@items.loanItemid
+														</td>													
+													</tr>
+												}
+											}
+											else
+											{
+												if (ViewBag.LoanUser != null)
+												{
+													foreach (var users in ViewBag.LoanUser)
+													{
+														<tr>
+															<td>
+																@users.Id
+															</td>
+															<td>
+																@users.loantype
+															</td>
+															<td>
+																@users.loanItemid
+															</td>
+														</tr>
+													}
+												}
+												
+											}
+											@* 	<tr>
+													<td><a href="">ASS-095295</a></td>
+													<td>Laptop</td>
+													<td>
+														<div class="d-flex align-items-center ">
+															<div class="form-check me-2">
+																<input class="form-check-input" type="radio" name="Annualleave1" value="option4" id="Annualleave6">
+																<label class="form-check-label" for="Annualleave6">
+																	Yes
+																</label>
+															</div>
+															<div class="form-check me-2">
+																<input class="form-check-input" type="radio" name="Annualleave1" value="option5" id="Annualleave5">
+																<label class="form-check-label" for="Annualleave5">
+																	No
+																</label>
+															</div>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td><a href="">ASS-095265</a></td>
+													<td>phone</td>
+													<td>
+														<div class="d-flex align-items-center ">
+															<div class="form-check me-2">
+																<input class="form-check-input" type="radio" name="Annualleave1" value="option4" id="Annualleave6">
+																<label class="form-check-label" for="Annualleave6">
+																	Yes
+																</label>
+															</div>
+															<div class="form-check me-2">
+																<input class="form-check-input" type="radio" name="Annualleave1" value="option5" id="Annualleave5">
+																<label class="form-check-label" for="Annualleave5">
+																	No
+																</label>
+															</div>
+														</div>
+													</td>
+												</tr> 
+
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-outline-light border me-2" data-bs-dismiss="modal">Cancel</button>
+								<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#success_modal">Save </button>
+							</div>
+						</div> *@
+
+
+					<div class="tab-pane fade" id="address2" role="tabpanel" aria-labelledby="address-tab2">
+						<div class="custom-datatable-filter table-responsive">
+							<table class="table datatable" id="loanitems">
+								<thead class="thead-light">
+									<tr>
+										<th>Asset Id</th>
+										<th>Asset Type</th>
+										<th>Asset Return Status</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+						<span id="loanItemsCount">0</span>
+					</div>
+
+
+
+
+						<div class="tab-pane fade" id="Attachments" role="tabpanel" aria-labelledby="address-tab2" tabindex="0">
+							<div class="modal-body">
+								<div class="card-body p-0">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="input-block mb-0">
+												<label class="form-label">Attachments</label>
+												<input class="form-control" type="file" id="attachments" name="attachments" multiple>
+											</div>
+										</div>
+										@* <div class="col-md-6 p-4">
+											<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#success_modal">Submit </button>
+										</div> *@
+									</div>
+									<div class="custom-datatable-filter table-responsive">
+										<table id="attachmentsTable1" class="table datatable ">
+										<thead class="thead-light">
+											<tr>
+												<th>File Name</th>
+												<th>Attached By</th>
+												<th>Date of Upload</th>
+												<th>Action</th>
+												@* <th colspan="3"></th> *@
+												
+											</tr>
+										</thead>
+										<tbody>
+											@* <tr>
+												<th colspan="7"></th>
+											</tr> *@
+										</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+<div class="modal fade" id="add_employeeLR">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="d-flex align-items-center">
+						<h4 class="modal-title me-2"><b id="multipleIds"></b></h4><span>Employee  ID : EMP -@ViewBag.Username</span>
+					</div>
+					<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+						<i class="ti ti-x"></i>
+					</button>
+				</div>
+				<form action="employees.html">
+					<input type="hidden" id="leaveRecId" name="leaveRecId" />
+					<input type="hidden" id="requestTableId" name="requestTableId" />
+					<input type="hidden" id="BusinessTripRecId" name="BusinessTripRecId" />
+					<input type="hidden" id="TableId" name="TableId" />
+					<div class="contact-grids-tab">
+						<ul class="nav nav-underline" id="myTab" role="tablist">
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#basic-info2" type="button" role="tab" aria-selected="true">Leave request</button>
+							</li>
+							<li class="nav-item " role="presentation">
+								<button class="nav-link" id="address-tab2" data-bs-toggle="tab" data-bs-target="#address3" type="button" role="tab" aria-selected="false">Loaned Items </button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link" id="address-tab2" data-bs-toggle="tab" data-bs-target="#Attachments2" type="button" role="tab" aria-selected="false">Attachments<span class="badge bg-primary ms-1 rounded-pill" id="countattach"></span></button>
+							</li>
+							@* <div class="col-md-6 mb-1">
+							</div> *@
+							<div class="col-md-2 mb-1">
+
+								<select class="select2" id="workflow" name="workflow">
+									<option value="">Workflow</option>
+									<option value="Approve">Approve</option>
+									<option value="Reject">Reject</option>
+									<option value="delegation">Delegation</option>
+								</select>
+
+							</div>
+						</ul>
+					</div>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="basic-info2" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+							<div class="modal-body pb-0 ">
+								<div class="row">
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Leave Id</label>
+											<input type="text" class="form-control" id="leaveid" name="leaveid" disabled>
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Employee Name </label>
+											<input type="text" id="employeename" name="employeename" class="form-control" title="Employee ID : EMP -0024  &#10;Employee Name: Avinash &#10;Employee Department : Software Developer" disabled>
+										</div>
+									</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">From Date </label>
+										<div class="input-icon-end position-relative">
+											<input type="text" id="fromdate" name="fromdate" class="form-control datetimepicker" placeholder="dd/mm/yyyy" disabled>
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">To Date </label>
+										<div class="input-icon-end position-relative">
+											<input type="text" id="todate" name="todate" class="form-control datetimepicker" placeholder="dd/mm/yyyy" disabled>
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Return Date </label>
+										<div class="input-icon-end position-relative">
+											<input type="text" id="returndate" name="returndate" class="form-control datepicker" placeholder="dd/mm/yyyy" >
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+							
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Leave Type</label>
+											<input type="text" id="leavetype" name="leavetype" class="form-control" disabled>											
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Leave Balance </label>
+											<input type="text" id="leavebalance" name="leavebalance" class="form-control" disabled>
+										</div>
+									</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">No of Days </label>
+										<input type="text" id="noofdays" name="noofdays" class="form-control" disabled>
+									</div>
+								</div>
+								<div class="col-md-6" id="divpayleavewithsalaryLR">
+										<label class="form-label">Pay leave with Salary</label>
+										<div class="d-flex align-items-center">
+											<div class="form-check me-2">
+												<input class="form-check-input" type="radio" name="PayLeave" value="option4" id="PayLeaveLrT">
+											<label class="form-check-label" for="PayLeave">
+													Yes
+												</label>
+											</div>
+											<div class="form-check me-2">
+											<input class="form-check-input" type="radio" name="PayLeave" value="option5" id="PayLeaveLrF">
+												<label class="form-check-label" for="PayLeave">
+													No
+												</label>
+											</div>
+
+										</div>
+									</div>
+								<div class="col-md-6">
+									<label class="form-label">Backup Employee</label>
+									<input type="text" id="backupemployee" name="backupemployee" class="form-control" disabled>
+								</div>
+								<div class="col-md-6" id="divexpecteddeliverydateLR">
+									<div class="mb-3">
+										<label class="form-label" id="lblexpecteddeliverydate">Expected Delivery Date</label>
+										<div class="input-icon-end position-relative">
+											<input type="text" class="form-control datetimepicker" id="expecteddeliverydate" name="expecteddeliverydate" placeholder="dd/mm/yyyy" disabled>
+											<span class="input-icon-addon" id="spanexpecteddeliverydate">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+									@* <div class="col-md-6" hidden>
+										<div class="mb-3">
+											<label class="form-label">Return Date</label>
+											<div class="input-icon-end position-relative">
+												<input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy" id="returndate" name="returndate">
+												<span class="input-icon-addon">
+													<i class="ti ti-calendar text-gray-7"></i>
+												</span>
+											</div>
+										</div>
+									</div> *@
+
+
+
+
+								<div class="col-md-6" id="divmaternityleaveLR">
+										<div class="mb-3">
+											<label class="form-label">Maternity leave</label>
+											<input type="text" id="maternityleave" name="maternityleave" class="form-control" disabled>
+										</div>
+									</div>
+									
+
+
+
+									@* <div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">No. of Attachments</label>
+											<input type="text" class="form-control" id="noofattachments" name="noofattachments">
+										</div>
+									</div> *@
+									<div class="col-md-6">
+										<div class="mb-3">
+											<input type="hidden" id="workflowPermissionId1" name="workflowPermissionId1" />
+											<input type="hidden" id="workflowTableId1" name="workflowTableId1" />
+											<input type="hidden" id="businessTripRecId" name="businessTripRecId" />
+											<input type="hidden" id="tableId" name="tableId" />
+											<label class="form-label">Comments</label>
+											<textarea class="form-control" rows="3" id="comments" name="comments"></textarea>
+										</div>
+									</div>
+									@* <div class="col-md-6">
+										<div class="d-flex align-items-center flex-wrap row-gap-3 bg-light w-100 rounded p-3 mb-4">
+											<div class="d-flex align-items-center justify-content-center avatar avatar-xxl rounded-circle border border-dashed me-2 flex-shrink-0 text-dark frames">
+												<i class="ti ti-photo text-gray-2 fs-16"></i>
+											</div>
+											<div class="profile-upload">
+												<div class="mb-2">
+													<h6 class="mb-1">Attachment</h6>
+													<!-- <p class="fs-12">Image should be below 4 mb</p> -->
+												</div>
+												<div class="profile-uploader d-flex align-items-center">
+													<div class="drag-upload-btn btn btn-sm btn-primary me-2">
+														Upload
+														<input type="file" class="form-control image-sign" multiple="">
+													</div>
+													<a href="javascript:void(0);" class="btn btn-light btn-sm">Cancel</a>
+												</div>
+											</div>
+										</div>
+									</div> *@
+								</div>
+							</div>
+
+							<div class="modal-footer">								
+							@* 	<button type="submit" class="btn btn-primary me-2">View Attachments </button> *@
+
+								<button type="submit" class="btn btn-success me-2">OK</button>
+								<button type="button" class="btn btn-outline-light border " data-bs-dismiss="modal">Cancel</button>
+
+							</div>
+						</div>
+
+					
+
+					<div class="tab-pane fade" id="address3" role="tabpanel" aria-labelledby="address-tab2">
+						<div class="custom-datatable-filter table-responsive">
+							<table class="table datatable" id="loanitems">
+								<thead class="thead-light">
+									<tr>
+										<th>Asset Id</th>
+										<th>Asset Type</th>
+										<th>Asset Return Status</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+						<span id="loanItemsCount">0</span>
+					</div>
+
+
+						<div class="tab-pane fade" id="Attachments2" role="tabpanel" aria-labelledby="address-tab2" tabindex="0">
+							<div class="modal-body">
+								<div class="card-body p-0">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="input-block mb-0">
+												<label class="form-label">Attachments</label>
+												<input class="form-control" type="file" id="attachments" name="attachments" multiple>
+											</div>
+										</div>
+										@* <div class="col-md-6 p-4">
+											<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#success_modal">Submit </button>
+										</div> *@
+									</div>
+									<div class="custom-datatable-filter table-responsive">
+										<table id="attachmentsTable3" class="table datatable ">
+										<thead class="thead-light">
+											<tr>
+												<th>File Name</th>
+												<th>Attached By</th>
+												<th>Date of Upload</th>
+												<th>Action</th>
+												@* <th colspan="3"></th> *@
+												
+											</tr>
+										</thead>
+										<tbody>
+											@* <tr>
+												<th colspan="7"></th>
+											</tr> *@
+										</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- /Add Employee -->
+<!-- Read Leve Resumption -->
+
+<!--  Read Leve Resumption -->
+<!--Certificate Request-->
+
+
+<div class="modal " id="add_certificate">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2">Create Certificate Request</h4><span>Employee  ID : EMP -0024</span>
+				</div>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<form action="employees.html">
+				<div class="contact-grids-tab">
+					<ul class="nav nav-underline" id="myTab" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#basic-info" type="button" role="tab" aria-selected="true">Certificate Request</button>
+						</li>
+
+						<li class="nav-item" role="presentation">
+							<button class="nav-link" id="address-tab2" data-bs-toggle="tab" data-bs-target="#AttachmentsCertificate" type="button" role="tab" aria-selected="false">Attachments<span class="badge bg-primary ms-1 rounded-pill">2</span></button>
+						</li>
+						<div class="col-md-2 mb-1">
+
+							<select class="select2" id="workflow" name="workflow">
+								<option value="">Workflow</option>
+								<option value="Approve">Approve</option>
+								<option value="Reject">Reject</option>
+								<option value="delegation">Delegation</option>
+							</select>
+
+						</div>
+					</ul>
+				</div>
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+						<div class="modal-body pb-0 ">
+							<div class="row">
+								<input type="hidden" id="leaveRecId" name="leaveRecId" />
+								<input type="hidden" id="requestTableId" name="requestTableId" />
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Request ID</label>
+										<input type="text" class="form-control" id="RequestId" name="RequestId">
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Employee Name</label>
+										@* <select class="select2" id="ddlEmployee">
+
+										</select> *@
+										<input type="text" class="form-control" id="ddlEmployee" name="Employee">
+									</div>
+								</div>
+
+
+
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Date</label>
+										<div class="input-icon-end position-relative">
+											<input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy" id="transDate">
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Reason</label>
+										<input type="text" class="form-control" id="txtDesc">
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Remarks</label>
+										<textarea class="form-control" rows="3" id="txttype"></textarea>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">No. of Attachments</label>
+										<input type="text" class="form-control">
+									</div>
+								</div>
+
+
+								<div class="col-md-6">
+									<div class="d-flex align-items-center flex-wrap row-gap-3 bg-light w-100 rounded p-3 mb-4">
+										<div class="d-flex align-items-center justify-content-center avatar avatar-xxl rounded-circle border border-dashed me-2 flex-shrink-0 text-dark frames">
+											<i class="ti ti-photo text-gray-2 fs-16"></i>
+										</div>
+										<div class="profile-upload">
+											<div class="mb-2">
+												<h6 class="mb-1">Attachment</h6>
+												<!-- <p class="fs-12">Image should be below 4 mb</p> -->
+											</div>
+											<div class="profile-uploader d-flex align-items-center">
+												<div class="drag-upload-btn btn btn-sm btn-primary me-2">
+													Upload
+													<input type="file" class="form-control image-sign" multiple="">
+												</div>
+												<a href="javascript:void(0);" class="btn btn-light btn-sm">Cancel</a>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="mb-3">
+								<input type="hidden" id="workflowPermissionId1" name="workflowPermissionId1" />
+								<input type="hidden" id="workflowTableId1" name="workflowTableId1" />
+								<input type="hidden" id="CertificateRecId" name="CertificateRecId" />
+								<input type="hidden" id="tableId" name="tableId" />
+								<label class="form-label">Comments</label>
+								<textarea class="form-control" rows="3" id="comments" name="comments"></textarea>
+							</div>
+						</div>
+
+						<div class="modal-footer">
+							<div class="modal-footer">
+
+
+								<button type="submit" class="btn btn-success me-2">OK</button>
+								<button type="button" class="btn btn-outline-light border " data-bs-dismiss="modal">Cancel</button>
+
+							</div>
+
+
+						</div>
+					</div>
+
+
+
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+	<!-- Loaned Items Tab -->
+	@* 	<div class="tab-pane fade" id="address2" role="tabpanel" aria-labelledby="address-tab2" tabindex="0">
+		<form id="loanedItemsForm">
+			<div class="modal-body">
+				<div class="card-body p-0">
+					<div class="custom-datatable-filter table-responsive">
+						<table class="table datatable">
+							<thead class="thead-light">
+								<tr>
+									<th>Asset Id</th>
+									<th>Asset Type</th>
+									<th>Return Asset</th>
+									<th>Assigned on</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><a href="">ASS-095295</a></td>
+									<td>Laptop</td>
+									<td>
+										<div class="form-check me-2">
+											<input class="form-check-input" type="checkbox" name="returnAssets" value="ASS-095295" id="asset1">
+											<label class="form-check-label" for="asset1">Return</label>
+										</div>
+									</td>
+									<td>2025-01-01</td>
+								</tr>
+								<tr>
+									<td><a href="">ASS-095265</a></td>
+									<td>Phone</td>
+									<td>
+										<div class="form-check me-2">
+											<input class="form-check-input" type="checkbox" name="returnAssets" value="ASS-095265" id="asset2">
+											<label class="form-check-label" for="asset2">Return</label>
+										</div>
+									</td>
+									<td>2025-02-01</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-light border me-2" id="cancelLoanedItemsButton">Cancel</button>
+				<button type="button" class="btn btn-primary" id="saveLoanedItemsButton">Save</button>
+			</div>
+		</form>
+	</div> *@
+	<div class="tab-pane fade" id="AttachmentsCertificate" role="tabpanel" aria-labelledby="address-tab2" tabindex="0">
+		<div class="modal-body">
+			<div class="card-body p-0">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-block mb-0">
+							<label class="form-label">Attachments</label>
+							<input class="form-control" type="file" id="attachments" name="attachments" multiple>
+						</div>
+					</div>
+					<div class="col-md-6 p-4">
+						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#success_modal">Submit </button>
+					</div>
+				</div>
+				<div class="custom-datatable-filter table-responsive">
+					<table id="attachmentsTable4" class="table datatable">
+						<thead class="thead-light">
+							<tr>
+								<th>File Name</th>
+
+								<th>Attached By</th>
+								<th>Date of Upload</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--Certificate Request-->
+
+
+
+
+	<!-- Add BusinessTrip -->
+	<div class="modal fade" id="add_BusinessTrip">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="d-flex align-items-center">
+						<h4 class="modal-title me-2"> Business Trip</h4><span>Employee  ID : EMP -@ViewBag.Username</span>
+					</div>
+					<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+						<i class="ti ti-x"></i>
+					</button>
+				</div>
+				<form action="">
+					<input type="hidden" id="BusinessTripRecId" name="BusinessTripRecId" />
+					<input type="hidden" id="TableId" name="TableId" />
+					<div class="contact-grids-tab">
+						<ul class="nav nav-underline" id="myTab" role="tablist">
+							<li class="nav-item" role="presentation">
+							<button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#BusinessTrip" type="button" role="tab" aria-selected="true">Business Trip</button>
+							</li>
+							<li class="nav-item" role="presentation">
+							<button class="nav-link" id="address-tab2" data-bs-toggle="tab" data-bs-target="#TravelArrangementsType" type="button" role="tab" aria-selected="false">Travel Arrangements Type</button>
+							</li>
+							<li class="nav-item" role="presentation">
+							<button class="nav-link" id="address-tab2" data-bs-toggle="tab" data-bs-target="#BusinessTripAttachments" type="button" role="tab" aria-selected="false">Attachments<span class="badge bg-primary ms-1 rounded-pill" id="countattach"></span></button>
+							</li>
+						<div class="col-md-4 mb-1">
+						
+						<div class="col-md-2 mb-1">
+
+							<select class="select2" id="workflow" name="workflow">
+								<option value="">Workflow</option>
+								<option value="Approve">Approve</option>
+								<option value="Reject">Reject</option>
+								<option value="delegation">Delegation</option>
+							</select>
+
+						</div>
+						</div>
+							@* <div class="col-md-2 mb-1">
+
+								<select class="select2" id="workflow" name="workflow">
+									<option value="">Workflow</option>
+									<option value="Approve">Approve</option>
+									<option value="Reject">Reject</option>
+									<option value="delegation">Delegation</option>
+								</select>
+							</div> *@
+						</ul>
+					</div>
+					<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show active" id="BusinessTrip" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+							<div class="modal-body pb-0 ">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Request Id</label>
+											<input type="text" id="requestid" class="form-control" disabled>
+										</div>
+									</div>
+
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Employee Name</label>
+											<input type="text" id="employeename" name="employeename" class="form-control" title="Employee ID : EMP -0024  &#10;Employee Name: Avinash &#10;Employee Department : Software Developer" disabled>
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											 <label class="form-label">Source Country</label>
+											@*<select class="form-control select" id="sourcecountry" name="sourcecountry">
+												 <option value="">Select</option> 
+												<!-- Populate dynamically if needed -->
+											</select> *@
+											<input type="text" id="sourcecountry" class="form-control" disabled>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Destination Country</label>
+											<input type="text" id="destinationcountry" class="form-control" disabled>
+											@* <select class="form-control select" id="destinationcountry" name="destinationcountry" disabled>
+												@* <option value="">Select</option> 
+												<!-- Populate dynamically if needed -->
+											</select> *@
+										</div>
+									</div>
+									<div class="col-md-6">
+										@* <div class="mb-3">
+										<label class="form-label">Event Start Date </label>
+										<div class="input-icon-end position-relative">
+											<input type="text" id="eventstartdate" class="form-control datetimepicker" placeholder="mm/dd/yyyy">
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div> *@
+										<div class="mb-3">
+											<label class="form-label">Event Start Date</label>
+											<div class="input-icon-end position-relative">
+												<input type="date" id="eventstartdate" class="form-control" autocomplete="off" placeholder="dd/mm/yyyy" disabled>
+												<span class="input-icon-addon">
+													<i class="ti ti-calendar text-gray-7"></i>
+												</span>
+											</div>
+										</div>
+
+									</div>
+									<div class="col-md-6">
+										@* <div class="mb-3">
+										<label class="form-label">Event End Date </label>
+										<div class="input-icon-end position-relative">
+											<input type="text" id="eventenddate" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div> *@
+										<div class="mb-3">
+											<label class="form-label">Event End Date</label>
+											<div class="input-icon-end position-relative">
+												<input type="date" id="eventenddate" autocomplete="off" class="form-control" placeholder="dd/mm/yyyy" disabled>
+												<span class="input-icon-addon">
+													<i class="ti ti-calendar text-gray-7"></i>
+												</span>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Business Trip Expense type </label>
+											<input type="text" id="businesstripexpensetype" class="form-control" disabled>
+											@* <select class="form-control select" id="businesstripexpensetype" name="businesstripexpensetype" disabled>
+												@* <option value="">Select</option> 
+												<!-- Populate dynamically if needed -->
+											</select> *@
+										</div>
+									</div>
+									@* <div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Currency Code </label>
+											<input type="text" id="currencycode" name="currencycode" class="form-control" disabled>
+										</div>
+									</div> *@
+									@* <div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">No. of Attachments</label>
+											<input type="text" id="noofattachments" class="form-control">
+										</div>
+									</div> *@
+									<div class="col-md-6">
+										<div class="mb-3">
+											<input type="hidden" id="workflowPermissionId1" name="workflowPermissionId1" />
+											<input type="hidden" id="workflowTableId1" name="workflowTableId1" />
+											<input type="hidden" id="businessTripRecId" name="businessTripRecId" />
+											<input type="hidden" id="tableId" name="tableId" />
+											<label class="form-label">Comments</label>
+											<textarea class="form-control" id="comments" rows="3"></textarea>
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="d-flex align-items-center flex-wrap row-gap-3 bg-light w-100 rounded p-3 mb-4">
+											<div class="d-flex align-items-center justify-content-center avatar avatar-xxl rounded-circle border border-dashed me-2 flex-shrink-0 text-dark frames">
+												<i class="ti ti-photo text-gray-2 fs-16"></i>
+											</div>
+											@* <div class="profile-upload">
+												<div class="mb-2">
+													<h6 class="mb-1">Attachment</h6>
+													<!-- <p class="fs-12">Image should be below 4 mb</p> -->
+												</div>
+												<div class="profile-uploader d-flex align-items-center">
+													<div class="drag-upload-btn btn btn-sm btn-primary me-2">
+														Upload
+														<input type="file" class="form-control image-sign" multiple="">
+													</div>
+													<a href="javascript:void(0);" id="cancelBusinessButton" class="btn btn-light btn-sm">Cancel</a>
+												</div>
+
+											</div> *@
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="modal-footer">
+
+								@* <button type="submit" class="btn btn-primary me-2">View Attachments </button> *@
+								@* <button type="submit" id="btnBtripSave" class="btn btn-primary me-2">Submit </button>
+								<button type="submit" id="btnUpdate" class="btn btn-primary me-2">Update </button>
+								<button type="button" class="btn btn-outline-light border " data-bs-dismiss="modal">Cancel</button> *@
+								<button type="submit" class="btn btn-success me-2">OK</button>
+								<button type="button" class="btn btn-outline-light border " data-bs-dismiss="modal">Cancel</button>
+
+							</div>
+						</div>
+
+					<div class="tab-pane fade" id="TravelArrangementsType" role="tabpanel" aria-labelledby="address-tab2" tabindex="0">
+							<div class="modal-body">
+								<div class="card-body p-0">
+									<div class="custom-datatable-filter table-responsive">
+										<button type="button" class="btn btn-primary" onclick="addEditableRow()">Add New </button>
+
+										<table class="table datatable">
+											<thead class="thead-light">
+												<tr>
+
+													<th>Type</th>
+													<th>Description</th>
+													<th>Amount</th>
+													<th>Approved Amount</th>
+													<th>Comments</th>
+													<th>Action</th>
+
+												</tr>
+											</thead>
+											<tbody id="dataTableBody">
+												<tr>
+
+													<td>Laptop</td>
+													<td><a href="">Testing</a></td>
+													<td>
+														500
+													</td>
+													<td>350</td>
+													<td>testing manager</td>
+													<td></td>
+												</tr>
+
+
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-outline-light border me-2" data-bs-dismiss="modal">Cancel</button>
+								<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#success_modal">Save </button>
+							</div>
+						</div>
+					<div class="tab-pane fade" id="BusinessTripAttachments" role="tabpanel" aria-labelledby="address-tab2" tabindex="0">
+							<div class="modal-body">
+								<div class="card-body p-0">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="input-block mb-0">
+												<label class="form-label">Attachments</label>
+												<input class="form-control" type="file" id="attachments" name="attachments" multiple>
+											</div>
+										</div>
+										@* <div class="col-md-6 p-4">
+										<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#success_modal">Submit </button>
+									</div> *@
+									</div>
+									<div class="custom-datatable-filter table-responsive">
+										<table id="attachmentsTable2" class="table datatable ">
+										<thead class="thead-light">
+											<tr>
+												<th>File Name</th>
+												<th>Attached By</th>
+												<th>Date of Upload</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Add BusinessTrip End -->
+
+	<!-- Workflow_History -->
+
+<div class="modal fade" id="Workflow_History">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content" style="width:1050px;">
+			<div class="modal-header">
+				<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2">Workflow History</h4>
+					<span>Employee  ID : EMP-@ViewBag.Username</span>
+				</div>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<div class="custom-datatable-filter table-responsive" id="workflowContainer">
+			</div>
+		</div>
+	</div>
+</div>
+
+
+@* 	<div class="modal fade" id="Workflow_History">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="d-flex align-items-center">
+						<h4 class="modal-title me-2">Workflow History </h4><span>Employee  ID : EMP -0024</span>
+					</div>
+					<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+						<i class="ti ti-x"></i>
+					</button>
+				</div>
+				<div class="custom-datatable-filter table-responsive">
+					<table class="table datatable">
+						<thead class="thead-light">
+							<tr>
+
+								<th>Request ID</th>
+								<th></th>
+								<th>WF Trans ID:</th>
+								<th></th>
+								<th>Raised By:</th>
+								<th></th>
+							</tr>
+						</thead>
+						<thead class="thead-light">
+							<tr>
+
+								<th>Level</th>
+
+								<th>Approver</th>
+
+								<th>Status</th>
+								<th>Remarks</th>
+								<th>Comments</th>
+								<th>Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+
+			</div>
+		</div>
+	</div> *@
+	<!-- /Workflow_History -->
+	<!-- Add Employee Success -->
+	<div class="modal fade" id="success_modal" role="dialog">
+		<div class="modal-dialog modal-dialog-centered modal-sm">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="text-center p-3">
+						<span class="avatar avatar-lg avatar-rounded bg-success mb-3"><i class="ti ti-check fs-24"></i></span>
+						<h5 class="mb-2">Employee Added Successfully</h5>
+						<p class="mb-3">
+							Stephan Peralt has been added with Client ID : <span class="text-primary">#EMP - 0001</span>
+						</p>
+						<div>
+							<div class="row g-2">
+							@* <div class="col-6">
+								<a asp-controller="Leave" asp-action="LeaveRequest" class="btn btn-dark w-100">Back to List</a>
+							</div> *@
+							<div class="col-12">
+								<a asp-controller="Manager" asp-action="Alltransaction" class="btn btn-primary w-100">Ok</a>
+							</div>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Add Client Success -->
+	<!-- Delete Modal -->
+	<div class="modal fade" id="delete_modal">
+		<div class="modal-dialog modal-dialog-centered modal-sm">
+			<div class="modal-content">
+				<div class="modal-body text-center">
+					<span class="avatar avatar-xl bg-transparent-danger text-danger mb-3">
+						<i class="ti ti-trash-x fs-36"></i>
+					</span>
+					<h4 class="mb-1">Confirm Delete</h4>
+					<p class="mb-3">You want to delete all the marked items, this cant be undone once you delete.</p>
+					<div class="d-flex justify-content-center">
+						<a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+						<a href="employees.html" class="btn btn-danger">Yes, Delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Delete Modal -->
+	<!-- Delegation Modal -->
+	<div class="modal fade" id="Delegation_modal">
+		<div class="modal-dialog modal-dialog-centered modal-sm">
+			<div class="modal-content">
+				<div class="modal-body text-center">
+					<span class="avatar avatar-xl bg-transparent-danger text-danger mb-3">
+						<i class="ti ti-trash-x fs-36"></i>
+					</span>
+					<h4 class="mb-1">Select Delegation</h4>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="form-label">Delegation Name</label>
+							<select class="select" disabled>
+								<option>Employee Name1</option>
+								<option>Employee Name2</option>
+								<option>Employee Name3</option>
+
+							</select>
+						</div>
+					</div>
+					<div class="d-flex justify-content-center">
+						<a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+						<a href="" class="btn btn-danger">Submit</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Delegation Modal -->
+
+	<!-- Delegation Modal -->
+	<div class="tab-content" id="myTabContent3">
+		<div class="modal fade" id="Delegation_modal">
+			<div class="modal-dialog modal-dialog-centered modal-sm">
+				<div class="modal-content">
+					<div class="modal-body text-center">
+						<span class="avatar avatar-xl bg-transparent-danger text-danger mb-3">
+							<i class="ti ti-trash-x fs-36"></i>
+						</span>
+						<h4 class="mb-1">Select Delegation</h4>
+						<div class="col-md-6">
+							<div class="mb-3">
+								<label class="form-label">Delegation Name</label>
+								<select class="form-control select" id="delemployeename" name="delemployeename">
+									@* <option value="">Select</option> *@
+									<!-- Populate dynamically if needed -->
+								</select>
+							</div>
+						</div>
+						<div class="d-flex justify-content-center">
+							<a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+							<a href="javascript:void(0);" class="btn btn-danger">Submit</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Delegation Modal -->
+<!--IT Assets(View IT Assets)-->
+<div class="modal fade" id="add_ITassets">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2"> IT Assets</h4><span>Employee  ID : EMP -@ViewBag.Username</span>
+				</div>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<form action="">
+				<input type="hidden" id="ITAssetsRecId" name="ITAssetsRecId" />
+				<input type="hidden" id="ITAssetsTableId" name="ITAssetsTableId" />
+				<div class="contact-grids-tab">
+					<ul class="nav nav-underline" id="myTab" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#ITAssets" type="button" role="tab" aria-selected="true">IT Assets</button>
+						</li>
+						<div class="col-md-4 mb-1">
+
+							<div class="col-md-2 mb-1">
+
+								<select class="select2" id="workflow" name="workflow">
+									<option value="">Workflow</option>
+									<option value="Approve">Approve</option>
+									<option value="Reject">Reject</option>
+									<option value="delegation">Delegation</option>
+								</select>
+							</div>
+						</div>
+					</ul>
+				</div>
+				<div class="tab-content" id="myITAssetsTabContent">
+					<div class="tab-pane fade show active" id="ITAssets" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+						<div class="modal-body pb-0 ">
+							<div class="row">
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Request ID</label>
+										<input type="text" class="form-control" id="requestidvw" name="requestidvw" readonly>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Employee Name</label>
+										@* <select class="form-control select2" id="employeename" name="employeename">
+										</select> *@
+										<input type="text" class="form-control" id="employeenamevw" name="employeenamevw" readonly>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label" for="requiredby">Required By</label>
+										<div class="input-icon-end position-relative">
+											<input type="text" id="requiredbyvw" name="requiredbyvw" class="form-control datetimepicker" placeholder="dd/mm/yyyy" readonly>
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label" for="requestedtill">Requested Till</label>
+										<div class="input-icon-end position-relative">
+											<input type="text" id="requestedtillvw" name="requestedtillvw" class="form-control datetimepicker" placeholder="dd/mm/yyyy" readonly>
+											<span class="input-icon-addon">
+												<i class="ti ti-calendar text-gray-7"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Asset Type</label>
+										<input type="text" class="form-control" id="loantypevw" name="loantypevw" readonly>
+									</div>
+
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Purpose</label>
+										<input type="text" id="purposevw" name="purposevw" class="form-control" readonly>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">No of Attachments</label>
+										<input type="text" class="form-control" id="noofattachmentsvw" name="noofattachmentsvw" readonly>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="input-block mb-0">
+										<label class="form-label">Attachments</label>
+										<input class="form-control" type="file" multiple id="attachmentslistvm" name="attachmentslistvm" readonly disabled>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Additional Details</label>
+										<textarea class="form-control" id="additionaldetailsvw" name="additionaldetailsvw" rows="3" readonly></textarea>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="mb-3">
+										<label class="form-label">Comment</label>
+										<textarea class="form-control" id="itassetscomment" name="itassetscomment" rows="3"></textarea>
+									</div>
+								</div>
+
+								<div class="col-md-12">
+									<div id="errorMessage" class="text-danger mt-2"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="modal-footer">
+							<a data-bs-toggle="modal" data-bs-target="#ITAssetsAttachments" class="btn btn-primary me-2">View Attachments</a>
+							@* <button type="submit" class="btn btn-success me-2">Approve</button>
+							<button type="submit" class="btn btn-danger me-2">Reject</button>
+							<button type="submit" class="btn btn-primary me-2">Delegation</button> *@
+							<button type="submit" class="btn btn-success me-2">OK</button>
+							<button type="button" class="btn btn-outline-light border " data-bs-dismiss="modal">Cancel</button>
+
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- /View Assets -->
+<!-- IT Assets Attachments -->
+<div class="modal fade" id="ITAssetsAttachments">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2">Attachments</h4>
+				</div>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+
+			<div class="custom-datatable-filter table-responsive">
+				<table id="AssetsattachmentsTable" class="table datatable">
+					<thead class="thead-light">
+						<tr>
+
+							<th>File Name</th>
+							<th>Attached By</th>
+							<th>Date of Upload</th>
+							<th>Action</th>
+
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- /IT Assets Attachments -->
+<!--/IT Assets-->
+<!-- /Page Wrapper -->
+<!-- Script to trigger modal -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="@Url.Content("~/assets/plugins/flatpickr/flatpickr.min.css")" rel="stylesheet" />
+<script src="@Url.Content("~/assets/plugins/flatpickr/flatpickr.min.js")"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script type="text/javascript">
+
+	$(document).ready(function () {
+
+		let loanTable = null;
+		//----------------------dates
+		flatpickr("#fromdate", {
+			dateFormat: "d/m/Y", // Flatpickr uses lowercase m/d/Y for MM/dd/yyyy
+			allowInput: true
+		});
+		flatpickr("#todate", {
+			dateFormat: "d/m/Y",  // MM/dd/yyyy format
+			allowInput: true
+		});
+
+		
+
+
+
+		
+
+		$(document).on('click', '.btnView', function () {
+			debugger;
+				
+			var idData = $(this).data('id').split(',');
+			if (idData.length < 2) {
+				alert('Invalid data-id format');
+				return;
+			}
+			var leaveId = idData[0] || '';
+			var userId = idData[1] || '';
+			var requestType = idData[2] || '';
+			var param = leaveId + ',' + userId + ',' + requestType; // Format: leaveId,userId,RequestType
+			var url;
+			var $modal = $('#add_employee');
+			// Step 1: Reset all form fields and clear Chosen dropdowns
+			$modal.find('form')[0].reset();
+			$modal.find('.chosen-select').val('').trigger('chosen:updated');
+			
+			$.ajax({
+				url: '@Url.Action("ReadManagerLevelRequest", "Manager")',
+				type: 'GET',
+				data: { leaveId: param }, // Send formatted parameter
+				dataType: 'json',
+				success: function (response) {
+					// Check if response is successful
+					console.log('Response:', response);
+					// if (!response.Success) {
+					// 	alert('Error: ' + (response.Message || 'No details found in response Firoz'));
+					// 	return;
+					// }
+
+					// Function to convert DD/MM/YYYY to YYYY-MM-DD
+					function formatDate(inputDate) {
+						if (!inputDate) return '';
+						var parts = inputDate.split('/');
+						return `${parts[2]}-${parts[1]}-${parts[0]}`;
+					}
+					debugger;
+					$('#multipleIds').text(requestType);
+					// Handle Leave Details
+					if (response.leaveDetails && response.leaveDetails.length > 0) {
+
+						var $modal = $('#add_employee');
+						var $ITAssetsmodel = $('#add_ITassets');													
+						var $modal1 = $('#add_BusinessTrip');
+						var $modal3 = $('#add_certificate');
+						$modal.modal('show');
+						$modal1.modal1('hide');
+						$modal1.modal3('hide');
+						$ITAssetsmodel.modal('hide');
+
+						// Step 1: Reset all form fields and clear Chosen dropdowns
+						$modal.find('form')[0].reset();
+						$modal.find('.chosen-select').val('').trigger('chosen:updated');
+						var leaveData = response.leaveDetails[0];
+
+						// Populate modal fields for leave request
+						$('#add_employee #leaveid').val(leaveData.leaveID);
+						$('#add_employee #employeename').val(leaveData.emplId + ' - ' + leaveData.employeeName);
+						// $('#add_employee #sourcecountry').val(leaveData.leaveType);
+						$('#add_employee #fromdate').val(formatDate(leaveData.leaveStart));
+						$('#add_employee #todate').val(formatDate(leaveData.leaveEnd));
+						$('#add_employee #leavebalance').val(leaveData.leaveBalance);
+						$('#add_employee #noofdays').val(leaveData.noOfDays);
+						// $('#add_employee #payLeaveWithSalary').prop('checked', leaveData.payleavewithSalary === 'true');
+						if (leaveData.payleavewithSalary === true || leaveData.payleavewithSalary === "true") {
+							$('#add_employee #Annualleave6').prop('checked', true);
+						} else if (leaveData.payleavewithSalary === false || leaveData.payleavewithSalary === "false") {
+							$('#add_employee #Annualleave5').prop('checked', true);
+						} else {
+							//Optionally uncheck both if the value is invalid
+							$('#add_employee input[name="Annualleave6"]').prop('checked', false);
+						} // Checkbox
+						$('#add_employee #backupemployee').val(leaveData.backupEmployee || 'Not Available');
+						$('#add_employee #noofattachments').val(0);
+						$('#add_employee #comments').val(leaveData.comments);
+						$('#add_employee #workflowPermissionId1').val(leaveData.workflowPermissionId);
+						$('#add_employee #workflowTableId1').val(leaveData.workflowTableId);
+						$('#add_employee #leaveRecId').val(leaveData.leaveRecId);
+						$('#add_employee #requestTableId').val(leaveData.requestTableId);
+						$('#add_employee #leavetype').val(leaveData.leaveType);
+						if (leaveData.leaveType == 'Maternity leave') {
+							$('#add_employee #divexpecteddeliverydate').show('show');
+							$('#add_employee #divmaternityleave').show('show');
+						}
+						else{
+							$('#add_employee #divexpecteddeliverydate').hide('hide');
+							$('#add_employee #divmaternityleave').hide('hide');
+						}
+
+						if (leaveData.leaveType.includes('AL')){
+							$('#divpayleavewithsalary').show('show');
+						}else{
+							$('#divpayleavewithsalary').hide('hide');
+						}
+
+						var table = $('#attachmentsTable1').DataTable();
+					
+						$('#countattach').text(leaveData.attachRefList.length);
+						$.each(leaveData.attachRefList, function (i, item) {
+						// Determine the MIME type (default to octet-stream if unknown)
+						let mimeType = item.fileType || 'application/octet-stream';
+
+							// Construct download link using base64
+							let downloadLink = `<a href="data:${mimeType};base64,${item.attachRef}"
+								  download="${item.fileName}"
+								  target="_blank">${item.fileName}</a>`;
+
+									table.row.add([
+										downloadLink,
+										item.attachedBy,
+										formatDate1(item.attachedDate),
+										`<a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
+											 <i class="ti ti-trash"></i></a>`
+									]).draw(false);
+					  });
+
+	                              function formatDate1(dateStr) {
+	                              	const d = new Date(dateStr);
+	                              	return d.toLocaleDateString("en-GB"); // dd/MM/yyyy
+	                              }
+						
+						// Populate attachments table
+						//populateAttachmentsTable(leaveTable, leaveData.attachRefList, '#leaveCountattach');
+						var loanUserData = response.loanList[0];
+						populateLoanItemsTable(loanTable, loanUserData, '#loanItemsCount');
+					 
+					}
+					else if (response.businessTripDetails && response.businessTripDetails.length > 0) {
+
+					var $modal = $('#add_BusinessTrip');
+					var $modal1 = $('#add_employee');
+					var $modal3 = $('#add_certificate');
+					$modal.modal('show');
+					$modal1.modal('hide');
+					$modal3.$modal('hide');
+				// Step 1: Reset all form fields and clear Chosen dropdowns
+					$modal.find('form')[0].reset();
+					$modal.find('.chosen-select').val('').trigger('chosen:updated');
+						var tripData = response.businessTripDetails[0];
+
+
+						console.log('Form Data:', {
+							BusinessTripReqId: tripData.BusinessTripReqId,
+							WorkerName: tripData.WorkerName,
+							SourceCountry:tripData.SourceCountry,
+							DestinationCountry:tripData.DestinationCountry,
+							TransDate:tripData.transDate,
+
+							TemplateName: tripData.TemplateName,
+							FromDate: tripData.FromDate,
+							ToDate: tripData.ToDate,	
+							BusinessTripRecId:tripData.BusinessTripRecId,
+							TableId:tripData.TableId
+						});
+						// Populate modal fields for business trip request
+							$('#add_BusinessTrip #requestid').val(tripData.BusinessTripReqId);
+							$('#add_BusinessTrip #employeename').val(tripData.WorkerName);
+
+							$('#add_BusinessTrip #eventstartdate').val(formatDate(tripData.FromDate));
+
+							$('#add_BusinessTrip #eventenddate').val(formatDate(tripData.ToDate));
+							$('#add_BusinessTrip #businesstripexpensetype').val(tripData.BusinessTripsExpenseType);
+							$('#add_BusinessTrip #currencycode').val(tripData.currencycode);
+							$('#add_BusinessTrip #comments').val(tripData.comments);
+							$('#add_BusinessTrip #sourcecountry').val(tripData.SourceCountry);
+							$('#add_BusinessTrip #destinationcountry').val(tripData.DestinationCountry);
+							$('#add_BusinessTrip #noofattachments').val(tripData.AttachRefList);
+							$('#add_BusinessTrip #comments').val(tripData.Remarks || 'missing');
+							$('#add_BusinessTrip #workflowPermissionId1').val(tripData.workflowRecIdId);
+							$('#add_BusinessTrip #workflowTableId1').val(tripData.workflowTableId);
+						
+
+							$('#add_BusinessTrip #BusinessTripRecId').val(tripData.BusinessTripRecId);
+							$('#add_BusinessTrip #TableId').val(tripData.TableId);
+
+							var table = $('#attachmentsTable2').DataTable();
+									$('#countattach').text(tripData.attachRefList.length);
+									$.each(tripData.attachRefList, function (i, item) {
+									// Determine the MIME type (default to octet-stream if unknown)
+									let mimeType = item.fileType || 'application/octet-stream';
+
+									// Construct download link using base64
+									let downloadLink = `<a href="data:${mimeType};base64,${item.attachRef}"
+								  download="${item.fileName}"
+								  target="_blank">${item.fileName}</a>`;
+
+									table.row.add([
+										downloadLink,
+										item.attachedBy,
+											formatDate1(item.attachedDate),
+										`<a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
+											 <i class="ti ti-trash"></i></a>`
+									]).draw(false);
+								});
+
+	                                function formatDate1(dateStr) {
+	                                	const d = new Date(dateStr);
+	                                	return d.toLocaleDateString("en-GB"); // dd/MM/yyyy
+	                                }
+						//populateAttachmentsTable(leaveTable, leaveData.attachRefList, '#leaveCountattach');
+						var loanUserData = response.loanList[0];
+						populateLoanItemsTable(loanTable, loanUserData, '#loanItemsCount');
+					}//Certificate Request							
+					else if (response.certificateDetails && response.certificateDetails.length > 0) {
+						var $ITAssetsmodel = $('#add_ITassets');
+						var $modal = $('#add_certificate');
+						var $modal1 = $('#add_employee');
+						var $modal2 = $('#add_BusinessTrip');
+						$modal.modal('show');
+						$modal1.modal('hide');
+						$ITAssetsmodel.modal('hide');
+						$modal2.modal('hide');
+						// Step 1: Reset all form fields and clear Chosen dropdowns
+						$modal.find('form')[0].reset();
+						$modal.find('.chosen-select').val('').trigger('chosen:updated');
+
+						// Check if leaveDetails exists and has items
+						if (response.certificateDetails && response.certificateDetails.length > 0) {
+							var leaveData = response.certificateDetails[0];
+
+							// BindAllEmployee(leaveData.emplId);
+							// Function to convert DD/MM/YYYY to YYYY-MM-DD
+							// function formatDate(inputDate) {
+							//  if (!inputDate) return '';
+							//  var parts = inputDate.split('/');
+							//  return `${parts[2]}-${parts[1]}-${parts[0]}`;
+							// }
+
+							// Populate modal fields with response data
+							$('#add_certificate #RequestId').val(leaveData.certificateId);
+							$('#add_certificate #ddlEmployee').val(leaveData.emplId + ' - ' + leaveData.emplName);
+
+							// $('#add_employee #transDate').val(leaveData.emplId).trigger("chosen:updated");
+
+
+							$('#add_certificate #transDate').val(leaveData.transDate);
+							// $('#add_employee #ddlEmployee').val(leaveData.);
+							$('#add_certificate #txtDesc').val(leaveData.description);
+							/* $('#add_employee #leavetype').text(leaveData.leaveType); */ // Dropdown
+							// $('#add_employee #txttype').val(leaveData.leaveType).trigger("chosen:updated");
+							$('#add_certificate #txttype').val(leaveData.type);
+
+
+							$('#add_certificate #workflowPermissionId1').val(leaveData.workflowPermissionId);
+							$('#add_certificate #workflowTableId1').val(leaveData.workflowTableId);
+							var table = $('#attachmentsTable4').DataTable();
+							$('#countattach').text(leaveData.attachRefList.length);
+							$.each(leaveData.attachRefList, function (i, item) {
+								debugger;
+								// Determine the MIME type (default to octet-stream if unknown)
+								let mimeType = item.fileType || 'application/octet-stream';
+
+								// Construct download link using base64
+								let downloadLink = `<a href="data:${mimeType};base64,${item.attachRef}"
+											download="${item.fileName}"
+											target="_blank">${item.fileName}</a>`;
+
+								table.row.add([
+									downloadLink,
+									item.attachedBy,
+									formatDate(item.attachedDate),
+									`<a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>`
+								]).draw(false);
+							});
+							function formatDate(dateStr) {
+								const d = new Date(dateStr);
+								return d.toLocaleDateString("en-GB"); // dd/MM/yyyy
+							}
+
+							var loanUserData = response.loanList[0];
+							populateLoanItemsTable(loanTable, loanUserData, '#loanItemsCount');
+						}
+
+					}							
+					else if (response.itAssets && response.itAssets.length > 0) {
+						var $modal = $('#add_BusinessTrip');
+						var $Cerificatemodel = $('#add_certificate');
+						var $modal1 = $('#add_employee');
+						var $ITAssetsmodel = $('#add_ITassets');
+						var $ITAssetsAttachmentsModel = $('#ITAssetsAttachments');
+						$modal.modal('hide');
+						$modal1.modal('hide');
+						$Cerificatemodel.modal('hide');
+						$ITAssetsmodel.modal('show');
+
+						// Check if leaveDetails exists and has items
+						if (response.itAssets && response.itAssets.length > 0) {
+							var requestData = response.itAssets[0];
+							function formatDate(inputDate) {
+								if (!inputDate) return '';
+								var parts = inputDate.split('/');
+								return `${parts[2]}-${parts[1]}-${parts[0]}`;
+							}
+							function formatDateReverse(inputDate) {
+								if (!inputDate) return '';
+								var parts = inputDate.split('-');
+								if (parts.length !== 3) return '';
+								return `${parts[2]}/${parts[1]}/${parts[0]}`;
+							}
+
+							$('#add_ITassets #requestidvw').val(requestData.requestId);
+							$('#add_ITassets #employeenamevw').val(requestData.employeeId + '-' + requestData.employeeName);
+							$('#add_ITassets #loantypevw').val(requestData.loanType);
+							$('#add_ITassets #requiredbyvw').val(formatDate(requestData.requiredBy));
+							$('#add_ITassets #requestedtillvw').val(formatDate(requestData.requiredTill));
+							$('#add_ITassets #purposevw').val(requestData.purpose);
+							$('#add_ITassets #additionaldetailsvw').val(requestData.additionalDetails);
+							$('#add_ITassets #ITAssetsRecId').val(requestData.workflowPermissionId);
+							$('#add_ITassets #ITAssetsTableId').val(requestData.workflowTableId);
+							if (requestData.status == 'Submitted' || requestData.status == 'Approved') {
+								$('#btnItAssestSubmite').hide();
+							}
+							var table = $('#AssetsattachmentsTable').DataTable();
+							$('#add_ITassets #noofattachmentsvw').val(requestData.attachRefList.length);
+							$.each(requestData.attachRefList, function (i, item) {
+								// Determine the MIME type (default to octet-stream if unknown)
+								let mimeType = item.fileType || 'application/octet-stream';
+
+								// Construct download link using base64
+								let downloadLink = `<a href="data:${mimeType};base64,${item.attachRef}"
+											 download="${item.fileName}"
+											 target="_blank">${item.fileName}</a>`;
+								// Conditionally set the delete link based on requestData.status
+								let deleteLink = (requestData.status === 'Submitted' || requestData.status === 'Approved')
+									? `<span class="delete-attachment disabled" style="pointer-events: none; opacity: 0.5;"><i class="ti ti-trash"></i></span>`
+									: `<a href="#" class="delete-attachment" data-attachment-id="${item.id || i}" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>`;
+								table.row.add([
+									downloadLink,
+									requestData.employeeId + '-' + requestData.employeeName,
+									formatDate(requestData.transDate),
+									deleteLink
+								]).draw(false);
+							});
+							function formatDate(dateStr) {
+								const d = new Date(dateStr);
+								return d.toLocaleDateString("en-GB"); // dd/MM/yyyy
+							}
+						}
+					}		//item Asset
+					else {
+						alert('Error: No details found in response');
+					}
+				},
+				error: function (xhr, status, error) {
+					alert('An error occurred while fetching the data: ' + error);
+					console.error('AJAX Error:', xhr.responseText);
+				}
+			});
+		});
+		$(document).on('click', '.btnViewLr', function () {
+			debugger;
+				
+			var idData = $(this).data('id').split(',');
+			if (idData.length < 2) {
+				alert('Invalid data-id format');
+				return;
+			}
+			var leaveId = idData[0] || '';
+			var userId = idData[1] || '';
+			var requestType = idData[2] || '';
+			var param = leaveId + ',' + userId + ',' + requestType; // Format: leaveId,userId,RequestType
+			var url;
+			var $modal = $('#add_employee');
+			// Step 1: Reset all form fields and clear Chosen dropdowns
+			$modal.find('form')[0].reset();
+			$modal.find('.chosen-select').val('').trigger('chosen:updated');
+			
+			$.ajax({
+				url: '@Url.Action("ReadManagerLeaveResumption", "Manager")',
+				type: 'GET',
+				data: { leaveId: param }, // Send formatted parameter
+				dataType: 'json',
+				success: function (response) {
+					// Check if response is successful
+					console.log('Response:', response);
+					// if (!response.Success) {
+					// 	alert('Error: ' + (response.Message || 'No details found in response Firoz'));
+					// 	return;
+					// }
+
+					// Function to convert DD/MM/YYYY to YYYY-MM-DD
+					function formatDate(inputDate) {
+						if (!inputDate) return '';
+						var parts = inputDate.split('/');
+						return `${parts[2]}-${parts[1]}-${parts[0]}`;
+					}
+					debugger;
+					$('#multipleIds').text(requestType);
+					// Handle Leave Details
+					if (response.leaveDetails && response.leaveDetails.length > 0) {
+
+							var $modal = $('#add_employee');
+							var $modal2 = $('#add_employeeLR');
+									var $modal1 = $('#add_BusinessTrip');
+										$modal2.modal('show');
+										$modal.modal('hide');
+						                $modal1.modal('hide');
+
+				// Step 1: Reset all form fields and clear Chosen dropdowns
+						$modal.find('form')[0].reset();
+						$modal.find('.chosen-select').val('').trigger('chosen:updated');
+						var leaveData = response.leaveDetails[0];
+
+						// Populate modal fields for leave request
+						$('#add_employeeLR #leaveid').val(leaveData.leaveID);
+						$('#add_employeeLR #employeename').val(leaveData.emplId + ' - ' + leaveData.employeeName);
+						// $('#add_employee #sourcecountry').val(leaveData.leaveType);
+						$('#add_employeeLR #fromdate').val(formatDate(leaveData.leaveStart));
+						$('#add_employeeLR #todate').val(formatDate(leaveData.leaveEnd));
+						$('#add_employeeLR #todate').val(formatDate(leaveData.leaveEnd));
+						$('#add_employeeLR #returndate').val(leaveData.returnDate);
+						$('#add_employeeLR #leavebalance').val(leaveData.leaveBalance);
+						// $('#add_employeeLR #leavebalance').val(leaveData.leaveBalance);
+						// $('#add_employeeLR #leavebalance').val(leaveData.leaveBalance);
+
+						if (leaveData.payleavewithSalary === "Yes" ) {
+							$('#add_employeeLR #PayLeaveLrT').prop('checked', true).prop('readonly', true).css('pointer-events', 'none');
+						} else {
+							
+							$('#add_employeeLR input[name="PayLeaveLrF"]').prop('checked', false).prop('readonly', true).css('pointer-events', 'none');
+						}
+
+						$('#add_employeeLR #returndate')
+        .prop('readonly', true)
+        .css('pointer-events', 'none');
+
+						$('#add_employeeLR #noofdays').val(leaveData.noOfDays);
+						// $('#add_employee #payLeaveWithSalary').prop('checked', leaveData.payleavewithSalary === 'true');
+						if (leaveData.payleavewithSalary === true || leaveData.payleavewithSalary === "true") {
+							$('#add_employeeLR #Annualleave6').prop('checked', true);
+						} else if (leaveData.payleavewithSalary === false || leaveData.payleavewithSalary === "false") {
+							$('#add_employeeLR #Annualleave5').prop('checked', true);
+						} else {
+							//Optionally uncheck both if the value is invalid
+							$('#add_employeeLR input[name="Annualleave6"]').prop('checked', false);
+						} // Checkbox
+						$('#add_employeeLR #backupemployee').val(leaveData.backupEmployee || 'Not Available');
+						$('#add_employeeLR #noofattachments').val(0);
+						$('#add_employeeLR #comments').val(leaveData.comments);
+						$('#add_employeeLR #workflowPermissionId1').val(leaveData.workflowPermissionId);
+						$('#add_employeeLR #workflowTableId1').val(leaveData.workflowTableId);
+			$('#add_employeeLR #leaveRecId').val(leaveData.leaveRecId);
+			$('#add_employeeLR #requestTableId').val(leaveData.requestTableId);
+				$('#add_employeeLR #leavetype').val(leaveData.leaveType);
+			if (leaveData.leaveType == 'Maternity leave') {
+				$(' #add_employeeLR #divexpecteddeliverydateLR').show('show');
+				$('#add_employeeLR #divmaternityleaveLR').show('show');
+					$('#divpayleavewithsalaryLR').hide('hide');
+			}
+								else if (leaveData.leaveType == 'AL 30') {
+				$(' #add_employeeLR #divexpecteddeliverydateLR').hide('hide');
+				$('#add_employeeLR #divmaternityleaveLR').hide('hide');
+            	$('#divpayleavewithsalaryLR').show('show');
+								}
+								else{
+									$(' #add_employeeLR #divexpecteddeliverydateLR').hide('hide');
+				$('#add_employeeLR #divmaternityleaveLR').hide('hide');
+				$('#divpayleavewithsalaryLR').hide('hide');
+								
+								}
+						// else{
+						// 	$('#add_employeeLR #divexpecteddeliverydateLR').hide('hide');
+						// 	$('#add_employeeLR #divmaternityleaveLR').hide('hide');
+						// }
+
+						if (leaveData.leaveType.includes('AL')){
+							$('#divpayleavewithsalary').show('show');
+						}else{
+							$('#divpayleavewithsalary').hide('hide');
+						}
+
+							 var table = $('#attachmentsTable3').DataTable();
+					
+								$('#countattach').text(leaveData.attachRefList.length);
+								$.each(leaveData.attachRefList, function (i, item) {
+									// Determine the MIME type (default to octet-stream if unknown)
+									let mimeType = item.fileType || 'application/octet-stream';
+
+									// Construct download link using base64
+							let downloadLink = `<a href="data:${mimeType};base64,${item.attachRef}"
+								  download="${item.fileName}"
+								  target="_blank">${item.fileName}</a>`;
+
+									table.row.add([
+										downloadLink,
+										item.attachedBy,
+										formatDate1(item.attachedDate),
+										`<a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
+											 <i class="ti ti-trash"></i></a>`
+									]).draw(false);
+								});
+
+	                              function formatDate1(dateStr) {
+	                              	const d = new Date(dateStr);
+	                              	return d.toLocaleDateString("en-GB"); // dd/MM/yyyy
+	                              }
+
+		  // Populate attachments table
+						//populateAttachmentsTable(leaveTable, leaveData.attachRefList, '#leaveCountattach');
+						var loanUserData = response.loanList[0];
+						populateLoanItemsTable(loanTable, loanUserData, '#loanItemsCount');
+					}
+					// Handle Business Trip Details
+					
+					else {
+						alert('Error: No details found in response');
+					}
+				},
+				error: function (xhr, status, error) {
+					alert('An error occurred while fetching the data: ' + error);
+					console.error('AJAX Error:', xhr.responseText);
+				}
+			});
+		});
+
+
+
+
+				// Initialize Select2 for the workflow dropdown
+		$('#workflow').select2();
+
+		// Listen for changes in the workflow dropdown
+		$('#workflow').on('change.select2', function () {
+			if ($(this).val() === 'delegation') {
+				// Populate employee dropdown before showing modal
+				BindAllEmployee('');
+				// Show the Delegation modal
+				$('#myTabContent3 #Delegation_modal').modal('show');
+			}
+		});
+
+		// Handle Submit button click in the modal
+		$('#myTabContent3 #Delegation_modal .btn-danger').on('click', function () {
+			var selectedDelegate = $('#myTabContent3 #delemployeename').val();
+			if (selectedDelegate) {
+				console.log('Selected delegate ID:', selectedDelegate);
+				// Add your logic here (e.g., save the selected employee ID)
+				$('#myTabContent3 #Delegation_modal').modal('hide');
+			} else {
+				alert('Please select an employee.');
+			}
+		});
+
+		function BindAllEmployee(employeeIdToSelect) {
+			// Get the anti-forgery token
+			var token = $('input[name="__RequestVerificationToken"]').val();
+			// Make AJAX call to GetAllEmployees
+			$.ajax({
+				url: '/Leave/GetAllEmployees', // Update with correct URL if needed
+				type: 'POST',
+				data: {
+					__RequestVerificationToken: token
+				},
+				dataType: 'json',
+				beforeSend: function () {
+					$('.container').prepend('<div class="loading">Loading...</div>');
+				},
+				success: function (response) {
+					$('.loading').remove();
+					console.log('AJAX response:', JSON.stringify(response, null, 2));
+
+					let employeeList = null;
+					if (Array.isArray(response)) {
+						employeeList = response;
+					} else if (response && response.EmployeeList && Array.isArray(response.EmployeeList)) {
+						employeeList = response.EmployeeList;
+					} else if (response && response.data && Array.isArray(response.data)) {
+						employeeList = response.data;
+					}
+
+					var $select = $('#myTabContent3 #delemployeename');
+					$select.empty().append('<option value="">Select</option>');
+
+					if (employeeList && employeeList.length > 0) {
+						$.each(employeeList, function (index, item) {
+							$select.append($('<option>', {
+								value: item.employeeId,
+								text: item.employeeName
+							}));
+						});
+					} else {
+						console.log('No employees found in response:', JSON.stringify(response, null, 2));
+						$select.append('<option value="" disabled>No employees available</option>');
+					}
+
+					// Destroy existing Select2 instance to prevent re-initialization issues
+					if ($select.data('select2')) {
+						$select.select2('destroy');
+					}
+
+					// Initialize Select2 for delemployeename with search enabled
+					$select.select2({
+						dropdownParent: $('#myTabContent3 #Delegation_modal'),
+						minimumResultsForSearch: 1 // Enable search box even with one option
+					});
+
+					// Set the selected employee if provided
+					if (employeeIdToSelect) {
+						$select.val(employeeIdToSelect).trigger('change.select2');
+					}
+				},
+				error: function (xhr, status, error) {
+					$('.loading').remove();
+					console.error('AJAX error:', status, error, xhr.responseText);
+					var errorDiv = $('<div class="alert alert-danger mt-3"></div>').text('An error occurred while loading employee data: ' + (xhr.responseText || error));
+					$('.container').prepend(errorDiv);
+				}
+			});
+		}
+
+
+		});
+
+
+
+
+
+
+		$('.btn-success').on('click', function (e) {
+		e.preventDefault(); // Prevent default form submission
+		debugger;
+		if ($('#add_employee').is(':visible')) {
+			$('#add_employee #workflow').select2();
+			var workflowValue = $('#add_employee #workflow').val();
+			var referrence = $('#add_employee #leaveid').val();
+			var RecordId = $('#add_employee #workflowPermissionId1').val();
+			var TableId = $('#add_employee #workflowTableId1').val();
+			var Comments = $('#add_employee #comments').val() || '';
+			var SpecialApproval = 'Chairman';
+			var CompanyId = null;
+			// Get Anti-Forgery Token from form
+			var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
+			// Prepare JSON payload
+		} else if ($('#add_employeeLR').is(':visible')) {
+			$('#add_employeeLR #workflow').select2();
+			var workflowValue = $('#add_employeeLR #workflow').val();
+			var referrence = $('#add_employeeLR #leaveid').val();
+			var RecordId = $('#add_employeeLR #workflowPermissionId1').val();
+			var TableId = $('#add_employeeLR #workflowTableId1').val();
+			var Comments = $('#add_employeeLR #comments').val() || '';
+			var SpecialApproval = 'Chairman';
+			var CompanyId = null;
+			// Get Anti-Forgery Token from form
+			var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
+			// Prepare JSON payload
+		}
+		else if ($('#add_BusinessTrip').is(':visible')) {
+			var workflowValue = $('#add_BusinessTrip #workflow').val();
+			var referrence = $('#add_BusinessTrip #leaveid').val();
+			var RecordId = $('#add_BusinessTrip #workflowPermissionId1').val();
+			var TableId = $('#add_BusinessTrip #workflowTableId1').val();
+			var Comments = $('#add_BusinessTrip #comments').val() || '';
+			var SpecialApproval = 'Chairman';
+			var CompanyId = null;
+			// Get Anti-Forgery Token from form
+			var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
+			// Prepare JSON payload
+		}
+		else if ($('#add_ITassets').is(':visible')) {
+		var workflowValue = $('#add_ITassets #workflow').val();
+		var referrence = $('#add_ITassets #requestidvw').val();
+		var RecordId = $('#add_ITassets #ITAssetsRecId').val();
+		var TableId = $('#add_ITassets #ITAssetsTableId').val();
+		var Comments = $('#add_ITassets #itassetscomment').val() || '';
+		var SpecialApproval = '';
+		var CompanyId = null;
+		// Get Anti-Forgery Token from form
+		var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
+	}
+
+
+				else if ($('#add_certificate').is(':visible')) {
+					var workflowValue = $('#add_certificate #workflow').val();
+					var referrence = $('#add_certificate #RequestId').val();
+					var RecordId = $('#add_certificate #workflowPermissionId1').val();
+					var TableId = $('#add_certificate #workflowTableId1').val();
+					var Comments = $('#add_certificate #comments').val() || '';
+					var SpecialApproval = 'Chairman';
+					var CompanyId = null;
+					// Get Anti-Forgery Token from form
+					var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
+					// Prepare JSON payload
+				}
+
+		if (workflowValue == '') {
+			alert('Please select work flow value');
+			return false;
+		}
+
+		console.log('Form Data:', {
+			RecordId: RecordId,
+			TableId: TableId,
+			CompanyId: CompanyId,
+			Comments: Comments,
+			SpecialApproval: SpecialApproval,
+			workflowValue: workflowValue,
+			__RequestVerificationToken: antiForgeryToken
+		});
+
+
+		var payload = {
+			RecordId: RecordId,
+			TableId: TableId,
+			CompanyId: CompanyId,
+			Comments: Comments,
+			SpecialApproval: SpecialApproval,
+			workFlowValue: workflowValue
+		};
+		alert(workflowValue);
+
+		// Make AJAX request
+		$.ajax({
+			url: '/Manager/SubmiteWorkFlow',
+			type: 'POST',
+			data: JSON.stringify(payload),
+			contentType: 'application/json',
+			headers: {
+				'RequestVerificationToken': antiForgeryToken // Add Anti-Forgery Token
+			},
+			beforeSend: function () {
+				$('#btnUpdate').prop('disabled', true).text('Updating...');
+			},
+			success: function (response) {
+				// Handle success response (assuming response has Message or message) 
+				if (response.MessageFlag != 'Failed' || response.messageFlag != 'Failed' || response.messageFlag != '') {
+					var successMessage = (response.Message || response.message );
+					$('#success_modal .modal-body h5').text(successMessage);
+					$('#success_modal .modal-body p').html(
+						`${RecordId} has been scheduled for as per your request with Request ID: <span class="text-primary">${referrence || '#TRIP-0001'}</span>`
+					);
+
+					// Show the modal
+					$('#success_modal').modal('show');
+					$('#btnUpdate').prop('disabled', false).text('Update');
+				}
+				else {
+					var successMessage = (response.Message || response.message);
+					$('#errorMessage').html('<p style="color: red;">' + successMessage + '</p>');
+					//$('#leaveRequestForm')[0].reset();
+					//$('#errorMessage').html(''); // Clear error message after success
+				}
+			},
+			error: function (xhr) {
+				var errorMessage = 'An error occurred while Update the request.';
+				// Handle response with message or Message property
+				if (xhr.responseJSON) {
+					errorMessage = xhr.responseJSON.message || xhr.responseJSON.Message || errorMessage;
+				} else if (xhr.statusText) {
+					errorMessage = xhr.statusText;
+				}
+				$('#errorMessage').html('<p style="color: red;">' + errorMessage + '</p>');
+			},
+			complete: function () {
+				$('#btnUpdate').prop('disabled', false).text('Save');
+			}
+		});
+	});
+
+
+
+
+			// View Work Flow History
+
+		
+
+
+		document.getElementById('workflow').addEventListener('change', function () {
+			if (this.value === 'delegation') {
+				var myModal = new bootstrap.Modal(document.getElementById('Delegation_modal'));
+				myModal.show();
+				this.selectedIndex = 0; // Reset dropdown after opening modal
+			}
+		});
+	
+//-----------FileAttach
+		function BindAttach() {
+			debugger
+		var files = $("#attachments")[0].files;
+
+		if (files.length === 0) {
+			alert("Please select at least one file.");
+			return;
+		}
+
+		var formData = new FormData();
+
+		for (var i = 0; i < files.length; i++) {
+			formData.append("Files", files[i]);
+		}
+
+			var uniqueRecID = $('#BusinessTripRecId').val();
+				var requestTableId = $('#TableId').val();
+
+		formData.append("uniqueRecID", uniqueRecID);
+		formData.append("RequestTableId", requestTableId);
+
+		debugger;
+
+		$.ajax({
+				url: '/Leave/CreateAttachFile',
+			type: 'POST',
+			data: formData,
+			processData: false,
+			contentType: false,
+			success: function (response) {
+		if (response.success) {
+			alert(response.message || "File uploaded successfully!");
+		} else {
+			alert("Upload failed. Please try again.");
+		}
+	}
+		});
+	}
+	
+</script>
+
+
+<script>
+	function addEditableRow() {
+		const tbody = document.getElementById('dataTableBody');
+		const row = document.createElement('tr');
+
+		row.innerHTML = `
+		<td>
+		<select class="form-control">
+		<option value="">Select Type</option>
+		<option value="Travel">Travel</option>
+		<option value="Food">Food</option>
+		<option value="Accommodation">Accommodation</option>
+		<option value="Other">Other</option>
+		</select>
+		</td>
+		<td><input type="text" class="form-control" placeholder="Description"></td>
+		<td><input type="number" class="form-control" placeholder="Amount"></td>
+		<td><input type="number" class="form-control" placeholder="Approved Amount"></td>
+		<td><input type="text" class="form-control" placeholder="Comments"></td>
+		<td>
+		<button class="btn btn-primary btn-sm me-1" onclick="saveRow(this)">Save</button>
+		<button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button>
+		</td>
+			  `;
+
+		tbody.appendChild(row);
+	}
+
+	function saveRow(button) {
+		const row = button.closest('tr');
+		const inputs = row.querySelectorAll('input, select');
+		const values = [];
+
+		inputs.forEach(input => {
+			values.push(input.value || "-");
+		});
+
+		row.innerHTML = `
+		<td>${values[0]}</td>
+		<td>${values[1]}</td>
+		<td>${values[2]}</td>
+		<td>${values[3]}</td>
+		<td>${values[4]}</td>
+		<td>
+		<button class="btn btn-warning btn-sm me-1" onclick="editRow(this)">Edit</button>
+		<button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button>
+		</td>
+			  `;
+	}
+
+	function editRow(button) {
+		const row = button.closest('tr');
+		const tds = row.querySelectorAll('td');
+		const currentValues = Array.from(tds).slice(0, 5).map(td => td.textContent.trim());
+
+		row.innerHTML = `
+		<td>
+		<select class="form-control">
+		<option value="Travel" ${currentValues[0] === 'Travel' ? 'selected' : ''}>Travel</option>
+		<option value="Food" ${currentValues[0] === 'Food' ? 'selected' : ''}>Food</option>
+		<option value="Accommodation" ${currentValues[0] === 'Accommodation' ? 'selected' : ''}>Accommodation</option>
+		<option value="Other" ${currentValues[0] === 'Other' ? 'selected' : ''}>Other</option>
+		</select>
+		</td>
+		<td><input type="text" class="form-control" value="${currentValues[1]}"></td>
+		<td><input type="number" class="form-control" value="${currentValues[2]}"></td>
+		<td><input type="number" class="form-control" value="${currentValues[3]}"></td>
+		<td><input type="text" class="form-control" value="${currentValues[4]}"></td>
+		<td>
+		<button class="btn btn-primary btn-sm me-1" onclick="saveRow(this)">Save</button>
+		<button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button>
+		</td>
+			  `;
+	}
+
+	function deleteRow(button) {
+		const row = button.closest('tr');
+		row.remove();
+	}
+
+	
+
+
+
+	// Function to populate loan items table
+	function populateLoanItemsTable(table, loanItems, countElement) {
+		console.log('Populating loan items table with data:', loanItems);
+		table.clear();
+		$(countElement).text(loanItems?.length || 0);
+
+		if (loanItems && Array.isArray(loanItems) && loanItems.length > 0) {
+			$.each(loanItems, function (i, item) {
+				console.log('Processing loan item:', item);
+				if (!item.Id || !item.loantype) {
+					console.warn(`Invalid loan item at index ${i}:`, item);
+					return true; // Skip invalid item
+				}
+
+				const radioName = `loanStatus_${item.Id}_${i}`;
+				const statusHtml = `
+						<div class="d-flex align-items-center">
+							<div class="form-check me-2">
+								<input class="form-check-input" type="radio" name="${radioName}" value="Yes" id="loanYes_${item.Id}_${i}" ${item.loanItemid === 'Yes' ? 'checked' : ''}>
+								<label class="form-check-label" for="loanYes_${item.Id}_${i}">Yes</label>
+							</div>
+							<div class="form-check me-2">
+								<input class="form-check-input" type="radio" name="${radioName}" value="No" id="loanNo_${item.Id}_${i}" ${item.loanItemid === 'No' ? 'checked' : ''}>
+								<label class="form-check-label" for="loanNo_${item.Id}_${i}">No</label>
+							</div>
+						</div>`;
+
+				table.row.add([
+					`<a href="#">${item.Id}</a>`,
+					item.loantype || '',
+					statusHtml
+				]).draw(false);
+			});
+		} else {
+			console.log('No loan items to display');
+			table.draw();
+		}
+	}
+
+
+</script>

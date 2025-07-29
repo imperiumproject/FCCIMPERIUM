@@ -1,0 +1,107 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = SMARTHR_-_Backup.WEB
+build_property.RootNamespace = SMARTHR_-_Backup.WEB
+build_property.ProjectDir = E:\ASIFESSHR17072025\ConnectFCCHR_07_17_2025\ConnectFCCHR\SMARTHR\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\ASIFESSHR17072025\ConnectFCCHR_07_17_2025\ConnectFCCHR\SMARTHR
+build_property._RazorSourceGeneratorDebug = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Authentication/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cQ2hhbmdlUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Authentication/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cRm9yZ290UGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Authentication/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/BusinessTrip/BusinessTrip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzaW5lc3NUcmlwXEJ1c2luZXNzVHJpcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/BusinessTrip/BusinessTripResumption.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzaW5lc3NUcmlwXEJ1c2luZXNzVHJpcFJlc3VtcHRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Employee/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Leave/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhdmVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Leave/LeaveEncashment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhdmVcTGVhdmVFbmNhc2htZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Leave/LeaveRequest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhdmVcTGVhdmVSZXF1ZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Leave/LeaveResumption.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhdmVcTGVhdmVSZXN1bXB0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Manager/Alltransaction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxBbGx0cmFuc2FjdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Profile/MyProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxNeVByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Shared/_FooterLable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXJMYWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Shared/_Sidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaWRlYmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Shared/_TopMenu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ub3BNZW51LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ASIFESSHR17072025/ConnectFCCHR_07_17_2025/ConnectFCCHR/SMARTHR/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-mx0x50vio4

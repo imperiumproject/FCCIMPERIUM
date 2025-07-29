@@ -1,0 +1,1067 @@
+﻿@model List<SMARTHR.WEB.Models.ITAssetsModels>
+@{
+    ViewData["Title"] = "ReadAssetRequestList";
+}
+
+<!-- Page Wrapper -->
+@* <div class="page-wrapper"> *@
+	<div class="content">
+
+		<!-- Breadcrumb -->
+		<div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
+			<div class="my-auto mb-2">
+				<h2 class="mb-1">Request</h2>
+				<nav>
+					<ol class="breadcrumb mb-0">
+						<li class="breadcrumb-item">
+							<a href="index.html"><i class="ti ti-smart-home"></i></a>
+						</li>
+						<li class="breadcrumb-item">
+							Payroll
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">IT Assets Request List</li>
+					</ol>
+				</nav>
+			</div>
+			<div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
+
+				<div class="mb-2">
+					<a href="#" data-bs-toggle="modal" data-bs-target="#add_employeeAssets" class="btn btn-primary d-flex align-items-center"><i class="ti ti-circle-plus me-2"></i>Create New</a>
+				</div>
+
+			</div>
+		</div>
+		<!-- /Breadcrumb -->
+		<div class="card">
+			<div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+				<h5>IT Assets Request List</h5>
+				<div class="d-flex my-xl-auto right-content align-items-center flex-wrap row-gap-3">
+
+					<div class="dropdown me-3">
+						<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+							Employee
+						</a>
+						<ul class="dropdown-menu  dropdown-menu-end p-3">
+							<li>
+								<a href="javascript:void(0);" class="dropdown-item rounded-1">Finance</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" class="dropdown-item rounded-1">Developer</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" class="dropdown-item rounded-1">Executive</a>
+							</li>
+						</ul>
+					</div>
+					<div class="dropdown me-3">
+						<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+							Select Status
+						</a>
+						<ul class="dropdown-menu  dropdown-menu-end p-3">
+							<li>
+								<a href="javascript:void(0);" class="dropdown-item rounded-1">Active</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" class="dropdown-item rounded-1">Inactive</a>
+							</li>
+						</ul>
+					</div>
+					<button class="btn  bg-primary btn-wave waves-effect waves-light">
+						<i class="feather-search align-middle me-2 d-inline-block"></i>Search
+					</button>
+
+				</div>
+			</div>
+			<div class="card-body p-0">
+				<div class="custom-datatable-filter table-responsive">
+					<table class="table datatable">
+						<thead class="thead-light">
+							<tr>
+								<th>Request ID</th>
+								<th>Employee Name </th>
+							    <th>Asset Type</th>
+								<th>Date</th>
+								<th>Status</th>
+								<th>Actions</th>
+								<th>Workflow History</th>
+							</tr>
+						</thead>
+						<tbody>
+
+						@if (Model != null && Model.Any())
+						{
+							foreach (var item in Model)
+							{
+								<tr>
+									<td>@item.requestId</td>
+									<td>@item.employeeName</td>
+									<td>@item.loanType</td>									
+									<td>
+										@{
+											string TranceFormatted = "";
+											if (!string.IsNullOrWhiteSpace(item.transDate))
+											{
+												DateTime tempDate;
+												if (DateTime.TryParseExact(item.transDate, "yyyy-MM-ddTHH:mm:ss", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out tempDate))
+												{
+													TranceFormatted = tempDate.ToString("dd/MM/yyyy");
+												}
+												else if (DateTime.TryParse(item.transDate, System.Globalization.CultureInfo.InvariantCulture, out tempDate))
+												{
+													TranceFormatted = tempDate.ToString("dd/MM/yyyy");
+												}
+											}
+										}
+										@TranceFormatted
+									</td>
+									<td>
+										<span class="badge @(item.status == "Draft" ? "badge-danger" : "badge-success") d-inline-flex align-items-center badge-xs">
+											<i class="ti ti-point-filled me-1"></i>@item.status
+										</span>
+									</td>
+									<td>
+										@if (item.status == "Draft")
+										{
+											<div class="action-icon d-inline-flex">
+												<a href="#" class="me-2 btnViewAssets" data-bs-toggle="modal" data-id="@item.requestId" data-bs-target="#add_employeeAssetsView"><i class="ti ti-eye"></i></a>
+												<a href="#" class="me-2 btnView" data-bs-toggle="modal" data-id="@item.requestId" data-bs-target="#add_employeeAssets"><i class="ti ti-edit"></i></a>
+												<a href="#" class="me-2" data-bs-toggle="modal" data-rec="@item.workflowPermissionId" data-tableid="@item.workflowTableId" data-requestid="@item.requestId" data-bs-target="#recall_modal"><i class="ti ti-history" title="Recall"></i></a>
+											</div>
+										}
+										else
+										{
+											<div class="action-icon d-inline-flex">
+												<a href="#" class="me-2 btnViewAssets" data-bs-toggle="modal" data-id="@item.requestId" data-bs-target="#add_employeeAssetsView"><i class="ti ti-eye"></i></a>
+												<a href="#" class="me-2" data-bs-toggle="modal" data-rec="@item.workflowPermissionId" data-tableid="@item.workflowTableId" data-requestid="@item.requestId" data-bs-target="#recall_modal"><i class="ti ti-history" title="Recall"></i></a>
+											</div>
+										}
+									
+									</td>
+									<td>
+										@* <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#Workflow_History" title="View"><i class="ti ti-eye"></i></a> *@
+										<a href="#" class="me-2 btnWFView" id="btnWFView" name="btnWFView" data-bs-toggle="modal" data-bs-target="#Workflow_History" data-requestid="@item.requestId"
+										   data-rec="@item.recordId" data-tableid="@item.tableId" data-transtype="IT Assets" title="View"><i class="ti ti-eye"></i></a>
+									</td>
+									
+								</tr>							
+							}
+						}							
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- Add Assets -->
+	<div class="modal fade" id="add_employeeAssets">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2">Create Assets request</h4><span>Employee  ID : @ViewBag.Username</span>
+					</div>
+					<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+						<i class="ti ti-x"></i>
+					</button>
+				</div>
+				<form action="employees.html">
+					<div class="contact-grids-tab">
+						<ul class="nav nav-underline" id="myTab" role="tablist">
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#basic-info" type="button" role="tab" aria-selected="true">Assets Request</button>
+							</li>
+							
+
+						</ul>
+					</div>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+							  <form id="AssetsRequestForm">
+							<div class="modal-body pb-0 ">
+								<div class="row">
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Request ID</label>
+										<input type="text" class="form-control" id="requestid" name="requestid" readonly>
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Employee Name</label>
+										<select class="form-control select2" id="employeename" name="employeename">										
+										</select>									
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label" for="requiredby">Required By</label>
+											<div class="input-icon-end position-relative">
+												<input type="text" id="requiredby" name="requiredby" autocomplete="off" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+												<span class="input-icon-addon">
+													<i class="ti ti-calendar text-gray-7"></i>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label" for="requestedtill">Requested Till</label>
+											<div class="input-icon-end position-relative">
+												<input type="text" id="requestedtill" name="requestedtill" autocomplete="off" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+												<span class="input-icon-addon">
+													<i class="ti ti-calendar text-gray-7"></i>
+												</span>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Asset Type</label>
+
+										<select class="form-control select2 form-control" id="loantype" name="loantype">										
+										</select>
+										</div>
+
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Purpose</label>
+										<input type="text" id="purpose" name="purpose" class="form-control">
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">No of Attachments</label>
+											<input type="text" class="form-control" id="noofattachments" name="noofattachments">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="input-block mb-0">
+											<label class="form-label">Attachments</label>
+											<input class="form-control" type="file" multiple id="attachmentslist" name="attachmentslist">
+										</div>
+										</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Additional Details</label>
+										<textarea class="form-control" id="additionaldetails" name="additionaldetails" rows="3"></textarea>
+										</div>
+									</div>
+
+								<div class="col-md-12">
+									<div id="errorMessage" class="text-danger mt-2"></div>
+								</div>
+								</div>
+							</div>
+
+							<div class="modal-footer">
+
+								<a data-bs-toggle="modal" data-bs-target="#Attachments" class="btn btn-primary me-2">View  Attachments</a>
+
+								<!-- <button type="submit" class="btn btn-primary me-2">Save </button> -->
+								<button type="submit" class="btn btn-success me-2" id="btnItAssestSubmite">Submit </button>
+								<button type="button" class="btn btn-outline-light border " data-bs-dismiss="modal">Cancel</button>
+
+							</div>
+						</form>
+						</div>
+
+
+					
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+<!-- /Add Assets -->
+<!-- View Assets -->
+<div class="modal fade" id="add_employeeAssetsView">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2">Create Assets request</h4><span>Employee  ID : @ViewBag.Username</span>
+				</div>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<form action="employees.html">
+				<div class="contact-grids-tab">
+					<ul class="nav nav-underline" id="myTab" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#basic-info" type="button" role="tab" aria-selected="true">Assets Request</button>
+						</li>
+
+
+					</ul>
+				</div>
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+						<form id="AssetsRequestForm">
+							<div class="modal-body pb-0 ">
+								<div class="row">
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Request ID</label>
+											<input type="text" class="form-control" id="requestidvw" name="requestidvw" readonly>
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Employee Name</label>
+											@* <select class="form-control select2" id="employeename" name="employeename">
+											</select> *@
+											<input type="text" class="form-control" id="employeenamevw" name="employeenamevw" readonly>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label" for="requiredby">Required By</label>
+											<div class="input-icon-end position-relative">
+												<input type="text" id="requiredbyvw" name="requiredbyvw" class="form-control datetimepicker" placeholder="dd/mm/yyyy" readonly>
+												<span class="input-icon-addon">
+													<i class="ti ti-calendar text-gray-7"></i>
+												</span>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label" for="requestedtill">Requested Till</label>
+											<div class="input-icon-end position-relative">
+												<input type="text" id="requestedtillvw" name="requestedtillvw" class="form-control datetimepicker" placeholder="dd/mm/yyyy" readonly>
+												<span class="input-icon-addon">
+													<i class="ti ti-calendar text-gray-7"></i>
+												</span>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Asset Type</label>
+
+										@* 	<select class="form-control select2 form-control" id="loantype" name="loantype">
+											</select> *@
+											<input type="text" class="form-control" id="loantypevw" name="loantypevw" readonly>
+										</div>
+
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Purpose</label>
+											<input type="text" id="purposevw" name="purposevw" class="form-control" readonly>
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">No of Attachments</label>
+											<input type="text" class="form-control" id="noofattachmentsvw" name="noofattachmentsvw" readonly>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="input-block mb-0">
+											<label class="form-label">Attachments</label>
+											<input class="form-control" type="file" multiple id="attachmentslistvm" name="attachmentslistvm" readonly disabled>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="mb-3">
+											<label class="form-label">Additional Details</label>
+											<textarea class="form-control" id="additionaldetailsvw" name="additionaldetailsvw" rows="3" readonly></textarea>
+										</div>
+									</div>
+
+									<div class="col-md-12">
+										<div id="errorMessage" class="text-danger mt-2"></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="modal-footer">
+
+								<a data-bs-toggle="modal" data-bs-target="#Attachments" class="btn btn-primary me-2">View  Attachments</a>
+
+								<!-- <button type="submit" class="btn btn-primary me-2">Save </button> -->
+								<button type="submit" class="btn btn-success me-2" id="btnItAssestSubmite" hidden>Submit</button>
+								<button type="button" class="btn btn-outline-light border " data-bs-dismiss="modal">Cancel</button>
+
+							</div>
+						</form>
+					</div>
+
+
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- /View Assets -->
+
+
+<!-- Workflow_History -->
+
+<div class="modal fade" id="Workflow_History">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content" style="width:1050px;">
+			<div class="modal-header">
+				<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2">Workflow History</h4>
+					<span>Employee  ID : EMP-@ViewBag.Username</span>
+				</div>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<div class="custom-datatable-filter table-responsive" id="workflowContainer">
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<!-- Attachments -->
+<div class="modal fade" id="Attachments">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="d-flex align-items-center">
+					<h4 class="modal-title me-2">Attachments</h4>
+				</div>
+				<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+
+			<div class="custom-datatable-filter table-responsive">
+				<table id="AssetsattachmentsTable" class="table datatable">
+					<thead class="thead-light">
+						<tr>
+
+							<th>File Name</th>
+							<th>Attached By</th>
+							<th>Date of Upload</th>
+							<th>Action</th>
+
+						</tr>
+					</thead>
+					<tbody>				
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- /Attachments -->
+
+	<!-- Add Employee Success -->
+	<div class="modal fade" id="success_modal" role="dialog">
+		<div class="modal-dialog modal-dialog-centered modal-sm">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="text-center p-3">
+						<span class="avatar avatar-lg avatar-rounded bg-success mb-3"><i class="ti ti-check fs-24"></i></span>
+						<h5 class="mb-2">Employee Added Successfully</h5>
+						<p class="mb-3">
+						Stephan Peralt has been added with Client ID : <span class="text-primary">#EMP - @ViewBag.Username</span>
+						</p>
+						<div>
+							<div class="row g-2">							
+								<div class="col-12">
+								<a asp-controller="ITAssets" asp-action="ReadAssetRequestList" class="btn btn-primary w-100">Ok</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Add Client Success -->
+	<!-- Delete Modal -->
+	<div class="modal fade" id="delete_modal">
+		<div class="modal-dialog modal-dialog-centered modal-sm">
+			<div class="modal-content">
+				<div class="modal-body text-center">
+					<span class="avatar avatar-xl bg-transparent-danger text-danger mb-3">
+						<i class="ti ti-trash-x fs-36"></i>
+					</span>
+					<h4 class="mb-1">Confirm Delete</h4>
+					<p class="mb-3">You want to delete all the marked items, this cant be undone once you delete.</p>
+					<div class="d-flex justify-content-center">
+						<a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+						<a href="employees.html" class="btn btn-danger">Yes, Delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Delete Modal -->
+<!-- Recall Modal -->
+<div class="modal fade" id="recall_modal">
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<span class="avatar avatar-xl bg-transparent-danger text-danger mb-3">
+					<i class="ti ti-trash-x fs-36"></i>
+				</span>
+				<h4 class="mb-1">Confirm Recall</h4>
+				<p class="mb-3">You want to recall this request , this can not be undone once you recall.</p>
+				<!-- Hidden inputs to store data -->
+				<input type="hidden" id="workflowPermissionId" value="">
+				<input type="hidden" id="workflowTableId" value="">
+				<input type="hidden" id="workflowRequestId" value="">
+				<div class="d-flex justify-content-center">
+					<a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+					<a href="#" class="btn btn-danger btnRecallToApi">Yes, Recall</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Recall Modal -->
+
+@* </div> *@
+<!-- /Page Wrapper -->
+
+<script>
+	$(document).ready(function () {
+		fetchAssetsId();
+		BindAllEmployee("");
+		BindLoanType();
+
+
+		// Function to parse date (assuming format dd/mm/yyyy)
+		function parseDate(dateStr) {
+			if (!dateStr) return null;
+			// Assuming date format is dd/mm/yyyy
+			var parts = dateStr.split('/');
+			if (parts.length !== 3) return null;
+			// Create Date object (month is 0-based in JavaScript)
+			return new Date(parts[2], parts[1] - 1, parts[0]);
+		}
+
+		// Event handler for requestedtill input
+		$('#requestedtill').on('change', function () {
+			console.log('requestedtill change event triggered'); // Debugging
+			var leaveStart1 = $('#requiredby').val();
+			var leaveEnd1 = $('#requestedtill').val();
+
+			if (leaveStart1 && leaveEnd1) {
+				var startDate = parseDate(leaveStart1);
+				var endDate = parseDate(leaveEnd1);
+
+				if (!startDate || !endDate) {
+					alert('Invalid date format.');
+					return false;
+				}
+
+				if (endDate < startDate) {
+					alert('Request till date cannot be earlier than required by date.');
+					$('#requestedtill').focus();
+					$('#errorMessage').html('Request till date cannot be earlier than required by date.');
+					return false;
+				} else {
+					$('#errorMessage').html('');
+				}
+			}
+		});
+
+		// Event handler for requiredby input
+		$('#requiredby').on('change', function () {
+			console.log('requiredby change event triggered'); // Debugging
+			var leaveStart1 = $('#requiredby').val();
+			var leaveEnd1 = $('#requestedtill').val();
+
+			if (leaveStart1 && leaveEnd1) {
+				var startDate = parseDate(leaveStart1);
+				var endDate = parseDate(leaveEnd1);
+
+				if (!startDate || !endDate) {
+					alert('Invalid date format.');
+					return false;
+				}
+
+				if (endDate < startDate) {
+					alert('Request till date cannot be earlier than required by date.');
+					$('#requiredby').focus();
+					$('#errorMessage').html('Request till date cannot be earlier than required by date.');
+					return false;
+				} else {
+					$('#errorMessage').html('');
+				}
+			}
+		});
+
+		// Additional event for datepicker (if applicable)
+		// Example for Flatpickr
+		$('#requestedtill, #requiredby').on('changeDate', function () {
+			$(this).trigger('change'); // Trigger the standard change event
+		});
+
+		// Global array to store file data
+		let attachRefList = [];
+		function BindAttachCreate() {
+			return new Promise((resolve, reject) => {
+				attachRefList = []; // Clear previous attachments
+				const fileInput = $('#attachmentslist')[0];
+				const files = fileInput?.files;
+
+				if (!fileInput || !files || files.length === 0) {
+					resolve(); // No file input or no files selected, proceed with empty attachRefList
+					return;
+				}
+
+				let processedFiles = 0;
+				for (let i = 0; i < files.length; i++) {
+					const file = files[i];
+					// Optional: Validate file size and type (uncomment if needed)
+					/*
+					if (file.size > 5 * 1024 * 1024) { // Limit to 5MB
+						reject('File ' + file.name + ' is too large. Maximum size is 5MB.');
+						return;
+					}
+					if (!['application/pdf', 'image/jpeg', 'image/png'].includes(file.type)) {
+						reject('File ' + file.name + ' is not a supported type (PDF, JPG, PNG).');
+						return;
+					}
+					*/
+
+					const reader = new FileReader();
+					reader.onload = function (e) {
+						const base64String = e.target.result.split(',')[1]; // Extract Base64 string (remove data URI prefix)
+						attachRefList.push({
+							fileName: file.name,
+							attachRef: base64String
+						});
+
+						processedFiles++;
+						if (processedFiles === files.length) {
+							resolve(); // All files processed
+						}
+					};
+
+					reader.onerror = function () {
+						reject('Error reading file: ' + file.name);
+					};
+
+					reader.readAsDataURL(file); // Read file as Data URL to get Base64					
+				}						
+			});
+		}
+
+		//-----------------------------------
+
+		$('#btnItAssestSubmite').on('click', function (e) {
+			e.preventDefault(); // Prevent default form submission
+			// Collect form data
+			BindAttachCreate().then(() => {
+				var requestId = $('#requestid').val() || '';
+				var employeeId = $('#employeename').find('option:selected').val() || '';
+				var EmployeeName = $('#employeename').find('option:selected').text() || '';
+				var raisedBy = '';
+				var requiredBy = $('#requiredby').val() || '';
+				var requiredTill = $('#requestedtill').val() || '';
+				var loanType = $('#loantype').find('option:selected').text() || '';
+				var purpose = $('#purpose').val() || '';
+				var additionalDetails = $('#additionaldetails').val() || '';
+				var comments = '';
+				var companyId = null;
+				var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
+				// Debug: Log form data
+				console.log('Form Data:', {
+					companyId: companyId,
+					employeeId: employeeId,
+					raisedBy: raisedBy,
+					requestId: requestId,
+					requiredBy: requiredBy,
+					requiredTill: requiredTill,
+					loanType: loanType,
+					purpose: purpose,
+					additionalDetails: additionalDetails,
+					comments: comments,
+					attachRefList: attachRefList,
+					__RequestVerificationToken: antiForgeryToken
+				});
+
+				// Basic client-side validation
+				if (!employeeId || employeeId === 'Select') {
+					$('#errorMessage').html('<p style="color: red;">Please select a valid employee.</p>');
+					$('#employeename').focus();
+					return false;
+				}
+				if (!requiredBy || !requiredTill) {
+					$('#errorMessage').html('<p style="color: red;">Please provide valid start and end dates.</p>');
+					$('#requiredby').focus();
+					return false;
+				}
+				if (loanType === 'Select' || loanType === '') {
+					$('#errorMessage').html('<p style="color: red;">Please select a valid loan type</p>');
+					$('#loantype').focus();
+					return false;
+				}
+				if (!requestId) {
+					$('#errorMessage').html('<p style="color: red;">Please provide a valid request id.</p>');
+					$('#requestid').focus();
+					return false;
+				}
+				// Prepare JSON payload
+				var payload = {
+					assetRequestContract: {
+						companyId: companyId,
+						employeeId: employeeId,
+						raisedBy: raisedBy,
+						requestId: requestId,
+						requiredBy: requiredBy,
+						requiredTill: requiredTill,
+						loanType: loanType,
+						purpose: purpose,
+						additionalDetails: additionalDetails,
+						comments: comments,
+						attachRefList: attachRefList,
+						__RequestVerificationToken: antiForgeryToken
+					}
+				};
+
+				// Make AJAX request
+				$.ajax({
+					url: '/ITAssets/CreateAssetsRequest',
+					type: 'POST',
+					data: JSON.stringify(payload),
+					contentType: 'application/json',
+					headers: {
+						'RequestVerificationToken': antiForgeryToken
+					},
+					beforeSend: function () {
+						$('#btnItAssestSubmite').prop('disabled', true).text('Submitting...');
+					},
+					success: function (response) {
+						debugger;
+						if (response.messageFlag !== 'Failed' && !response.message.includes('API call failed')) {
+							$('#success_modal .modal-body h5').text('Assets is created successfully');
+							$('#success_modal .modal-body p').html(
+								`${EmployeeName} has been scheduled for a Assets Request with Request ID: <span class="text-primary">${requestId || '#ITAR-0001'}</span>`
+							);
+							$('#success_modal').modal('show');
+							$('#btnItAssestSubmite').prop('disabled', false).text('Submit');
+							var successMessage = (response.Message || response.message || 'Assets is saved successfully!');
+							$('#errorMessage').html('<p style="color: green;">' + successMessage + '</p>');
+							$('#AssetsRequestForm')[0].reset();
+							attachRefList = []; // Clear attachments after successful submission
+							$('#fileList').html('No files selected.'); // Clear file list display
+						} else {
+							var successMessage = (response.Message || response.message);
+							$('#errorMessage').html('<p style="color: red;">' + successMessage + '</p>');
+							$('#btnItAssestSubmite').prop('disabled', false).text('Submit');
+						}
+					},
+					error: function (xhr) {
+						var errorMessage = 'An error occurred while saving the request.';
+						if (xhr.responseJSON) {
+							errorMessage = xhr.responseJSON.message || xhr.responseJSON.Message || errorMessage;
+						} else if (xhr.statusText) {
+							errorMessage = xhr.statusText;
+						}
+						$('#errorMessage').html('<p style="color: red;">' + errorMessage + '</p>');
+					},
+					complete: function () {
+						$('#btnItAssestSubmite').prop('disabled', false).text('Submit');
+					}
+				});
+			}).catch(error => {
+				$('#errorMessage').html('<p style="color: red;">' + error + '</p>');
+				$('#btnItAssestSubmite').prop('disabled', false).text('Submit');
+			});
+		});
+
+
+		// When the "Recall" button is clicked, capture the data attributes and set them in the modal
+		$(document).on('click', '[data-bs-target="#recall_modal"]', function () {
+			var recordId = $(this).data('rec');
+			var tableId = $(this).data('tableid');
+			var requestId = $(this).data('requestid');
+
+			// Set the values in the hidden inputs of the modal
+			$('#workflowPermissionId').val(recordId);
+			$('#workflowTableId').val(tableId);
+			$('#workflowRequestId').val(requestId);
+		});
+
+		$(document).on('click', '.btnRecallToApi', function (e) {
+			e.preventDefault();
+
+			// Get form values
+			var leaveId = $('#leaveid').val();
+			var RecordId = $('#workflowPermissionId').val();
+			var TableId = $('#workflowTableId').val();
+			var ReturnToLevel = $('#workflowlevelId').val();
+			var TransType = 'IT Assets';
+
+			// AJAX call to RecallWorkflow
+			$.ajax({
+				url: '@Url.Action("RecallWorkflow", "BusinessTrip")',
+				type: 'POST',
+				data: {
+					RecordId: RecordId,
+					TableId: TableId,
+					ReturnToLevel: ReturnToLevel,
+					TransType: TransType
+				},
+				dataType: 'json',
+				success: function (response) {
+					if (response && (response.success === true || response.Success === true)) {
+						alert(response.message || response.Message || "Recall successful!");
+					} else {
+						alert(response.message || response.Message || 'Recall failed.');
+					}
+				},
+				error: function (xhr, status, error) {
+					alert('An error occurred while recalling the workflow.');
+					console.error('Error:', error);
+					console.error('Response:', xhr.responseText);
+				}
+			});
+			$('#recall_modal').modal('hide');
+		});
+
+	});
+
+
+	
+
+	//-----------------------------------------------------View-----------------------------
+
+	$(document).on('click', '.btnViewAssets', function () {
+		var requestId = $(this).data('id');		
+		//------------------	
+		$.ajax({
+			url: '@Url.Action("ReadAssetRequestDetails", "ITAssets")',
+			type: 'Get',
+			data: { assetsId: requestId }, // Use 'id' to match controller parameter
+			dataType: 'json',
+			success: function (response) {
+				// Check if leaveDetails exists and has items
+				if (response.assetRequestList && response.assetRequestList.length > 0) {
+					var requestData = response.assetRequestList[0];
+					function formatDate(inputDate) {
+						if (!inputDate) return '';
+						var parts = inputDate.split('/');
+						return `${parts[2]}-${parts[1]}-${parts[0]}`;
+					}
+					function formatDateReverse(inputDate) {
+						if (!inputDate) return '';
+						var parts = inputDate.split('-');
+						if (parts.length !== 3) return '';
+						return `${parts[2]}/${parts[1]}/${parts[0]}`;
+					}
+									
+					$('#add_employeeAssetsView #requestidvw').val(requestData.requestId);
+					$('#add_employeeAssetsView #employeenamevw').val(requestData.employeeId + '-' + requestData.employeeName);
+					$('#add_employeeAssetsView #loantypevw').val(requestData.loanType);
+					$('#add_employeeAssetsView #requiredbyvw').val(formatDate(requestData.requiredBy));
+					$('#add_employeeAssetsView #requestedtillvw').val(formatDate(requestData.requiredTill));
+					$('#add_employeeAssetsView #purposevw').val(requestData.purpose);
+					$('#add_employeeAssetsView #additionaldetailsvw').val(requestData.additionalDetails);
+					if (requestData.status == 'Submitted' || requestData.status == 'Approved') {
+						$('#btnItAssestSubmite').hide();						
+					}
+					var table = $('#AssetsattachmentsTable').DataTable();
+					$('#add_employeeAssetsView #noofattachmentsvw').val(requestData.attachRefList.length);
+					$.each(requestData.attachRefList, function (i, item) {
+						// Determine the MIME type (default to octet-stream if unknown)
+						let mimeType = item.fileType || 'application/octet-stream';
+
+						// Construct download link using base64
+						let downloadLink = `<a href="data:${mimeType};base64,${item.attachRef}"
+								 download="${item.fileName}"
+								 target="_blank">${item.fileName}</a>`;
+						// Conditionally set the delete link based on requestData.status
+						let deleteLink = (requestData.status === 'Submitted' || requestData.status === 'Approved')
+							? `<span class="delete-attachment disabled" style="pointer-events: none; opacity: 0.5;"><i class="ti ti-trash"></i></span>`
+							: `<a href="#" class="delete-attachment" data-attachment-id="${item.id || i}" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>`;
+						table.row.add([
+							downloadLink,
+							requestData.employeeId + '-' + requestData.employeeName,
+							formatDate(requestData.transDate),
+							deleteLink
+						]).draw(false);
+					});
+					function formatDate(dateStr) {
+						const d = new Date(dateStr);
+						return d.toLocaleDateString("en-GB"); // dd/MM/yyyy
+					}
+				} else {
+					alert('Error: No leave details found in response');
+				}
+			},
+			error: function (xhr, status, error) {
+				alert('An error occurred while fetching the data: ' + error);
+				console.error('AJAX Error:', xhr.responseText); // Log response for debugging
+			}
+		});
+	});
+	
+
+	// Optional: Display selected files in the UI
+	$('#attachmentslist').on('change', function () {
+		const files = this.files;
+		let fileList = '';
+		let count = 0;
+		for (let i = 0; i < files.length; i++) {
+			fileList += `<li>${files[i].name} (${(files[i].size / 1024).toFixed(2)} KB)</li>`;
+			count++;
+		}
+		$('#fileList').html(fileList ? `<ul>${fileList}</ul>` : 'No files selected.');
+		$('#noofattachments').val(count);
+	});
+
+
+	//----------------------------------------------------------
+	async function fetchAssetsId() {
+		const companyId = 'USMF';
+		$.ajax({
+			url: '/ITAssets/GetAssetRequestId',
+			type: 'POST',
+			contentType: 'application/json',
+			data: JSON.stringify(companyId),
+			success: function (data) {
+				if (data !== "Error") {
+					$('#requestid').val(data);
+				} else {
+					alert("Failed to get Request Id.");
+				}
+			},
+			error: function (xhr, status, error) {
+				console.error("Error fetching Asset ID:", error);
+				alert("Something went wrong while fetching the assets ID.");
+			}
+		});
+	}
+
+	///------------------------------------------
+	//Bind All Employee
+	function BindAllEmployee(employeeIdToSelect) {
+		// Get the anti-forgery token
+		var token = $('input[name="__RequestVerificationToken"]').val();
+
+		// Make AJAX call to GetAllEmployees
+		$.ajax({
+			url: '@Url.Action("GetAllEmployees", "Leave")',
+			type: 'POST',
+			data: {
+				__RequestVerificationToken: token
+			},
+			dataType: 'json',
+			beforeSend: function () {
+				$('.container').prepend('<div class="loading">Loading...</div>');
+			},
+			success: function (response) {
+				$('.loading').remove();
+				console.log('AJAX response:', JSON.stringify(response, null, 2)); // Detailed debug output
+
+				let employeeList = null;
+				if (Array.isArray(response)) {
+					employeeList = response; // Direct array from List<EmployeeList>
+				} else if (response && response.EmployeeList && Array.isArray(response.EmployeeList)) {
+					employeeList = response.EmployeeList; // Wrapped in { "EmployeeList": [...] }
+				} else if (response && response.data && Array.isArray(response.data)) {
+					employeeList = response.data; // Wrapped in { "data": [...] }
+				}
+
+				if (employeeList && employeeList.length > 0) {
+					var $select = $('#employeename');
+					$select.empty().append('<option value="">Select</option>');
+					$.each(employeeList, function (index, item) {
+						$select.append($('<option>', {
+							value: item.employeeId,
+							text: item.employeeName
+						}));
+					});
+					$select.select2({
+						dropdownParent: $('#myTabContent'),  // Replace with actual modal ID
+						minimumResultsForSearch: 0
+					});				
+					$select.val(employeeIdToSelect).trigger('change');
+				}			
+			},
+			error: function (xhr, status, error) {
+				$('.loading').remove();
+				console.error('AJAX error:', status, error, xhr.responseText);
+				var errorDiv = $('<div class="alert alert-danger mt-3"></div>').text('An error occurred while loading employee data: ' + (xhr.responseText || error));
+				$('.container').prepend(errorDiv);
+			}
+		});
+	}
+	//----------------------------------------
+
+	function BindLoanType() {
+		debugger;
+		// Get the anti-forgery token
+		var token = $('input[name="__RequestVerificationToken"]').val();
+		var EmpId = null;
+		// Make AJAX call to GetLeaveType
+		$.ajax({
+			url: '@Url.Action("GetLoanTypes", "ITAssets")',
+			type: 'POST',
+			data: { EmpId: EmpId, __RequestVerificationToken: token },
+			dataType: 'json',
+			beforeSend: function () {
+				$('.container').prepend('<div class="loading">Loading...</div>');
+			},
+			success: function (response) {
+				$('.loading').remove();
+				console.log('AJAX response:', response); // Debug response
+				if (response) {
+					debugger;
+					// Populate Leave Type dropdown
+					var loanTypeSelect = $('#loantype');
+					loanTypeSelect.empty().append('<option value="">Select</option>');
+					var loanTypes = response;
+					if (loanTypes && loanTypes.length > 0) {
+
+						var $select = $('#loantype');
+						$select.empty().append('<option value="">Select</option>');
+						$.each(loanTypes, function (index, item) {
+							$select.append($('<option>', {
+								value: item.$id,
+								text: item.loanType
+							}));
+						});
+						$select.select2({
+							dropdownParent: $('#myTabContent'),  // Replace with actual modal ID
+							minimumResultsForSearch: 0
+						});
+						//$select.val(EmpId).trigger('change');
+					} else {
+						console.log('No loan type found in response:', response.data);
+						loanTypeSelect.append('<option value="" disabled>No loan types available</option>');
+					}
+				} else {
+					var errorDiv = $('<div class="alert alert-danger mt-3"></div>').text(response.message || 'Failed to load dropdown data.');
+					$('.container').prepend(errorDiv);
+				}
+			},
+			error: function (xhr, status, error) {
+				$('.loading').remove();
+				console.error('AJAX error:', status, error, xhr.responseText);
+				var errorDiv = $('<div class="alert alert-danger mt-3"></div>').text('An error occurred while loading dropdown data.');
+				$('.container').prepend(errorDiv);
+			}
+		});
+	}
+</script>
